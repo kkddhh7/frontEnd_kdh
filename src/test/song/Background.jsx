@@ -19,7 +19,8 @@ export const Background = () => {
                     axes={"y"}
                     start={0}
                     end={-0.5}
-                />
+                /> 
+                {/* 여기서 배경 색이나 조절 가능함. 아니다 그냥 여기에 이미지 갖다 넣어도 되겠다*/}
             </LayerMaterial>
         </Sphere>
     </>

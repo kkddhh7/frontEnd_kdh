@@ -1,24 +1,35 @@
-import { useState } from "react";
-import './Cursor/css';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import './Cursor.css';
 
 export default function Cursor() {
+  const [xy, setXY] = useState({ x: 0, y: 0 });
 
-    const [xy, setXY] = useState({x : 0, y : 0})
-
+  useEffect(() => {
     const xyHandler = (e) => {
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
 
-    setXY({x : mouseX, y: mouseY});
-    
-  }
+      setXY({ x: mouseX, y: mouseY });
+    };
+
+    const updatePosition = (e) => {
+      requestAnimationFrame(() => xyHandler(e));
+    };
+
+    window.addEventListener('mousemove', updatePosition);
+
+    return () => {
+      window.removeEventListener('mousemove', updatePosition);
+    };
+  }, []);
 
   return (
-    <div className='container' onMouseMove={xyHandler} >
-      <div className='pointer' style ={{
-      transform : `translate(${xy.x}px, ${xy.y}px)`
-    }} />
-    </div>
+    <img
+      src="/images/test.png"
+      className="pointer"
+      style={{
+        transform: `translate(${xy.x}px, ${xy.y}px)`,
+      }}
+    />
   );
 }

@@ -9,14 +9,14 @@ export default function Test1() {
   // let [글제목, b] = useState('배언제불러 밥먹고싶어');
 
   return (
-    
+    <>
       <Canvas>
         <color attach="background" args={["#f59f9f"]}/>
         <ScrollControls pages={20} damping={1}>
           <Experience/>
         </ScrollControls>
       </Canvas>
-  
+    </>
     
     );
 }

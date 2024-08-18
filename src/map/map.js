@@ -18,12 +18,12 @@ export default function Map() {
       setActiveIcon(iconPosition);
       setShowInk(false);
       setTimeout(() => {
-        setShowInk(true); // 잉크 이미지 보이게 설정
-      }, 1000); // 붓 이동 후 잉크 이미지가 1초 후에 보이도록 설정
+        setShowInk(true); 
+      }, 1000);
 
       setTimeout(() => {
-        navigate(path); // 1.5초 후에 화면 전환
-      }, 1500); // 잉크 이미지가 보여진 후 0.5초 더 대기
+        navigate(path);
+      }, 1500);
     };
 
     return (

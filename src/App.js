@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Role from "./test/Role";
@@ -6,6 +5,8 @@ import Test1 from "./test/Test1";
 import Test2 from "./test/Test2";
 import Test3 from "./test/Test3";
 import Map from "./map/map";
+import Injungjun from './spot/injungjun';
+import Nakseonjae from './spot/nakseonjae';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
           <Route path='/test2' element={<Test2 />} />
           <Route path='/test3' element={<Test3 />} />
           <Route path='/map' element={<Map/>} /> 
+          <Route path='/injungjun' element={<Injungjun/>} />
+          <Route path='/nakseonjae' element={<Nakseonjae/>} />
         </Routes>   
       </Router>
       </div>

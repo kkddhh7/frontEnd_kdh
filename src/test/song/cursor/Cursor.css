@@ -6,12 +6,12 @@
 
 .pointer {
   position: absolute;
-  width: 30px;   /* 이미지 크기를 설정 */
-  height: 30px;
+  width: 65px;   /* 이미지 크기를 설정 */
+  height: 65px;
   left: -15px;   /* 이미지 중앙에 맞추기 위해 조정 */
   top: -15px;    /* 이미지 중앙에 맞추기 위해 조정 */
   pointer-events: none;  /* 클릭 이벤트가 차단되지 않도록 설정 */
-  transition: transform 0.15s ease-out; /* 부드러운 트랜지션 추가 */
+  transition: transform 0.25s ease-out; /* 부드러운 트랜지션 추가 */
   z-index: 9999;  /* 포인터가 항상 최상단에 있도록 설정 */
 }
 

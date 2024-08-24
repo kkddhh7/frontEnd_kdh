@@ -1,43 +1,42 @@
-import React, { useState } from "react";
-import { Canvas } from '@react-three/fiber'
-import { ScrollControls } from "@react-three/drei";
-import { Experience } from "./song/Experience";
+import React, { useState, useEffect } from "react";
+import "./song/object/Experience.css";
 
 export default function Test1() {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      const position = window.scrollY;
+      setScrollPosition(position);
+    };
 
-  // let post = '강남우동맛집';
-  // let [글제목, b] = useState('배언제불러 밥먹고싶어');
+    window.addEventListener("scroll", handleScroll);
+
+    handleScroll();
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>
-      <Canvas>
-        <color attach="background" args={["#f59f9f"]}/>
-        <ScrollControls pages={20} damping={1}>
-          <Experience/>
-        </ScrollControls>
-      </Canvas>
-    </>
-    
-    );
+    <div className="world">
+      <div className="stage" style={{ 
+          transform: `translateZ(${-scrollPosition}px)`,
+        }}>
+        <div className="house">
+          <section className="wall wall-left"></section>
+          <section className="wall wall-right"></section>
+          <section className="wall wall-top"></section>
+          <section className="wall wall-bottom"></section>
+          <section className="wall wall-front">
+            <div className="wall-content">
+              <h2 className="wall-title">안녕하세요</h2>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </>
+  );
 }
-
-
-    // <div className = "App">
-    //   <div className="black-nav">
-    //     <div>
-    //       <h4>블로그 작성중입니당.</h4>
-    //     </div>
-    //     <div className="list">
-    //       <h2 style={ {color : 'red', fontSize : '16px'} }>{ 글제목 }</h2>
-    //       <p>7월 말일 발행한 글임</p>
-    //     </div>
-    //     <div className="list">
-    //       <h2 style={ {color : 'red', fontSize : '16px'} }>{ 글제목 }</h2>
-    //       <p>7월 말일 발행한 글임</p>
-    //     </div>
-    //     <div className="list">
-    //       <h2 style={ {color : 'red', fontSize : '16px'} }>{ 글제목 }</h2>
-    //       <p>7월 말일 발행한 글임</p>
-    //     </div>
-    //   </div>
-    // </div>  

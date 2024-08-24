@@ -1,0 +1,78 @@
+.world {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 200vh;
+    background-color: red;
+    perspective: 1500px;
+    perspective-origin: center center;
+}
+  
+.stage {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.5s linear;
+    position: fixed;
+}
+  
+.house {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+  
+.wall {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ccc;
+}
+  
+.wall-left {
+    left: 0;
+    transform: rotateY(90deg) translateZ(-50vw);
+    transform-origin: left center;
+    background-color: rgba(14, 14, 7, 0.8);
+}
+  
+.wall-right {
+    right: 0;
+    transform: rotateY(-90deg) translateZ(-50vw);
+    transform-origin: right center;
+    background-color: rgba(14, 14, 7, 0.8);
+}
+  
+.wall-top {
+    top: 0;
+    transform: rotateX(90deg) translateZ(-50vh);
+    transform-origin: top center;
+    background-color: rgba(68, 68, 33, 0.8);
+}
+  
+.wall-bottom {
+    bottom: 0;
+    transform: rotateX(-90deg) translateZ(-50vh);
+    transform-origin: bottom center;
+    background-color: rgba(68, 68, 33, 0.8);
+}
+  
+.wall-front {
+    transform: translateZ(50px);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+  
+.wall-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+  
+.wall-title {
+    font-size: 48px;
+    color: #333;
+}

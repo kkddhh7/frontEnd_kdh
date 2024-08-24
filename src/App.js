@@ -8,7 +8,9 @@ import Map from "./map/map";
 import Injungjun from './spot/injungjun';
 import Nakseonjae from './spot/nakseonjae';
 import Buyongji from './spot/buyongji';
-import Chundangdae from './spot/chundangdae';
+import Juniper from './spot/juniper';
+import Yunghwadang from './spot/yunghwadang';
+
 
 function App() {
   return (
@@ -23,7 +25,9 @@ function App() {
           <Route path='/injungjun' element={<Injungjun/>} />
           <Route path='/nakseonjae' element={<Nakseonjae/>} />
           <Route path='/buyongji' element={<Buyongji/>} />
-          <Route path='/chundangdae' element={<Chundangdae/>} />
+          <Route path='/yunghwadang' element={<Yunghwadang/>} />
+          <Route path='/juniper' element={<Juniper/>} />
+
         </Routes>   
       </Router>
       </div>

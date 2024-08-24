@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import mapImage from './image/map.png';
-import Kyujanggak from './image/Kyujanggak_icon.png';
-import inkStoneImage from './image/ink_stone_icon.png';
-import brushImage from './image/brush_icon.png';
-import brushHolderImage from './image/brush_holder_icon.png';
-import bigBrush from './image/big_brush.png'; 
-import inkImage from './image/ink.png';
 import './map.css'; 
+
+const images = require.context('./image', false, /\.(png|jpe?g|svg)$/);
 
 export default function Map() {
     const [activeIcon, setActiveIcon] = useState(null);
@@ -27,37 +22,58 @@ export default function Map() {
     };
 
     return (
-        <div style={{ position: 'relative' }}>
-            <img src={mapImage} alt="배경" style={{ width: '100%' }} />
+        <div style={{ position: 'relative', overflow: 'hidden', height: '100vh', width: '100vw' }}>
+      <img src={images('./map.png')} alt="배경" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
 
             {/* 아이콘 배치 */}
-            <div style={{ position: 'absolute', top: '66%', left: '37%' }} onClick={() => handleIconClick('/kyujanggak', { top: '66%', left: '37%' })}>
-                <img src={Kyujanggak} alt="규장각" style={{ width: '150px', cursor: 'pointer' }} />
+            <div style={{ position: 'absolute', top: '54%', left: '44%' }} onClick={() => handleIconClick('/injungjun', { top: '54%', left: '44%' })}>
+                <img src={images('./injungjun_icon.png')} alt="인정전" style={{ width: '220px', cursor: 'pointer' }} />
             </div>
-            <div style={{ position: 'absolute', top: '50%', left: '60%' }} onClick={() => handleIconClick('/nakseonjae', { top: '50%', left: '60%' })}>
-                <img src={Kyujanggak} alt="낙선재" style={{ width: '150px', cursor: 'pointer' }} />
+            
+            <img src={images('./daejojeon_icon.png')} alt="대조전" style={{ position: 'absolute', top: '42%', left: '52%', width: '220px' }} />
+
+            <div style={{ position: 'absolute', top: '24%', left: '45%' }} onClick={() => handleIconClick('/yunghwadang', { top: '24%', left: '45%' })}>
+                <img src={images('./yunghwadang_icon.png')} alt="영화당" style={{ width: '220px', cursor: 'pointer' }} />
             </div>
-            <div style={{ position: 'absolute', top: '62%', left: '44%' }} onClick={() => handleIconClick('/injungjun', { top: '62%', left: '44%' })}>
-                <img src={Kyujanggak} alt="인정전" style={{ width: '150px', cursor: 'pointer' }} />
+
+            <img src={images('./bulomun_icon.png')} alt="불로문" style={{ position: 'absolute', top: '17%', left: '47%', width: '180px' }}/>
+
+            <img src={images('./pyeomusa_icon.png')} alt="폄우사" style={{ position: 'absolute', top: '15%', left: '30%', width: '220px' }} />
+
+            <img src={images('./jondeokjeong_icon.png')} alt="존덕정" style={{ position: 'absolute', top: '13%', left: '40%', width: '220px' }} />
+
+            <img src={images('./cheonguijeong_icon.png')} alt="청의정" style={{ position: 'absolute', top: '7%', left: '34%', width: '220px' }} />
+
+            <img src={images('./donhwamun_icon.png')} alt="돈화문" style={{ position: 'absolute', top: '68%', left: '53%', width: '220px' }} />
+
+            <img src={images('./geumhomun_icon.png')} alt="금호문" style={{ position: 'absolute', top: '73%', left: '43%', width: '220px' }} />
+
+            <img src={images('./seonjeongjeon_icon.png')} alt="선정전" style={{ position: 'absolute', top: '53%', left: '57%',width: '220px' }} />
+
+            <div style={{ position: 'absolute', top: '40%', left: '34%' }} onClick={() => handleIconClick('/juniper', { top: '40%', left: '34%' })}>
+                <img src={images('./juniper_icon.png')} alt="향나무" style={{ width: '220px', cursor: 'pointer' }} />
             </div>
-            <div style={{ position: 'absolute', top: '34%', left: '45%' }} onClick={() => handleIconClick('/buyongji', { top: '34%', left: '45%' })}>
-                <img src={Kyujanggak} alt="부용지" style={{ width: '100px', cursor: 'pointer' }} />
+            <div style={{ position: 'absolute', top: '51%', left: '66%' }} onClick={() => handleIconClick('/nakseonjae', { top: '58%', left: '70%' })}>
+                <img src={images('./nakseonjae_icon.png')} alt="낙선재" style={{ width: '350px', cursor: 'pointer' }} />
             </div>
-            <div style={{ position: 'absolute', top: '32%', left: '49%' }} onClick={() => handleIconClick('/chundangdae', { top: '32%', left: '49%' })}>
-                <img src={Kyujanggak} alt="춘당대" style={{ width: '100px', cursor: 'pointer' }} />
+            <div style={{ position: 'absolute', top: '36%', left: '43%' }} onClick={() => handleIconClick('/buyongji', { top: '36%', left: '43%' })}>
+                <img src={images('./buyongji_icon.png')} alt="부용지" style={{ width: '240px', cursor: 'pointer' }} />
             </div>
-            <img src={inkStoneImage} alt="벼루" style={{ position: 'absolute', top: '74%', left: '18%', width: '150px' }} />
-            <img src={brushImage} alt="붓" style={{ position: 'absolute', top: '64%', left: '15%', width: '70px' }} />
-            <img src={brushHolderImage} alt="붓발" style={{ position: 'absolute', top: '65%', left: '10%', width: '70px' }} />
+            
+            <img src={images('./kyujanggak_icon.png')} alt="규장각" style={{ position: 'absolute', top: '24%', left: '33%', width: '220px' }} />
+
+            {/* <img src={images('./ink_stone_icon.png')} alt="벼루" style={{ position: 'absolute', top: '70%', left: '18%', width: '200px' }} />
+            <img src={images('./brush_icon.png')} alt="붓" style={{ position: 'absolute', top: '64%', left: '15%', width: '70px' }} />
+            <img src={images('./brush_holder_icon.png')} alt="붓발" style={{ position: 'absolute', top: '65%', left: '10%', width: '70px' }} /> */}
             
             {activeIcon && (
                 <div className="overlay" style={{ position: 'absolute', top: activeIcon.top, left: activeIcon.left }}>
-                    <img src={bigBrush} alt="큰 붓" className="big-brush" />
+                    <img src={images('./big_brush.png')} alt="큰 붓" className="big-brush" />
                 </div>
             )}
             {activeIcon && (
                 <div className={`ink-overlay ${showInk ? 'show' : ''}`} style={{ top: activeIcon.top, left: activeIcon.left }}>
-                    <img src={inkImage} alt="잉크" style={{ width: '160px' }} />
+                    <img src={images('./ink.png')} alt="잉크" style={{ width: '160px' }} />
                 </div>
             )}
         </div>

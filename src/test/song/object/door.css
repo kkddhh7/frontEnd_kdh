@@ -1,0 +1,34 @@
+
+/* 문 애니메이션 */
+.doors {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .door-left,
+  .door-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    transition: transform 1s ease;
+  }
+  
+  .door-left {
+    left: 0;
+    transform: translateX(0);
+  }
+  
+  .door-right {
+    right: 0;
+    transform: translateX(0);
+  }
+  
+  .door-left.open {
+    transform: translateX(-100%);
+  }
+  
+  .door-right.open {
+    transform: translateX(100%);
+  }

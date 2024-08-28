@@ -15,7 +15,9 @@
         transform: translate(-70%, -3%) translate(0, 0); /* 최종 위치 */
     }
 }
-
+.custom-cursor {
+    cursor: url('./image/cursor.png'), auto; /* 커서 이미지 경로를 설정 */
+}  
 .ink-overlay {
     position: absolute;
     opacity: 0; 
@@ -50,4 +52,4 @@
       -webkit-filter: brightness(1.2);
       filter: brightness(1.2);
     }
-  }
+}

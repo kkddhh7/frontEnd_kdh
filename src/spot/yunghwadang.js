@@ -7,29 +7,28 @@ export default function Yunghwadang() {
     const [showImages, setShowImages] = useState(false);
     const [ennuchPosition, setEnnuchPosition] = useState({ left: '32%' });
     const [showBook, setShowBook] = useState(true);
-    const [ennuchOpacity, setEnnuchOpacity] = useState(0); // 내시의 불투명도 상태 추가
+    const [ennuchOpacity, setEnnuchOpacity] = useState(0); 
 
     const handleIconClick = () => {
-        setEnnuchPosition({ left: '15%' }); // 서책 클릭 시 내시의 위치 변경
+        setEnnuchPosition({ left: '15%' });
         setShowBook(false);
     };
 
     useEffect(() => {
         const timer = setTimeout(() => {
             setShowImages(true);
-            // 불투명도를 점진적으로 증가시키기 위한 타이머 설정
             const opacityTimer = setInterval(() => {
                 setEnnuchOpacity(prev => {
                     if (prev < 1) {
-                        return prev + 0.05; // 0.1씩 증가
+                        return prev + 0.05; 
                     } else {
-                        clearInterval(opacityTimer); // 최대 불투명도 도달 시 타이머 종료
-                        return prev; // 현재 값 반환
+                        clearInterval(opacityTimer); 
+                        return prev; 
                     }
                 });
-            }, 100); // 0.5초마다 불투명도 증가
+            }, 100); 
 
-            return () => clearInterval(opacityTimer); // 컴포넌트 언마운트 시 타이머 정리
+            return () => clearInterval(opacityTimer); 
         }, 1000); 
 
         return () => clearTimeout(timer);

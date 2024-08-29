@@ -10,6 +10,7 @@ import Nakseonjae from './spot/nakseonjae';
 import Buyongji from './spot/buyongji';
 import Juniper from './spot/juniper';
 import Yunghwadang from './spot/yunghwadang';
+import Changhoji from './spot/changhoji';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path='/buyongji' element={<Buyongji/>} />
           <Route path='/yunghwadang' element={<Yunghwadang/>} />
           <Route path='/juniper' element={<Juniper/>} />
+          <Route path='/nakseonjae/changhoji' element={<Changhoji/>} />
 
         </Routes>   
       </Router>

@@ -11,25 +11,50 @@ import changhoji from './image/nakseonjae_changhoji.png';
 export default function Nakseonjae() {
     const [showImages, setShowImages] = useState(false);
     const [shifted, setShifted] = useState(false);
+    const [opacity, setOpacity] = useState(0); // 추가된 상태
     const navigate = useNavigate();
-    
+
     const handleIconClick = (path) => {
         navigate(path);
     };
-    
+
     const handleChanghojiClick = (path) => {
+        setShifted(false);
         setShifted(true);
         setTimeout(() => {
             navigate(path);
         }, 800);
     };
 
+    // 왕과 궁녀 이미지 2초 뒤에 등장
     useEffect(() => {
         const timer = setTimeout(() => {
             setShowImages(true);
-        }, 2000); 
+            // 서서히 선명도를 증가시키는 애니메이션
+            let fadeEffect = setInterval(() => {
+                setOpacity(prev => {
+                    if (prev >= 1) {
+                        clearInterval(fadeEffect);
+                        return 1;
+                    }
+                    return prev + 0.1; // 0.1씩 증가
+                });
+            }, 100); // 0.1 초 간격으로 증가
 
-        return () => clearTimeout(timer);
+        }, 2000);
+
+        return () => {
+            clearTimeout(timer);
+        };
+    }, []);
+
+    // 주기적으로 shifted 상태 변경
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setShifted(prev => !prev);
+        }, 2000);
+
+        return () => clearInterval(interval);
     }, []);
 
     // 현재 시간에 따라 배경 이미지 결정
@@ -77,8 +102,30 @@ export default function Nakseonjae() {
 
             {showImages && (
                 <>
-                    <img src={king} alt="왕" style={{ position: 'absolute', top: '53%', left: '50%', width: '230px' }} />
-                    <img src={maid} alt="궁녀" style={{ position: 'absolute', top: '53%', left: '45%', width: '170px' }} />
+                    <img 
+                        src={king} 
+                        alt="왕" 
+                        style={{ 
+                            position: 'absolute', 
+                            top: '53%', 
+                            left: '50%', 
+                            width: '230px', 
+                            opacity: opacity, 
+                            transition: 'opacity 0.5s'
+                        }} 
+                    />
+                    <img 
+                        src={maid} 
+                        alt="궁녀" 
+                        style={{ 
+                            position: 'absolute', 
+                            top: '53%', 
+                            left: '45%', 
+                            width: '170px', 
+                            opacity: opacity, 
+                            transition: 'opacity 0.5s'
+                        }} 
+                    />
                 </>
             )}
         </div>

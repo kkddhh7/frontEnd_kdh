@@ -49,12 +49,12 @@ export default function Map() {
 
     return (
         <div className="custom-cursor">
-            <div style={{ position: 'absolute', overflow: 'hidden', height: '1069px', width: '1710px' }}>
+            <div style={{ position: 'relative', overflow: 'hidden', height: '100vh', width: '100vw' }}>
                 <img src={images('./map.png')} alt="배경" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
     
                 {/* 아이콘 배치 */}
-                <div style={{ position: 'absolute', top: '517px', left: '732px' }} onClick={() => handleIconClick('/injungjun', { top: '60%', left: '46%' })}>
-                    <img src={images('./injungjun_icon.png')} alt="인정전" className="icon-effect" style={{ width: '118px', cursor: 'pointer' }} />
+                <div style={{ position: 'absolute', top: '60%', left: '46%' }} onClick={() => handleIconClick('/injungjun', { top: '60%', left: '46%' })}>
+                    <img src={images('./injungjun_icon.png')} alt="인정전" className="icon-effect" style={{ width: '170px', cursor: 'pointer' }} />
                 </div>
     
                 <img src={images('./daejojeon_icon.png')} alt="대조전" style={{ position: 'absolute', top: '39%', left: '54%', width: '170px' }} />

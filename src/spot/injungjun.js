@@ -1,11 +1,25 @@
 import React from 'react';
-import injungjun from './image/injungjun.png';
-
+import injungjunDay from './image/injungjun/injungjun_day.png';
+import injungjunEvening from './image/injungjun/injungjun_evening.png';
+import injungjunNight from './image/injungjun/injungjun_night.png';
 
 export default function Injungjun() {
+
+  const currentHour = new Date().getHours();
+    let backgroundImage;
+
+    if (currentHour >= 6 && currentHour < 17) {
+        backgroundImage = injungjunDay;
+    } else if (currentHour >= 17 && currentHour < 20) {
+        backgroundImage = injungjunEvening;
+    } else {
+        backgroundImage = injungjunNight;
+    }
+
+
   return (
-    <div style={{ position: 'relative' }}>
-      <img src={injungjun} alt="배경" style={{ width: '100%' }} />
+    <div style={{ position: 'relative', overflow: 'hidden', height: '1069px', width: '1710px' }}>
+      <img src={backgroundImage} alt="배경" style={{ width: '100%' }} />
     </div>
   );
 }

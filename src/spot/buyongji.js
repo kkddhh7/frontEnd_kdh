@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import buyongji from './image/buyongji.png';
-import cat1 from './image/buyongji_cat_icon1.png';
-import cat2 from './image/buyongji_cat_icon2.png';
-import cat3 from './image/buyongji_cat_icon3.png';
-import king from './image/buyongji_king.png';
+import buyongji from './image/buyongji/buyongji.png';
+import cat1 from './image/buyongji/buyongji_cat_icon1.png';
+import cat2 from './image/buyongji/buyongji_cat_icon2.png';
+import cat3 from './image/buyongji/buyongji_cat_icon3.png';
+import king from './image/buyongji/buyongji_king.png';
 
 export default function Buyongji() {
-  const navigate = useNavigate();
   const [currentCat, setCurrentCat] = useState(cat1);
   const [isKingVisible, setIsKingVisible] = useState(false);
   const [isCatVisible, setIsCatVisible] = useState(true);
@@ -43,24 +41,25 @@ export default function Buyongji() {
   };
 
   return (
-    <div style={{ position: 'relative', overflow: 'hidden', height: '100vh', width: '100vw' }}>
+    <div style={{ position: 'relative', overflow: 'hidden', height: '1069px', width: '1710px' }}>
       <img 
         src={buyongji} 
         alt="배경" 
         style={{ 
-          width: '100%', 
-          height: '100%', 
+          width: '1710px', 
+          height: '1069px', 
           objectFit: 'cover',
-          filter: isKingVisible ? 'brightness(0.5)' : 'brightness(1)', // 배경 밝기 조절
-          transition: 'filter 0.5s' // 부드러운 전환 효과
+          filter: isKingVisible ? 'brightness(0.5)' : 'brightness(1)', 
+          transition: 'filter 0.5s' 
         }} 
       />
-
-      {isCatVisible && <div onClick={handleIconClick}>
-        <img src={currentCat} alt="고양이" style={getCurrentCatStyle()} />
-      </div>
-      }
-
+  
+      {isCatVisible && (
+        <div onClick={handleIconClick}>
+          <img src={currentCat} alt="고양이" style={getCurrentCatStyle()} />
+        </div>
+      )}
+  
       {isKingVisible && (
         <img 
           src={king} 

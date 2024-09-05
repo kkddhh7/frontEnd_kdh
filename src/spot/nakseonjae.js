@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import nakseonjaeDay from './image/nakseonjae_day.png';
-import nakseonjaeEvening from './image/nakseonjae_evening.png';
-import nakseonjaeNight from './image/nakseonjae_night.png';
-import king from './image/nakseonjae_king.png';
-import maid from './image/nakseonjae_maid.png';
+import nakseonjaeDay from './image/nakseonjae/nakseonjae_day.png';
+import nakseonjaeEvening from './image/nakseonjae/nakseonjae_evening.png';
+import nakseonjaeNight from './image/nakseonjae/nakseonjae_night.png';
+import king from './image/nakseonjae/nakseonjae_king.png';
+import maid from './image/nakseonjae/nakseonjae_maid.png';
 import book from './image/book.png';
-import changhoji from './image/nakseonjae_changhoji.png';
+import changhoji from './image/nakseonjae/nakseonjae_changhoji.png';
 
 export default function Nakseonjae() {
     const [showImages, setShowImages] = useState(false);
@@ -70,31 +70,31 @@ export default function Nakseonjae() {
     }
 
     return (
-        <div style={{ position: 'relative' }}>
-            <img src={backgroundImage} alt="배경" style={{ width: '100%' }} />
-            <div style={{ position: 'absolute', top: '40%', left: '70%' }} onClick={() => handleIconClick('/nakseonjae/book')}>
-                <img src={book} alt="서책" style={{ width: '350px', cursor: 'pointer' }} />
+        <div style={{ position: 'relative', overflow: 'hidden', height: '1069px', width: '1710px' }}>
+            <img src={backgroundImage} alt="배경" style={{ position: 'relative', overflow: 'hidden', height: '1069px', width: '1710px' }} />
+            <div style={{ position: 'absolute', top: '60%', left: '80%' }} onClick={() => handleIconClick('/nakseonjae/book')}>
+                <img src={book} alt="서책" style={{ width: '150px', cursor: 'pointer' }} />
             </div>
-            <div style={{ position: 'absolute', top: '50.3%', left: '21.8%' }} onClick={() => handleChanghojiClick('/nakseonjae/changhoji')}>
+            <div style={{ position: 'absolute', top: '50.5%', left: '20.7%' }} onClick={() => handleChanghojiClick('/nakseonjae/changhoji')}>
                 <img 
                     src={changhoji} 
                     alt="창호지" 
                     style={{ 
-                        width: '237px', 
+                        width: '195px', 
                         cursor: 'pointer', 
-                        transform: shifted ? 'translateX(60px)' : 'translateX(0)',
+                        transform: shifted ? 'translateX(40px)' : 'translateX(0)',
                         transition: 'transform 0.7s'
                     }} 
                 />
             </div>
-            <div style={{ position: 'absolute', top: '50.3%', left: '19%' }} onClick={() => handleChanghojiClick('/nakseonjae/changhoji')}>
+            <div style={{ position: 'absolute', top: '50.5%', left: '17.5%' }} onClick={() => handleChanghojiClick('/nakseonjae/changhoji')}>
                 <img 
                     src={changhoji} 
                     alt="창호지" 
                     style={{ 
-                        width: '237px', 
+                        width: '195px', 
                         cursor: 'pointer', 
-                        transform: shifted ? 'translateX(-60px)' : 'translateX(0)',
+                        transform: shifted ? 'translateX(-33px)' : 'translateX(0)',
                         transition: 'transform 0.7s'
                     }} 
                 />
@@ -107,9 +107,9 @@ export default function Nakseonjae() {
                         alt="왕" 
                         style={{ 
                             position: 'absolute', 
-                            top: '53%', 
-                            left: '50%', 
-                            width: '230px', 
+                            top: '65%', 
+                            left: '65%', 
+                            width: '170px', 
                             opacity: opacity, 
                             transition: 'opacity 0.5s'
                         }} 
@@ -119,9 +119,9 @@ export default function Nakseonjae() {
                         alt="궁녀" 
                         style={{ 
                             position: 'absolute', 
-                            top: '53%', 
-                            left: '45%', 
-                            width: '170px', 
+                            top: '65%', 
+                            left: '60%', 
+                            width: '127px', 
                             opacity: opacity, 
                             transition: 'opacity 0.5s'
                         }} 

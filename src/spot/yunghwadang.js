@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import yunghwadang from './image/yunghwadang.png';
-import ennuch from './image/yunghwadang_ennuch.png';
+import yunghwadangDay from './image/yunghwadang/yunghwadang_day.png';
+import yunghwadangEvening from './image/yunghwadang/yunghwadang_evening.png';
+import yunghwadangNight from './image/yunghwadang/yunghwadang_night.png';
+import ennuch from './image/yunghwadang/yunghwadang_ennuch.png';
 import book from './image/book.png';
 
 export default function Yunghwadang() {
@@ -8,6 +10,18 @@ export default function Yunghwadang() {
     const [ennuchPosition, setEnnuchPosition] = useState({ left: '32%' });
     const [showBook, setShowBook] = useState(true);
     const [ennuchOpacity, setEnnuchOpacity] = useState(0); 
+
+    // 시간대별 이미지 변경
+    const currentHour = new Date().getHours();
+    let backgroundImage;
+
+    if (currentHour >= 6 && currentHour < 17) {
+        backgroundImage = yunghwadangDay;
+    } else if (currentHour >= 17 && currentHour < 20) {
+        backgroundImage = yunghwadangEvening;
+    } else {
+        backgroundImage = yunghwadangNight;
+    }
 
     const handleIconClick = () => {
         setEnnuchPosition({ left: '15%' });
@@ -35,12 +49,12 @@ export default function Yunghwadang() {
     }, []);
 
     return (
-        <div style={{ position: 'relative', overflow: 'hidden', height: '100vh', width: '100vw' }}>
-            <img src={yunghwadang} alt="배경" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <div style={{ position: 'relative', overflow: 'hidden', height: '1069px', width: '1710px' }}>
+            <img src={backgroundImage} alt="배경" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             
             {showBook && (
-                <div style={{ position: 'absolute', top: '40%', left: '70%' }} onClick={handleIconClick}>
-                    <img src={book} alt="서책" style={{ width: '350px', cursor: 'pointer' }} />
+                <div style={{ position: 'absolute', top: '65%', left: '65%' }} onClick={handleIconClick}>
+                    <img src={book} alt="서책" style={{ width: '200px', cursor: 'pointer' }} />
                 </div>
             )}
             {showImages && (

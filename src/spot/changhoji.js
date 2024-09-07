@@ -4,6 +4,8 @@ import changhoji2 from './image/changhoji/changhoji2.png';
 import changhoji3 from './image/changhoji/changhoji3.png';
 import changhoji4 from './image/changhoji/changhoji4.png';
 import changhoji5 from './image/changhoji/changhoji5.png';
+import changhoji6 from './image/changhoji/changhoji6.png';
+import changhoji7 from './image/changhoji/changhoji7.png';
 
 const changhojiImages = [
     changhoji1,
@@ -11,6 +13,8 @@ const changhojiImages = [
     changhoji3,
     changhoji4,
     changhoji5,
+    changhoji6,
+    changhoji7,
 ];
 
 export default function Changhoji() {
@@ -18,7 +22,7 @@ export default function Changhoji() {
 
     const handleScroll = () => {
         const scrollPosition = window.scrollY;
-        const newIndex = Math.floor(scrollPosition / 800);
+        const newIndex = Math.floor(scrollPosition / 600);
         if (newIndex < changhojiImages.length) {
             setCurrentImageIndex(newIndex);
         } else {
@@ -34,21 +38,20 @@ export default function Changhoji() {
     }, []);
 
     return (
-        <div style={{ height: '5000px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ height: '5000px', position: 'relative', overflow: 'hidden', width: '1710px', margin: '0 auto' }}>
             <img
                 src={changhojiImages[currentImageIndex]}
                 alt="창호지"
                 style={{
-                    width: '100%',
+                    width: '1710px',
+                    height: '1069px',
                     position: 'fixed',
-                    top: 0,
-                    left: 0,
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
                     zIndex: -1,
                 }}
             />
-            <div style={{ height: '5000px', backgroundColor: 'rgba(255, 255, 255, 0.2)' }}>
-               
-            </div>
         </div>
     );
 }

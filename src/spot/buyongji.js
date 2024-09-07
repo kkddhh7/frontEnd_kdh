@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import buyongji from './image/buyongji/buyongji.png';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import buyongjiDay from './image/buyongji/buyongji_day.png';
+import buyongjiEvening from './image/buyongji/buyongji_evening.png';
+import buyongjiNight from './image/buyongji/buyongji_night.png';
 import cat1 from './image/buyongji/buyongji_cat_icon1.png';
 import cat2 from './image/buyongji/buyongji_cat_icon2.png';
 import cat3 from './image/buyongji/buyongji_cat_icon3.png';
@@ -9,25 +11,25 @@ export default function Buyongji() {
   const [currentCat, setCurrentCat] = useState(cat1);
   const [isKingVisible, setIsKingVisible] = useState(false);
   const [isCatVisible, setIsCatVisible] = useState(true);
-  const cats = [cat1, cat2, cat3, cat2]; 
-  let currentIndex = 0;
+  
+  const cats = useMemo(() => [cat1, cat2, cat3, cat2], []); // useMemo로 cats 배열 메모이제이션
+  
+  const currentIndex = useRef(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      currentIndex = (currentIndex + 1) % cats.length; 
-      setCurrentCat(cats[currentIndex]); 
+      currentIndex.current = (currentIndex.current + 1) % cats.length; 
+      setCurrentCat(cats[currentIndex.current]); 
     }, 500); 
 
     return () => clearInterval(interval);
-  }, []);
+  }, [cats]); // cats는 이제 메모이제이션 되어 있으므로 안전함
 
   const handleIconClick = () => {
-    // 배경을 연하게 하고 king 이미지를 서서히 나타나게 함
     setIsKingVisible(true);
     setIsCatVisible(false);
   };
 
-  // 각 고양이의 스타일 정의
   const catStyles = {
     cat1: { width: '133px', position: 'absolute', top: '35.8%', left: '55.34%' },
     cat2: { width: '190px', position: 'absolute', top: '35.5%', left: '53.1%' },
@@ -38,12 +40,23 @@ export default function Buyongji() {
     if (currentCat === cat1) return catStyles.cat1;
     if (currentCat === cat2) return catStyles.cat2;
     if (currentCat === cat3) return catStyles.cat3;
-  };
+  };    
+  
+  const currentHour = new Date().getHours();
+  let backgroundImage;
+
+  if (currentHour >= 6 && currentHour < 17) {
+      backgroundImage = buyongjiDay;
+  } else if (currentHour >= 17 && currentHour < 20) {
+      backgroundImage = buyongjiEvening;
+  } else {
+      backgroundImage = buyongjiNight;
+  }
 
   return (
     <div style={{ position: 'relative', overflow: 'hidden', height: '1069px', width: '1710px' }}>
       <img 
-        src={buyongji} 
+        src={backgroundImage} 
         alt="배경" 
         style={{ 
           width: '1710px', 
@@ -71,8 +84,8 @@ export default function Buyongji() {
             transform: 'translate(-50%, -50%)', 
             width: '1000px', 
             opacity: 1, 
-            transition: 'opacity 10s', // 서서히 나타나는 효과
-            animation: 'fadeIn 1s forwards' // 애니메이션 추가
+            transition: 'opacity 10s',
+            animation: 'fadeIn 1s forwards' 
           }} 
         />
       )}

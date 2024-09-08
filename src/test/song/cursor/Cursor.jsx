@@ -45,11 +45,11 @@ export default function Cursor() {
       // 방향에 따라 이미지를 번갈아가며 보여줌
       interval = setInterval(() => {
         if (direction === 'right') {
-          const images = ["/images/cursor_right1.png", "/images/cursor_right2.png"]; // 오른쪽 이동 시
+          const images = ["/images/cursor/cursor_right1.png", "/images/cursor/cursor_right2.png"]; // 오른쪽 이동 시
           imageIndexRef.current = (imageIndexRef.current + 1) % images.length;
           setCurrentImage(images[imageIndexRef.current]);
         } else if (direction === 'left') {
-          const images = ["/images/cursor_left1.png", "/images/cursor_left2.png"]; // 왼쪽 이동 시
+          const images = ["/images/cursor/cursor_left1.png", "/images/cursor/cursor_left2.png"]; // 왼쪽 이동 시
           imageIndexRef.current = (imageIndexRef.current + 1) % images.length;
           setCurrentImage(images[imageIndexRef.current]);
         }
@@ -57,7 +57,7 @@ export default function Cursor() {
 
     } else {
       // 멈추었을 때 3번 이미지로 설정
-      setCurrentImage("/images/cursor_stand.png");
+      setCurrentImage("/images/cursor/cursor_stand.png");
     }
 
     return () => {

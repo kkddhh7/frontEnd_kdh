@@ -5,7 +5,7 @@ import nakseonjaeEvening from './image/nakseonjae/nakseonjae_evening.png';
 import nakseonjaeNight from './image/nakseonjae/nakseonjae_night.png';
 import king from './image/nakseonjae/nakseonjae_king.png';
 import maid from './image/nakseonjae/nakseonjae_maid.png';
-import book from './image/book.png';
+import book from './image/nakseonjae/book_nakseonjae.png';
 import changhoji from './image/nakseonjae/nakseonjae_changhoji.png';
 import CloudAnimation from './cloudAnimation'; // CloudAnimation 컴포넌트 import
 
@@ -69,7 +69,7 @@ export default function Nakseonjae() {
     return (
         <div style={{ position: 'relative', overflow: 'hidden', height: '1069px', width: '1710px' }}>
             <img src={backgroundImage} alt="배경" style={{ position: 'relative', height: '1069px', width: '1710px' }} />
-            <div style={{ position: 'absolute', top: '75%', left: '10%' }} onClick={() => handleIconClick('/nakseonjae/book')}>
+            <div style={{ position: 'absolute', top: '80%', left: '5%' }} onClick={() => handleIconClick('/nakseonjae/book')}>
                 <img src={book} alt="서책" style={{ width: '150px', cursor: 'pointer' }} />
             </div>
             <div style={{ position: 'absolute', top: '50.5%', left: '20.7%' }} onClick={() => handleChanghojiClick('/nakseonjae/changhoji')}>

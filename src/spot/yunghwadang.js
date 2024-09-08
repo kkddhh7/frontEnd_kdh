@@ -3,7 +3,7 @@ import yunghwadangDay from './image/yunghwadang/yunghwadang_day.png';
 import yunghwadangEvening from './image/yunghwadang/yunghwadang_evening.png';
 import yunghwadangNight from './image/yunghwadang/yunghwadang_night.png';
 import ennuch from './image/yunghwadang/yunghwadang_ennuch.png';
-import book from './image/book.png';
+import book from './image/yunghwadang/book_yunghwadang.png';
 
 export default function Yunghwadang() {
     const [showImages, setShowImages] = useState(false);

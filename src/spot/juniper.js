@@ -1,5 +1,5 @@
 import React from 'react';
-import juniper from './image/juniper.png';
+import juniper from './image/juniper/juniper.png';
 
 
 export default function Juniper() {

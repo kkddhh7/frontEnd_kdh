@@ -7,11 +7,12 @@ import king from './image/nakseonjae/nakseonjae_king.png';
 import maid from './image/nakseonjae/nakseonjae_maid.png';
 import book from './image/book.png';
 import changhoji from './image/nakseonjae/nakseonjae_changhoji.png';
+import CloudAnimation from './cloudAnimation'; // CloudAnimation 컴포넌트 import
 
 export default function Nakseonjae() {
     const [showImages, setShowImages] = useState(false);
     const [shifted, setShifted] = useState(false);
-    const [opacity, setOpacity] = useState(0); // 추가된 상태
+    const [opacity, setOpacity] = useState(0);
     const navigate = useNavigate();
 
     const handleIconClick = (path) => {
@@ -26,21 +27,18 @@ export default function Nakseonjae() {
         }, 800);
     };
 
-    // 왕과 궁녀 이미지 2초 뒤에 등장
     useEffect(() => {
         const timer = setTimeout(() => {
             setShowImages(true);
-            // 서서히 선명도를 증가시키는 애니메이션
             let fadeEffect = setInterval(() => {
                 setOpacity(prev => {
                     if (prev >= 1) {
                         clearInterval(fadeEffect);
                         return 1;
                     }
-                    return prev + 0.1; // 0.1씩 증가
+                    return prev + 0.1;
                 });
-            }, 100); // 0.1 초 간격으로 증가
-
+            }, 100);
         }, 2000);
 
         return () => {
@@ -48,7 +46,6 @@ export default function Nakseonjae() {
         };
     }, []);
 
-    // 주기적으로 shifted 상태 변경
     useEffect(() => {
         const interval = setInterval(() => {
             setShifted(prev => !prev);
@@ -57,10 +54,10 @@ export default function Nakseonjae() {
         return () => clearInterval(interval);
     }, []);
 
-    // 현재 시간에 따라 배경 이미지 결정
+
     const currentHour = new Date().getHours();
     let backgroundImage;
-
+    
     if (currentHour >= 6 && currentHour < 17) {
         backgroundImage = nakseonjaeDay;
     } else if (currentHour >= 17 && currentHour < 20) {
@@ -71,8 +68,8 @@ export default function Nakseonjae() {
 
     return (
         <div style={{ position: 'relative', overflow: 'hidden', height: '1069px', width: '1710px' }}>
-            <img src={backgroundImage} alt="배경" style={{ position: 'relative', overflow: 'hidden', height: '1069px', width: '1710px' }} />
-            <div style={{ position: 'absolute', top: '60%', left: '80%' }} onClick={() => handleIconClick('/nakseonjae/book')}>
+            <img src={backgroundImage} alt="배경" style={{ position: 'relative', height: '1069px', width: '1710px' }} />
+            <div style={{ position: 'absolute', top: '75%', left: '10%' }} onClick={() => handleIconClick('/nakseonjae/book')}>
                 <img src={book} alt="서책" style={{ width: '150px', cursor: 'pointer' }} />
             </div>
             <div style={{ position: 'absolute', top: '50.5%', left: '20.7%' }} onClick={() => handleChanghojiClick('/nakseonjae/changhoji')}>
@@ -128,6 +125,8 @@ export default function Nakseonjae() {
                     />
                 </>
             )}
+
+            <CloudAnimation currentHour={currentHour} />
         </div>
     );
 }

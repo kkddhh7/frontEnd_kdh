@@ -6,11 +6,15 @@ import cat1 from './image/buyongji/buyongji_cat_icon1.png';
 import cat2 from './image/buyongji/buyongji_cat_icon2.png';
 import cat3 from './image/buyongji/buyongji_cat_icon3.png';
 import king from './image/buyongji/buyongji_king.png';
+import CloudAnimation from './cloudAnimation'; // CloudAnimation 컴포넌트 import
+import book from './image/buyongji/book_buyongji.png';
+
 
 export default function Buyongji() {
   const [currentCat, setCurrentCat] = useState(cat1);
   const [isKingVisible, setIsKingVisible] = useState(false);
   const [isCatVisible, setIsCatVisible] = useState(true);
+  const [showBook, setShowBook] = useState(true);
   
   const cats = useMemo(() => [cat1, cat2, cat3, cat2], []); // useMemo로 cats 배열 메모이제이션
   
@@ -30,6 +34,11 @@ export default function Buyongji() {
     setIsCatVisible(false);
   };
 
+  const handleBookClick = () => {
+    setShowBook(false);
+};
+
+
   const catStyles = {
     cat1: { width: '133px', position: 'absolute', top: '35.8%', left: '55.34%' },
     cat2: { width: '190px', position: 'absolute', top: '35.5%', left: '53.1%' },
@@ -41,7 +50,7 @@ export default function Buyongji() {
     if (currentCat === cat2) return catStyles.cat2;
     if (currentCat === cat3) return catStyles.cat3;
   };    
-  
+
   const currentHour = new Date().getHours();
   let backgroundImage;
 
@@ -72,6 +81,11 @@ export default function Buyongji() {
           <img src={currentCat} alt="고양이" style={getCurrentCatStyle()} />
         </div>
       )}
+      {showBook && (
+                <div style={{ position: 'absolute', top: '75%', left: '5%' }} onClick={handleBookClick}>
+                    <img src={book} alt="서책" style={{ width: '180px', cursor: 'pointer' }} />
+                </div>
+            )}
   
       {isKingVisible && (
         <img 
@@ -89,6 +103,7 @@ export default function Buyongji() {
           }} 
         />
       )}
+      {isCatVisible && <CloudAnimation currentHour={currentHour} />}
     </div>
   );
 }

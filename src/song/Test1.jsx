@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "./song/object/Experience.css";
-import "./song/object/door.css";
-import "./song/object/scrollImage.css";
+import { useNavigate } from "react-router-dom";
+
+import "../song/object/Experience.css";
+import "../song/object/door.css";
+import "../song/object/scrollImage.css";
 
 export default function Test1() {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -13,8 +15,9 @@ export default function Test1() {
   const [blurBackground, setBlurBackground] = useState(false);
   const [showAppealOpen, setShowAppealOpen] = useState(false); // Appeal Open 상태 추가
   const [disableInteraction, setDisableInteraction] = useState(false); // 사용자 입력 차단 상태
-  const [isAppealClicked, setIsAppealClicked] = useState(false); // Appeal 클릭 여부
+  const [startZoom, setStartZoom] = useState(false); // New state for zoom effect
 
+  const navigate = useNavigate(); // For page navigation
 
   useEffect(() => {
     // 처음 화면이 시작되면 1초 대기 후 first door가 열리도록 함
@@ -72,22 +75,25 @@ export default function Test1() {
     setBlurBackground(true);
 
     setTimeout(() => {
-      setShowAppealOpen(true); // `new-appeal` 애니메이션을 1초 지연하여 시작
+      setShowAppealOpen(true);
       setTimeout(() => {
-        setDisableInteraction(false);
-      }, 2000); // `new-appeal` 애니메이션이 완료된 후 상호작용 가능하게 변경
-    }, 2000); // `move-left` 애니메이션이 완료된 후 시작
+        setStartZoom(true); // Trigger zoom effect
+        setTimeout(() => {
+          navigate("/second"); // Redirect to another page after zoom
+        }, 2000); // Wait for the zoom to complete (adjust time as needed)
+      }, 2000);
+    }, 2000);
   };
 
   return (
-    <div className={`world ${blurBackground ? "blurred-background" : ""} ${disableInteraction ? "disable-interaction" : ""}`}>
+    <div className={`world ${blurBackground ? "blurred-background" : ""} ${
+      disableInteraction ? "disable-interaction" : ""
+    } ${startZoom ? "zoom" : ""}`}>
       <div
         className="stage"
         style={{
-          transform: adjustView
-            ? `translateY(-20%) translateZ(${scrollPosition}px)`
-            : `translateY(0%) translateZ(${scrollPosition}px)`,
-        }}
+          transform: `translateY(${adjustView ? "-20%" : "0%"}) translateZ(${scrollPosition}px) scale(${startZoom ? 1.1 : 1})`,
+        }} // scale을 추가하여 줌 효과 적용
       >
         <div className="house">
           {/* 첫 번째 문 */}
@@ -152,14 +158,12 @@ export default function Test1() {
                 alt="Appeal"
                 className={`appeal-now ${appealMoving ? "rotate" : ""}`}/>
               </div>
-
-              {!showAppealOpen && (
-                  <div className={`new-appeal ${!showAppealOpen ? "enter" : ""}`}>
-                    <img src="images/green/appeal_open.png" alt="Appeal Open" />
-                  </div>
-                )}
+              <div className={`new-appeal ${showAppealOpen ? "enter" : ""}`}>
+                <img src="images/green/appeal_open.png" alt="Appeal Open"/>
+              </div> 
             </div>
           </section>
+
         </div>
       </div>
     </div>

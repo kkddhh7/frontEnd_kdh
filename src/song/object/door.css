@@ -51,17 +51,38 @@
 
   .appeal {
     position: absolute;
-    top: 68%; /* 상단에서 50% 내려오도록 설정 */
+    top: 71%; /* 상단에서 50% 내려오도록 설정 */
     left: 50%; /* 왼쪽에서 50% 이동하도록 설정 */
     width: 200px; /* 이미지의 너비를 200px로 설정 */
     height: auto; /* 비율을 유지하면서 높이를 자동으로 설정 */
     z-index: 3;
     transform: translate(-50%, -50%);
   } /* 이미지의 중심이 정확히 중앙에 위치하도록 설정 */
-
+  .appeal:hover {
+    animation: bounce 0.6s infinite alternate; /* 좌우로 통통 튀는 애니메이션을 hover 시 적용 */
+  }
+  
+  @keyframes bounce {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg); /* 원래 위치 */
+    }
+    25% {
+      transform: translate(-50%, -50%) rotate(-5deg); /* 왼쪽으로 살짝 이동 및 회전 */
+    }
+    50% {
+      transform: translate(-50%, -50%) rotate(0deg); /* 원래 위치로 돌아옴 */
+    }
+    75% {
+      transform: translate(-50%, -50%) rotate(5deg); /* 오른쪽으로 살짝 이동 및 회전 */
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(0deg); /* 다시 원래 위치로 */
+    }
+  }
+  
 
 .appeal.move-left {
-  left: 35%; /* 왼쪽으로 이동 */
+  left: 10%; /* 왼쪽으로 이동 */
   transition: all 2s ease-in-out; /* 부드러운 이동과 회전 */
 }
 
@@ -73,24 +94,38 @@
 
 .appeal-now.rotate {
   transform: rotate(360deg); /* 360도 회전 */
-  transition: transform 2s ease-in-out; /* 부드러운 회전 애니메이션 */
+  transition: transform 3s ease-in-out; /* 부드러운 회전 애니메이션 */
+}
+
+.appeal_open {
+  width: 10%;
+  z-index: 5;
 }
 
 .new-appeal {
   position: absolute;
-  top: 0%; /* 원하는 위치로 배치 */
-  left: 40%;  /* 이미지가 화면 바깥에서 시작 */
-  width: 1000%; /* 부모 요소에 맞게 크기 조정 */
-  height: auto; /* 비율에 맞게 높이 조정 */
-  transform: scaleX(0); /* 처음에 오른쪽에서 완전히 가려짐 */
-  z-index: 3;
-  transition: transform 2s ease-in-out; /* 크기 조정 애니메이션 추가 */
 }
 
 .new-appeal.enter {
-  transform: scaleX(1); /* clip-path가 풀리면서 오른쪽에서 왼쪽으로 이미지가 나타남 */
-  width: 100%; /* 크기 조정 */
-  height: auto;
+  position: absolute;
+  bottom: -67px;
+  z-index: 7;
+  animation: slide 2s ease-in-out;
+}
+
+
+@keyframes slide {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 10%;
+  }
+}
+
+.world.zoom {
+  transform: scale(1.1); /* Zoom the world */
+  transition: transform 2s ease-in-out;
 }
 
   /* 첫 번째 문 (first door) */

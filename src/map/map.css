@@ -16,8 +16,10 @@
     }
 }
 .custom-cursor {
-    cursor: url('./image/cursor.png'), auto; /* 커서 이미지 경로를 설정 */
-}  
+  cursor: url('./image/cursor.png'), auto !important;
+}
+
+
 .ink-overlay {
     position: absolute;
     opacity: 0; 
@@ -29,6 +31,7 @@
     opacity: 0.8; 
 }
 
+/* 아이콘 반짝이는 효과 */
 .icon-effect {
     -webkit-animation: glow .30s alternate infinite;
     animation: glow .70s alternate infinite;

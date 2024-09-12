@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import nakseonjaeDay from './image/nakseonjae/nakseonjae_day.png';
-import nakseonjaeEvening from './image/nakseonjae/nakseonjae_evening.png';
-import nakseonjaeNight from './image/nakseonjae/nakseonjae_night.png';
+import nakseonjae from './image/nakseonjae/nakseonjae.png';
 import king from './image/nakseonjae/nakseonjae_king.png';
 import maid from './image/nakseonjae/nakseonjae_maid.png';
 import book from './image/nakseonjae/book_nakseonjae.png';
 import changhoji from './image/nakseonjae/nakseonjae_changhoji.png';
-import CloudAnimation from './cloudAnimation'; // CloudAnimation 컴포넌트 import
+import BackgroundAnimation from './backgroundAnimation';
 
 export default function Nakseonjae() {
     const [showImages, setShowImages] = useState(false);
@@ -55,24 +53,15 @@ export default function Nakseonjae() {
     }, []);
 
 
-    const currentHour = new Date().getHours();
-    let backgroundImage;
-    
-    if (currentHour >= 6 && currentHour < 17) {
-        backgroundImage = nakseonjaeDay;
-    } else if (currentHour >= 17 && currentHour < 20) {
-        backgroundImage = nakseonjaeEvening;
-    } else {
-        backgroundImage = nakseonjaeNight;
-    }
 
     return (
         <div style={{ position: 'relative', overflow: 'hidden', height: '1069px', width: '1710px' }}>
-            <img src={backgroundImage} alt="배경" style={{ position: 'relative', height: '1069px', width: '1710px' }} />
-            <div style={{ position: 'absolute', top: '80%', left: '5%' }} onClick={() => handleIconClick('/nakseonjae/book')}>
+            <BackgroundAnimation/>
+            <img src={nakseonjae} alt="낙선재" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1 }} />
+            <div style={{ position: 'absolute', top: '80%', left: '5%', zIndex:3}} onClick={() => handleIconClick('/nakseonjae/book')}>
                 <img src={book} alt="서책" style={{ width: '150px', cursor: 'pointer' }} />
             </div>
-            <div style={{ position: 'absolute', top: '50.5%', left: '20.7%' }} onClick={() => handleChanghojiClick('/nakseonjae/changhoji')}>
+            <div style={{ position: 'absolute', top: '50.5%', left: '20.7%', zIndex:3 }} onClick={() => handleChanghojiClick('/nakseonjae/changhoji')}>
                 <img 
                     src={changhoji} 
                     alt="창호지" 
@@ -84,7 +73,7 @@ export default function Nakseonjae() {
                     }} 
                 />
             </div>
-            <div style={{ position: 'absolute', top: '50.5%', left: '17.5%' }} onClick={() => handleChanghojiClick('/nakseonjae/changhoji')}>
+            <div style={{ position: 'absolute', top: '50.5%', left: '17.5%', zIndex:3 }} onClick={() => handleChanghojiClick('/nakseonjae/changhoji')}>
                 <img 
                     src={changhoji} 
                     alt="창호지" 
@@ -125,8 +114,6 @@ export default function Nakseonjae() {
                     />
                 </>
             )}
-
-            <CloudAnimation currentHour={currentHour} />
         </div>
     );
 }

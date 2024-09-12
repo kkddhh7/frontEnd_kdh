@@ -13,18 +13,20 @@ export default function Map() {
   
     const handleIconClick = (path, iconPosition) => {
         setActiveIcon({
-            top: iconPosition.top,
-            left: iconPosition.left
+            top: `${parseInt(iconPosition.top) - 250}px`, 
+            left: `${parseInt(iconPosition.left) - 720}px`
         });
         setShowInk(false);
         setTimeout(() => {
             setShowInk(true); 
-        }, 1000);
+        }, 100);
     
         setTimeout(() => {
             navigate(path);
         }, 1500);
     };
+
+
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -47,41 +49,41 @@ export default function Map() {
     }, []);
 
     return (
-        <div className="custom-cursor">
+        <div className="custom-cursor"> 
             <div style={{ position: 'absolute', overflow: 'hidden', height: '1069px', width: '1710px' }}>
                 <img src={images('./map.png')} alt="배경" style={{ width: '1710px', height: '1069px', objectFit: 'cover' }} />
     
                 {/* 아이콘 배치 */}
-                <div style={{ position: 'absolute', top: '56%', left: '44%' }} onClick={() => handleIconClick('/injungjun', { top: '56%', left: '44%' })}>
-                    <img src={images('./injungjun_icon.png')} alt="인정전" className="icon-effect" style={{ width: '170px', cursor: 'pointer' }} />
+                <div className="custom-cursor" style={{ position: 'absolute', top: '605px', left: '820px' }} onClick={() => handleIconClick('/injungjun', {  top: '605px', left: '820px' })}>
+                    <img src={images('./injungjun_icon.png')} alt="인정전" className="icon-effect" style={{ width: '120px', cursor: 'pointer' }} />
                 </div>
     
-                <img src={images('./daejojeon_icon.png')} alt="대조전" style={{ position: 'absolute', top: '37%', left: '52%', width: '170px' }} />
+                <img src={images('./daejojeon_icon.png')} alt="대조전" style={{ position: 'absolute', top: '454px', left: '952px', width: '130px' }} />
     
-                <div style={{ position: 'absolute', top: '22%', left: '50%' }} onClick={() => handleIconClick('/yunghwadang', { top: '22%', left: '50%' })}>
-                    <img src={images('./yunghwadang_icon.png')} alt="영화당" className="icon-effect" style={{ width: '170px', cursor: 'pointer' }} />
+                <div style={{ position: 'absolute', top: '310px', left: '915px' }} onClick={() => handleIconClick('/yunghwadang', { top: '310px', left: '915px' })}>
+                    <img src={images('./yunghwadang_icon.png')} alt="영화당" className="icon-effect" style={{ width: '125px', cursor: 'pointer' }} />
                 </div>
     
-                <img src={images('./bulomun_icon.png')} alt="불로문" style={{ position: 'absolute', top: '15%', left: '48%', width: '130px' }} />
-                <img src={images('./pyeomusa_icon.png')} alt="폄우사" style={{ position: 'absolute', top: '15%', left: '35%', width: '170px' }} />
-                <img src={images('./jondeokjeong_icon.png')} alt="존덕정" style={{ position: 'absolute', top: '12%', left: '42%', width: '170px' }} />
-                <img src={images('./cheonguijeong_icon.png')} alt="청의정" style={{ position: 'absolute', top: '2%', left: '36%', width: '170px' }} />
+                <img src={images('./bulomun_icon.png')} alt="불로문" style={{ position: 'absolute', top: '257px', left: '848px', width: '120px' }} />
+                <img src={images('./pyeomusa_icon.png')} alt="폄우사" style={{ position: 'absolute', top: '240px', left: '633px', width: '140px' }} />
+                <img src={images('./jondeokjeong_icon.png')} alt="존덕정" style={{ position: 'absolute', top: '190px', left: '754px', width: '145px' }} />
+                <img src={images('./cheonguijeong_icon.png')} alt="청의정" style={{ position: 'absolute', top: '93px', left: '630px', width: '145px' }} />
     
-                <img src={images('./donhwamun_icon.png')} alt="돈화문" style={{ position: 'absolute', top: '64%', left: '52%', width: '190px' }} />
-                <img src={images('./geumhomun_icon.png')} alt="금호문" style={{ position: 'absolute', top: '67%', left: '44%', width: '190px' }} />
-                <img src={images('./seonjeongjeon_icon.png')} alt="선정전" style={{ position: 'absolute', top: '45%', left: '50%', width: '190px' }} />
+                <img src={images('./donhwamun_icon.png')} alt="돈화문" style={{ position: 'absolute', top: '750px', left: '880px', width: '140px' }} />
+                <img src={images('./geumhomun_icon.png')} alt="금호문" style={{ position: 'absolute', top: '710px', left: '703px', width: '145px' }} />
+                <img src={images('./seonjeongjeon_icon.png')} alt="선정전" style={{ position: 'absolute', top: '520px', left: '888px', width: '150px' }} />
     
-                <div style={{ position: 'absolute', top: '38%', left: '32%' }} onClick={() => handleIconClick('/juniper', { top: '38%', left: '32%' })}>
-                    <img src={images('./juniper_icon.png')} alt="향나무" className="icon-effect" style={{ width: '170px', cursor: 'pointer' }} />
+                <div style={{ position: 'absolute', top: '520px', left: '680px' }} onClick={() => handleIconClick('/juniper', { top: '520px', left: '680px' })}>
+                    <img src={images('./juniper_icon.png')} alt="향나무" className="icon-effect" style={{ width: '120px', cursor: 'pointer' }} />
                 </div>
-                <div style={{ position: 'absolute', top: '56%', left: '68%' }} onClick={() => handleIconClick('/nakseonjae', { top: '56%', left: '68%' })}>
-                    <img src={images('./nakseonjae_icon.png')} alt="낙선재" className="icon-effect" style={{ width: '250px', cursor: 'pointer' }} />
+                <div style={{ position: 'absolute', top: '460px', left: '1130px' }} onClick={() => handleIconClick('/nakseonjae', { top: '473px', left: '1130px' })}>
+                    <img src={images('./nakseonjae_icon.png')} alt="낙선재" className="icon-effect" style={{ width: '190px', cursor: 'pointer' }} />
                 </div>
-                <div style={{ position: 'absolute', top: '34%', left: '42%' }} onClick={() => handleIconClick('/buyongji', { top: '34%', left: '42%' })}>
-                    <img src={images('./buyongji_icon.png')} alt="부용지" className="icon-effect" style={{ width: '190px', cursor: 'pointer' }} />
+                <div style={{ position: 'absolute', top: '380px', left: '827px' }} onClick={() => handleIconClick('/buyongji', { top: '380px', left: '827px' })}>
+                    <img src={images('./buyongji_icon.png')} alt="부용지" className="icon-effect" style={{ width: '145px', cursor: 'pointer' }} />
                 </div>
                 
-                <img src={images('./kyujanggak_icon.png')} alt="규장각" style={{ position: 'absolute', top: '24%', left: '40%', width: '170px' }} />
+                <img src={images('./kyujanggak_icon.png')} alt="규장각" style={{ position: 'absolute', top: '310px', left: '732px', width: '140px' }} />
     
                 {showImages && (
                     <img 
@@ -89,20 +91,15 @@ export default function Map() {
                         alt="코맨트" 
                         style={{ 
                             position: 'absolute', 
-                            top: '10%', 
-                            left: '75%', 
-                            width: '350px', 
+                            top: '50px', 
+                            left: '1470px', 
+                            width: '190px', 
                             opacity: commentOpacity, 
                             transition: 'opacity 0.5s ease-in-out, left 1.5s ease-in-out' 
                         }} 
                     />
                 )}
                 
-                {activeIcon && (
-                    <div className="overlay" style={{ position: 'absolute', top: activeIcon.top, left: activeIcon.left }}>
-                        <img src={images('./big_brush.png')} alt="큰 붓" className="big-brush" />
-                    </div>
-                )}
                 {activeIcon && (
                     <div className={`ink-overlay ${showInk ? 'show' : ''}`} style={{ top: activeIcon.top, left: activeIcon.left}}>
                         <img src={images('./ink.png')} alt="잉크" style={{ width: '1200px' }} />

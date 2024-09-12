@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import buyongjiDay from './image/buyongji/buyongji_day.png';
-import buyongjiEvening from './image/buyongji/buyongji_evening.png';
-import buyongjiNight from './image/buyongji/buyongji_night.png';
+import buyongji from './image/buyongji/buyongji.png';
 import cat1 from './image/buyongji/buyongji_cat_icon1.png';
 import cat2 from './image/buyongji/buyongji_cat_icon2.png';
 import cat3 from './image/buyongji/buyongji_cat_icon3.png';
 import king from './image/buyongji/buyongji_king.png';
-import CloudAnimation from './cloudAnimation'; // CloudAnimation 컴포넌트 import
+import CloudAnimation from './backgroundAnimation'; // CloudAnimation 컴포넌트 import
 import book from './image/buyongji/book_buyongji.png';
 
 
@@ -40,9 +38,9 @@ export default function Buyongji() {
 
 
   const catStyles = {
-    cat1: { width: '133px', position: 'absolute', top: '35.8%', left: '55.34%' },
-    cat2: { width: '190px', position: 'absolute', top: '35.5%', left: '53.1%' },
-    cat3: { width: '180px', position: 'absolute', top: '34.1%', left: '53.75%' },
+    cat1: { width: '133px', position: 'absolute', top: '35.8%', left: '55.34%' , zIndex:3},
+    cat2: { width: '190px', position: 'absolute', top: '35.5%', left: '53.1%', zIndex:3 },
+    cat3: { width: '180px', position: 'absolute', top: '34.1%', left: '53.75%', zIndex:3 },
   };
 
   const getCurrentCatStyle = () => {
@@ -51,30 +49,13 @@ export default function Buyongji() {
     if (currentCat === cat3) return catStyles.cat3;
   };    
 
-  const currentHour = new Date().getHours();
-  let backgroundImage;
-
-  if (currentHour >= 6 && currentHour < 17) {
-      backgroundImage = buyongjiDay;
-  } else if (currentHour >= 17 && currentHour < 20) {
-      backgroundImage = buyongjiEvening;
-  } else {
-      backgroundImage = buyongjiNight;
-  }
-
   return (
     <div style={{ position: 'relative', overflow: 'hidden', height: '1069px', width: '1710px' }}>
-      <img 
-        src={backgroundImage} 
-        alt="배경" 
-        style={{ 
-          width: '1710px', 
-          height: '1069px', 
-          objectFit: 'cover',
+      <CloudAnimation/>
+      <img src={buyongji} alt="부용지" style={{ position: 'absolute', top: 0, left: 0, width: '1710px', 
+          height: '1069px', zIndex: 1,objectFit: 'cover',
           filter: isKingVisible ? 'brightness(0.5)' : 'brightness(1)', 
-          transition: 'filter 0.5s' 
-        }} 
-      />
+          transition: 'filter 0.5s'  }} />
   
       {isCatVisible && (
         <div onClick={handleIconClick}>
@@ -82,10 +63,10 @@ export default function Buyongji() {
         </div>
       )}
       {showBook && (
-                <div style={{ position: 'absolute', top: '75%', left: '5%' }} onClick={handleBookClick}>
+                <div style={{ position: 'absolute', top: '75%', left: '5%', zIndex:3}} onClick={handleBookClick}>
                     <img src={book} alt="서책" style={{ width: '180px', cursor: 'pointer' }} />
                 </div>
-            )}
+      )}
   
       {isKingVisible && (
         <img 
@@ -103,7 +84,6 @@ export default function Buyongji() {
           }} 
         />
       )}
-      {isCatVisible && <CloudAnimation currentHour={currentHour} />}
     </div>
   );
 }

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import yunghwadangDay from './image/yunghwadang/yunghwadang_day.png';
-import yunghwadangEvening from './image/yunghwadang/yunghwadang_evening.png';
-import yunghwadangNight from './image/yunghwadang/yunghwadang_night.png';
+import yunghwadang from './image/yunghwadang/yunghwadang.png';
 import ennuch from './image/yunghwadang/yunghwadang_ennuch.png';
 import book from './image/yunghwadang/book_yunghwadang.png';
+import BackgroundAnimation from './backgroundAnimation';
 
 export default function Yunghwadang() {
     const [showImages, setShowImages] = useState(false);
@@ -11,17 +10,6 @@ export default function Yunghwadang() {
     const [showBook, setShowBook] = useState(true);
     const [ennuchOpacity, setEnnuchOpacity] = useState(0); 
 
-    // 시간대별 이미지 변경
-    const currentHour = new Date().getHours();
-    let backgroundImage;
-
-    if (currentHour >= 6 && currentHour < 17) {
-        backgroundImage = yunghwadangDay;
-    } else if (currentHour >= 17 && currentHour < 20) {
-        backgroundImage = yunghwadangEvening;
-    } else {
-        backgroundImage = yunghwadangNight;
-    }
 
     const handleIconClick = () => {
         setEnnuchPosition({ left: '15%' });
@@ -50,10 +38,11 @@ export default function Yunghwadang() {
 
     return (
         <div style={{ position: 'relative', overflow: 'hidden', height: '1069px', width: '1710px' }}>
-            <img src={backgroundImage} alt="배경" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <BackgroundAnimation/>
+            <img src={yunghwadang} alt="영화당" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1 }} />
             
             {showBook && (
-                <div style={{ position: 'absolute', top: '65%', left: '65%' }} onClick={handleIconClick}>
+                <div style={{ position: 'absolute', top: '75%', left: '5%' ,zIndex:3}} onClick={handleIconClick}>
                     <img src={book} alt="서책" style={{ width: '200px', cursor: 'pointer' }} />
                 </div>
             )}

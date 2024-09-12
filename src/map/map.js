@@ -1,32 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './map.css'; 
+import './map.css';
 
-const images = require.context('./image', false, /\.(png|jpe?g|svg)$/);
+const images = require.context('./assets', false, /.(png|jpe?g|svg)$/);
 
 export default function Map() {
     const [activeIcon, setActiveIcon] = useState(null);
     const [showInk, setShowInk] = useState(false);
     const [showImages, setShowImages] = useState(false);
-    const [commentOpacity, setCommentOpacity] = useState(0); 
+    const [commentOpacity, setCommentOpacity] = useState(0);
+    const [hoveredIcon, setHoveredIcon] = useState(null);
     const navigate = useNavigate();
-  
+
     const handleIconClick = (path, iconPosition) => {
         setActiveIcon({
-            top: `${parseInt(iconPosition.top) - 250}px`, 
+            top: `${parseInt(iconPosition.top) - 250}px`,
             left: `${parseInt(iconPosition.left) - 720}px`
         });
         setShowInk(false);
         setTimeout(() => {
-            setShowInk(true); 
+            setShowInk(true);
         }, 100);
-    
+
         setTimeout(() => {
             navigate(path);
         }, 1500);
     };
 
+    const handleMouseEnter = (icon) => {
+        setHoveredIcon(icon);
+    };
 
+    const handleMouseLeave = () => {
+        setHoveredIcon(null);
+    };
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -34,74 +41,93 @@ export default function Map() {
             const opacityTimer = setInterval(() => {
                 setCommentOpacity(prev => {
                     if (prev < 0.8) {
-                        return prev + 0.08; 
+                        return prev + 0.08;
                     } else {
-                        clearInterval(opacityTimer); 
-                        return prev; 
+                        clearInterval(opacityTimer);
+                        return prev;
                     }
                 });
-            }, 100); 
+            }, 100);
 
-            return () => clearInterval(opacityTimer); 
-        }, 1000); 
+            return () => clearInterval(opacityTimer);
+        }, 1000);
 
         return () => clearTimeout(timer);
     }, []);
 
     return (
-        <div className="custom-cursor"> 
+        <div className="custom-cursor">
             <div style={{ position: 'absolute', overflow: 'hidden', height: '1069px', width: '1710px' }}>
-                <img src={images('./map.png')} alt="배경" style={{ width: '1710px', height: '1069px', objectFit: 'cover' }} />
-    
+                <img
+                    src={images('./map.png')}
+                    alt="배경"
+                    style={{
+                        width: '1710px',
+                        height: '1069px',
+                        objectFit: 'cover',
+                        filter: hoveredIcon ? 'blur(5px)' : 'none'
+                    }}
+                />
+
                 {/* 아이콘 배치 */}
-                <div className="custom-cursor" style={{ position: 'absolute', top: '605px', left: '820px' }} onClick={() => handleIconClick('/injungjun', {  top: '605px', left: '820px' })}>
-                    <img src={images('./injungjun_icon.png')} alt="인정전" className="icon-effect" style={{ width: '120px', cursor: 'pointer' }} />
-                </div>
-    
-                <img src={images('./daejojeon_icon.png')} alt="대조전" style={{ position: 'absolute', top: '454px', left: '952px', width: '130px' }} />
-    
-                <div style={{ position: 'absolute', top: '310px', left: '915px' }} onClick={() => handleIconClick('/yunghwadang', { top: '310px', left: '915px' })}>
-                    <img src={images('./yunghwadang_icon.png')} alt="영화당" className="icon-effect" style={{ width: '125px', cursor: 'pointer' }} />
-                </div>
-    
-                <img src={images('./bulomun_icon.png')} alt="불로문" style={{ position: 'absolute', top: '257px', left: '848px', width: '120px' }} />
-                <img src={images('./pyeomusa_icon.png')} alt="폄우사" style={{ position: 'absolute', top: '240px', left: '633px', width: '140px' }} />
-                <img src={images('./jondeokjeong_icon.png')} alt="존덕정" style={{ position: 'absolute', top: '190px', left: '754px', width: '145px' }} />
-                <img src={images('./cheonguijeong_icon.png')} alt="청의정" style={{ position: 'absolute', top: '93px', left: '630px', width: '145px' }} />
-    
-                <img src={images('./donhwamun_icon.png')} alt="돈화문" style={{ position: 'absolute', top: '750px', left: '880px', width: '140px' }} />
-                <img src={images('./geumhomun_icon.png')} alt="금호문" style={{ position: 'absolute', top: '710px', left: '703px', width: '145px' }} />
-                <img src={images('./seonjeongjeon_icon.png')} alt="선정전" style={{ position: 'absolute', top: '520px', left: '888px', width: '150px' }} />
-    
-                <div style={{ position: 'absolute', top: '520px', left: '680px' }} onClick={() => handleIconClick('/juniper', { top: '520px', left: '680px' })}>
-                    <img src={images('./juniper_icon.png')} alt="향나무" className="icon-effect" style={{ width: '120px', cursor: 'pointer' }} />
-                </div>
-                <div style={{ position: 'absolute', top: '460px', left: '1130px' }} onClick={() => handleIconClick('/nakseonjae', { top: '473px', left: '1130px' })}>
-                    <img src={images('./nakseonjae_icon.png')} alt="낙선재" className="icon-effect" style={{ width: '190px', cursor: 'pointer' }} />
-                </div>
-                <div style={{ position: 'absolute', top: '380px', left: '827px' }} onClick={() => handleIconClick('/buyongji', { top: '380px', left: '827px' })}>
-                    <img src={images('./buyongji_icon.png')} alt="부용지" className="icon-effect" style={{ width: '145px', cursor: 'pointer' }} />
-                </div>
-                
-                <img src={images('./kyujanggak_icon.png')} alt="규장각" style={{ position: 'absolute', top: '310px', left: '732px', width: '140px' }} />
-    
+                {[
+                    { name: 'injungjun', top: '605px', left: '820px', size: '120px', img: './injungjun_icon.png', tag: './injungjun_tag.png' },
+                    { name: 'yunghwadang', top: '310px', left: '915px', size: '125px', img: './yunghwadang_icon.png', tag: './yunghwadang_tag.png' },
+                    { name: 'juniper', top: '520px', left: '680px', size: '120px', img: './juniper_icon.png', tag: './juniper_tag.png' },
+                    { name: 'nakseonjae', top: '460px', left: '1130px', size: '190px', img: './nakseonjae_icon.png', tag: './nakseonjae_tag.png' },
+                    { name: 'buyongji', top: '380px', left: '827px', size: '145px', img: './buyongji_icon.png', tag: './buyongji_tag.png' }
+                ].map(({ name, top, left, size, img, tag }) => (
+                    <div
+                        className="icon-container"
+                        style={{ position: 'absolute', top, left, filter: hoveredIcon !== name && hoveredIcon ? 'blur(5px)' : 'none' }}
+                        onMouseEnter={() => handleMouseEnter(name)}
+                        onMouseLeave={handleMouseLeave}
+                        onClick={() => handleIconClick(`/${name}`, { top, left })}
+                        key={name}
+                    >
+                        <img
+                            src={images(img)}
+                            alt={name}
+                            className="icon-effect"
+                            style={{ 
+                                width: size, 
+                                cursor: 'pointer', 
+                                
+                            }}
+                        />
+                        {hoveredIcon === name && <img src={images(tag)} alt={`${name} 태그`} style={{ position: 'absolute', left: '-40px', top: '10px', zIndex: 3 }} />}
+                    </div>
+                ))}
+
+                {/* 나머지 아이콘 */}
+                <img src={images('./daejojeon_icon.png')} alt="대조전" style={{ position: 'absolute', top: '454px', left: '952px', width: '130px', filter: hoveredIcon ? 'blur(5px)' : 'none' }} />
+                <img src={images('./bulomun_icon.png')} alt="불로문" style={{ position: 'absolute', top: '257px', left: '848px', width: '120px', filter: hoveredIcon ? 'blur(5px)' : 'none' }} />
+                <img src={images('./pyeomusa_icon.png')} alt="폄우사" style={{ position: 'absolute', top: '240px', left: '633px', width: '140px', filter: hoveredIcon ? 'blur(5px)' : 'none' }} />
+                <img src={images('./jondeokjeong_icon.png')} alt="존덕정" style={{ position: 'absolute', top: '190px', left: '754px', width: '145px', filter: hoveredIcon ? 'blur(5px)' : 'none' }} />
+                <img src={images('./cheonguijeong_icon.png')} alt="청의정" style={{ position: 'absolute', top: '93px', left: '630px', width: '145px', filter: hoveredIcon ? 'blur(5px)' : 'none' }} />
+                <img src={images('./donhwamun_icon.png')} alt="돈화문" style={{ position: 'absolute', top: '750px', left: '880px', width: '140px', filter: hoveredIcon ? 'blur(5px)' : 'none' }} />
+                <img src={images('./geumhomun_icon.png')} alt="금호문" style={{ position: 'absolute', top: '710px', left: '703px', width: '145px', filter: hoveredIcon ? 'blur(5px)' : 'none' }} />
+                <img src={images('./seonjeongjeon_icon.png')} alt="선정전" style={{ position: 'absolute', top: '520px', left: '888px', width: '150px', filter: hoveredIcon ? 'blur(5px)' : 'none' }} />
+                <img src={images('./kyujanggak_icon.png')} alt="규장각" style={{ position: 'absolute', top: '310px', left: '732px', width: '140px', filter: hoveredIcon ? 'blur(5px)' : 'none' }} />
+
                 {showImages && (
-                    <img 
+                    <img
                         src={images('./map_comment.png')}
-                        alt="코맨트" 
-                        style={{ 
-                            position: 'absolute', 
-                            top: '50px', 
-                            left: '1470px', 
-                            width: '190px', 
-                            opacity: commentOpacity, 
-                            transition: 'opacity 0.5s ease-in-out, left 1.5s ease-in-out' 
-                        }} 
+                        alt="코맨트"
+                        style={{
+                            position: 'absolute',
+                            top: '50px',
+                            left: '1470px',
+                            width: '190px',
+                            opacity: commentOpacity,
+                            transition: 'opacity 0.5s ease-in-out, left 1.5s ease-in-out',
+                            filter: hoveredIcon ? 'blur(5px)' : 'none'
+                        }}
                     />
                 )}
-                
+
                 {activeIcon && (
-                    <div className={`ink-overlay ${showInk ? 'show' : ''}`} style={{ top: activeIcon.top, left: activeIcon.left}}>
+                    <div className={`ink-overlay ${showInk ? 'show' : ''}`} style={{ top: activeIcon.top, left: activeIcon.left }}>
                         <img src={images('./ink.png')} alt="잉크" style={{ width: '1200px' }} />
                     </div>
                 )}

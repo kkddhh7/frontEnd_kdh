@@ -36,7 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-.custom-cursor {
-  cursor: url('./map/image/brush_icon.png'), auto;
-}

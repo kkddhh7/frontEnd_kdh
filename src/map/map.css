@@ -19,7 +19,6 @@
   cursor: url('./assets/cursor.png'), auto !important;
 }
 
-
 .ink-overlay {
     position: absolute;
     opacity: 0; 

@@ -90,9 +90,7 @@ export default function Map() {
                             alt={name}
                             className="icon-effect"
                             style={{ 
-                                width: size, 
-                                cursor: 'pointer', 
-                                
+                                width: size
                             }}
                         />
                         {hoveredIcon === name && <img src={images(tag)} alt={`${name} 태그`} style={{ position: 'absolute', left: '-40px', top: '10px', zIndex: 3 }} />}

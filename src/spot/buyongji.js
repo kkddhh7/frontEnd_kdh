@@ -6,12 +6,15 @@ import cat3 from './image/buyongji/buyongji_cat_icon3.png';
 import king from './image/buyongji/buyongji_king.png';
 import BackgroundAnimation from './backgroundAnimation';
 import book from './image/buyongji/book_buyongji.png';
+import detail from './image/buyongji/buyongji_detail.png';
 
 export default function Buyongji() {
   const [currentCat, setCurrentCat] = useState(cat1);
   const [isKingVisible, setIsKingVisible] = useState(false);
   const [isCatVisible, setIsCatVisible] = useState(true);
   const [showBook, setShowBook] = useState(true);
+  const [showImages, setShowImages] = useState(false);
+  const [commentOpacity, setCommentOpacity] = useState(0);
   
   const cats = useMemo(() => [cat1, cat2, cat3, cat2], []);
   const currentIndex = useRef(0);
@@ -24,6 +27,25 @@ export default function Buyongji() {
 
     return () => clearInterval(interval);
   }, [cats]);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+        setShowImages(true);
+        const opacityTimer = setInterval(() => {
+            setCommentOpacity(prev => {
+                if (prev < 0.8) {
+                    return prev + 0.08;
+                } else {
+                    clearInterval(opacityTimer);
+                    return prev;
+                }
+            });
+        }, 100);
+
+        return () => clearInterval(opacityTimer);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+}, []);
 
   const handleIconClick = () => {
     setIsKingVisible(true);
@@ -50,6 +72,11 @@ export default function Buyongji() {
     <div style={{ position: 'relative', overflow: 'hidden', height: '1069px', width: '1710px' }}>
       <BackgroundAnimation />
       <img src={buyongji} alt="부용지" style={{ position: 'absolute', top: 0, left: 0, width: '1710px', height: '1069px', zIndex: 1, objectFit: 'cover', transition: 'filter 0.5s' }} />
+
+      {showImages && (
+                    <img src={detail} alt="부용지 태그" style={{ position: 'absolute', top: '50px', left: '1500px', width: '100px', zIndex: 3,opacity: commentOpacity,
+                      transition: 'opacity 0.5s ease-in-out, left 1.5s ease-in-out' }} />
+                )}
 
       {isCatVisible && (
         <div onClick={handleIconClick}>

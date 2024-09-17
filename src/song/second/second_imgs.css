@@ -1,0 +1,59 @@
+/* 각 이미지를 스크롤에 따라 등장시키기 위한 기본 설정 */
+.scroll-img {
+  position: absolute;
+  opacity: 0;
+  z-index: 3;
+  transition: opacity 1.5s ease-out, transform 1.5s ease-out; /* 투명도와 위치 변화를 위한 트랜지션 */
+  transform: translateY(50px); /* 기본 위치보다 아래 */
+}
+
+/* 스크롤로 이미지가 나타날 때 */
+.scroll-img.visible {
+  opacity: 1;
+  transform: translateY(0); /* 제자리로 이동하며 나타남 */
+}
+
+/* 각각의 이미지 위치 조정 */
+.birds {
+  top: 200px;
+  left: 100px;
+}
+
+.palace {
+  top: 70px;
+  right: 0px;
+}
+
+.land {
+  z-index: 4;
+  left: 0px;
+  bottom: 0px;
+}
+
+.fog1, .fog2 {
+  z-index: 5;
+  left: 0px;
+  bottom: 0px;
+}
+
+ /* 안개가 사라지는 애니메이션 */
+ .fog-move-left {
+  transform: translateX(-100vw); /* 왼쪽으로 화면에서 사라짐 */
+  transition: transform 2s ease-in-out;
+}
+
+.fog-move-right {
+  transform: translateX(100vw); /* 오른쪽으로 화면에서 사라짐 */
+  transition: transform 2s ease-in-out;
+}
+
+.moon {
+  bottom: 100px;
+  right: 300px;
+}
+
+.explain1 {
+  right: 0px;
+  z-index: 5;
+}
+

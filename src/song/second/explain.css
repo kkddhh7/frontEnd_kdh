@@ -1,0 +1,30 @@
+
+  .scroll-img2 {
+    opacity: 1;
+    z-index: 7;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .visible {
+    opacity: 1;
+  }
+  
+
+  .explain2 {
+    top:100px;
+    left:100px;
+  }
+
+
+  .explain3 {
+    top:100px;
+    left:150px;
+  }
+
+
+  .explain4 {
+    top:100px;
+    left:200px;
+  }
+
+ 

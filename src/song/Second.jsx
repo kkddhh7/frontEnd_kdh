@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import '../song/second/second.css'
 import '../song/second/second_imgs.css'
+import '../song/second/explain.css'
 
 export default function NextPage() {
 
@@ -10,6 +11,18 @@ export default function NextPage() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [explainVisible, setExplainVisible] = useState([false, false, false]); // explain 이미지 가시성 상태
   const [fogOffset, setFogOffset] = useState(0); // fog 이미지의 이동값
+  const [fogHidden, setFogHidden] = useState(false); // fog가 사라졌는지 상태
+  const fogMaxOffset = 2000; // fog가 사라지는 기준 (화면에서 벗어나는 시점)
+
+
+  const birdImages = [
+    "/images/second/birds/birds1.png",
+    "/images/second/birds/birds2.png",
+    "/images/second/birds/birds3.png"
+  ];
+  const [currentBirdImage, setCurrentBirdImage] = useState(birdImages[0]);
+  const birdImageIndexRef = useRef(0);
+
 
   useEffect(() => {
     // 배경 이미지가 1초 후 서서히 나타나도록 설정
@@ -24,7 +37,11 @@ export default function NextPage() {
     const handleWheel = (e) => {
       // 마우스 휠의 움직임 감지 (위로 스크롤하면 음수, 아래로 스크롤하면 양수)
       const delta = e.deltaY;
-      setFogOffset((prevOffset) => prevOffset + delta * 0.5); // 0.5 배율로 이동
+      setFogOffset((prevOffset) => {
+        const newOffset = prevOffset + delta * 0.5;
+        if (newOffset < 0) return 0; // fog가 0보다 작아지지 않도록 제한
+        return newOffset;
+      });
 
       setScrollPosition((prevScrollPosition) => {
         // 스크롤 위치를 업데이트하면서 반대 방향 이동을 허용
@@ -32,16 +49,18 @@ export default function NextPage() {
         return Math.max(0, newScrollPosition); // 스크롤 위치가 0보다 작아지지 않도록 제한
       });
 
-      // explain2, explain3, explain4 순차적 등장/숨김
-      if (scrollPosition >= 300 && scrollPosition < 600) {
-        const index = Math.floor((scrollPosition - 300) / 100);
-        const newVisible = [false, false, false];
-        for (let i = 0; i <= index; i++) {
-          newVisible[i] = true;
-        }
-        setExplainVisible(newVisible);
-      } else if (scrollPosition < 300) {
-        setExplainVisible([false, false, false]);
+      // fog가 화면 밖으로 나가면 explain 이미지를 펼치는 애니메이션 시작
+      if (fogOffset >= fogMaxOffset) {
+        setFogHidden(true); // fog가 사라졌음을 표시
+        setTimeout(() => setExplainVisible([true, false, false]), 200); // 시간차 두고 순차적으로 나타남
+        setTimeout(() => setExplainVisible([true, true, false]), 400);
+        setTimeout(() => setExplainVisible([true, true, true]), 600);
+      }
+
+      // 스크롤이 반대로 돌아오면 다시 말려올라가듯이 숨김
+      else if (fogOffset < fogMaxOffset) {
+        setFogHidden(false);
+        setExplainVisible([false, false, false]); // 다시 숨김
       }
 
       // 특정 px에 도달하면 imgVisible 변경 (스크롤에 따라 이미지 등장)
@@ -56,8 +75,18 @@ export default function NextPage() {
     return () => {
       window.removeEventListener("wheel", handleWheel);
     };
-  }, [scrollPosition]);
+  }, [scrollPosition,fogOffset]);
 
+  useEffect(() => {
+    // birds 이미지 교차 애니메이션: 3개의 이미지가 200ms마다 변경
+    const birdInterval = setInterval(() => {
+      birdImageIndexRef.current = (birdImageIndexRef.current + 1) % birdImages.length;
+      setCurrentBirdImage(birdImages[birdImageIndexRef.current]);
+    }, 200); // 200ms마다 이미지 변경
+
+    return () => clearInterval(birdInterval);
+  }, []);
+  
   // 특정 구간에서 비율을 계산하여 애니메이션 진행도를 반환하는 함수
   const calculateScrollProgress = (start, end) => {
     if (scrollPosition < start) return 0; // 구간 이전
@@ -66,7 +95,7 @@ export default function NextPage() {
   };
 
   // birds 이미지의 이동 위치를 계산 (300px ~ 350px 사이)
-  const birdsProgress = calculateScrollProgress(50, 400);
+  const birdsProgress = scrollPosition > 50 ? (scrollPosition - 50) / 400 : 0;
   const birdsTransform = `translateX(${birdsProgress * - 400}px)`; // 왼쪽으로 이동
 
   const explainTransform = (visible) => visible ? 'translateY(0px) scaleY(1)' : 'translateY(-50px) scaleY(0)';
@@ -92,7 +121,7 @@ export default function NextPage() {
           className={`scroll-img palace ${imgVisible ? 'visible' : ''}`}
         />
         <img
-          src="images/second/birds.png"
+          src={currentBirdImage}
           alt="bird"
           className={`scroll-img birds ${imgVisible ? 'visible' : ''}`}
           style={{ transform: birdsTransform }}
@@ -110,6 +139,11 @@ export default function NextPage() {
           style={{ transform: `translateX(${-fogOffset}px)` }} // 왼쪽으로 이동
         />
         <img
+          src="images/second/water.png"
+          alt="water"
+          className={`scroll-img water ${imgVisible ? 'visible' : ''}`}
+        />
+        <img
           src="images/second/explain1.png"
           alt="explain1"
           className={`scroll-img explain1 ${imgVisible ? 'visible' : ''}`}
@@ -120,8 +154,8 @@ export default function NextPage() {
           src="images/second/explain2.png"
           alt="explain2"
           className={`scroll-img2 explain2 ${explainVisible[0] ? 'visible' : ''}`}
-          style={{ transform: explainTransform(explainVisible[0]) }}
-        />
+          style={{ transform: explainTransform(explainVisible[0]) }}        
+          />
         <img
           src="images/second/explain3.png"
           alt="explain3"

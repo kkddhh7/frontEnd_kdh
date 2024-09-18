@@ -57,3 +57,23 @@
   z-index: 5;
 }
 
+.water {
+  position: absolute;
+  bottom: 0px;
+  left: -200px;
+  z-index: 4;
+  height: auto; /* 비율을 유지하면서 자동 높이 */
+  animation: waterMove 17s ease-in-out infinite; /* 10초 동안 양쪽으로 움직이고 반복 */
+}
+
+@keyframes waterMove {
+  0% {
+    transform: translateX(-10%); /* 왼쪽으로 완전히 벗어남 */
+  }
+  50% {
+    transform: translateX(10%); /* 원래 위치로 이동 */
+  }
+  100% {
+    transform: translateX(-10%); /* 오른쪽으로 완전히 벗어남 */
+  }
+}

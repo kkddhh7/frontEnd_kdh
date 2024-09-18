@@ -24,6 +24,12 @@
   right: 0px;
 }
 
+.zoom-view {
+  transform: scale(2); /* 2배 확대 */
+  transform-origin: center center; /* 중앙을 기준으로 확대 */
+  transition: transform 2.5s ease-in-out; /* 부드러운 확대 효과 */
+}
+
 .land {
   z-index: 4;
   left: 0px;

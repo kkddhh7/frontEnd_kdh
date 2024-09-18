@@ -16,6 +16,8 @@ export default function Test1() {
   const [showAppealOpen, setShowAppealOpen] = useState(false); // Appeal Open 상태 추가
   const [disableInteraction, setDisableInteraction] = useState(false); // 사용자 입력 차단 상태
   const [startZoom, setStartZoom] = useState(false); // New state for zoom effect
+  const [hugeAppeal, setHugeAppeal] = useState(false); // New state for zoom effect
+
 
   const navigate = useNavigate(); // For page navigation
 
@@ -70,9 +72,12 @@ export default function Test1() {
 
   // 클릭 시 애니메이션과 Appeal Open을 처리
   const handleAppealClick = () => {
-    setDisableInteraction(true);
-    setAppealMoving(true);
-    setBlurBackground(true);
+    setHugeAppeal(true);
+    setTimeout(() => {
+      setDisableInteraction(true);
+      setAppealMoving(true);
+      setBlurBackground(true);
+    }, 1000)
 
     setTimeout(() => {
       setShowAppealOpen(true);
@@ -156,7 +161,7 @@ export default function Test1() {
               <div className={`appeal ${appealMoving ? "move-left" : ""}`} onClick={handleAppealClick}>
                 <img src="images/green/appeal.png" 
                 alt="Appeal"
-                className={`appeal-now ${appealMoving ? "rotate" : ""}`}/>
+                className={`appeal-now ${hugeAppeal ? "rotate" : ""}`}/>
               </div>
               <div className={`new-appeal ${showAppealOpen ? "enter" : ""}`}>
                 <img src="images/green/appeal_open.png" alt="Appeal Open"/>

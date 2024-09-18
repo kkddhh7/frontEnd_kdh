@@ -6,13 +6,13 @@ import '../song/second/explain.css'
 export default function NextPage() {
 
   const [backgroundVisible, setBackgroundVisible] = useState(false)
-  const [scrollAction1, setScrollAction1] = useState(false);
   const [imgVisible, setImgVisible] = useState(false); // 이미지 가시성 상태
   const [scrollPosition, setScrollPosition] = useState(0);
   const [explainVisible, setExplainVisible] = useState([false, false, false]); // explain 이미지 가시성 상태
   const [fogOffset, setFogOffset] = useState(0); // fog 이미지의 이동값
   const [fogHidden, setFogHidden] = useState(false); // fog가 사라졌는지 상태
-  const fogMaxOffset = 2000; // fog가 사라지는 기준 (화면에서 벗어나는 시점)
+  const [rightPalaceZoomed, setRightPalaceZoomed] = useState(false); // right-palace 확대 상태
+
 
 
   const birdImages = [
@@ -20,8 +20,11 @@ export default function NextPage() {
     "/images/second/birds/birds2.png",
     "/images/second/birds/birds3.png"
   ];
+  const fogMaxOffset = 2000; // fog가 사라지는 기준 (화면에서 벗어나는 시점)
+
   const [currentBirdImage, setCurrentBirdImage] = useState(birdImages[0]);
   const birdImageIndexRef = useRef(0);
+
 
 
   useEffect(() => {
@@ -63,10 +66,10 @@ export default function NextPage() {
         setExplainVisible([false, false, false]); // 다시 숨김
       }
 
-      // 특정 px에 도달하면 imgVisible 변경 (스크롤에 따라 이미지 등장)
-    if (scrollPosition > 0) {
-      setScrollAction1(true);
-    }
+       // explain 이미지가 모두 펼쳐진 이후에 zoom 적용
+       if (scrollPosition >= 5500 && !rightPalaceZoomed && explainVisible) {
+        setRightPalaceZoomed(true); // right-palace 확대
+      }
 
     };
 
@@ -75,24 +78,17 @@ export default function NextPage() {
     return () => {
       window.removeEventListener("wheel", handleWheel);
     };
-  }, [scrollPosition,fogOffset]);
+  }, [scrollPosition, fogOffset, rightPalaceZoomed]);
 
   useEffect(() => {
     // birds 이미지 교차 애니메이션: 3개의 이미지가 200ms마다 변경
     const birdInterval = setInterval(() => {
       birdImageIndexRef.current = (birdImageIndexRef.current + 1) % birdImages.length;
       setCurrentBirdImage(birdImages[birdImageIndexRef.current]);
-    }, 200); // 200ms마다 이미지 변경
+    }, 500); // 200ms마다 이미지 변경
 
     return () => clearInterval(birdInterval);
   }, []);
-  
-  // 특정 구간에서 비율을 계산하여 애니메이션 진행도를 반환하는 함수
-  const calculateScrollProgress = (start, end) => {
-    if (scrollPosition < start) return 0; // 구간 이전
-    if (scrollPosition > end) return 1;   // 구간 이후
-    return (scrollPosition - start) / (end - start); // 구간 내 비율 계산
-  };
 
   // birds 이미지의 이동 위치를 계산 (300px ~ 350px 사이)
   const birdsProgress = scrollPosition > 50 ? (scrollPosition - 50) / 400 : 0;
@@ -104,7 +100,7 @@ export default function NextPage() {
   return (
     <div className="second-page">
       {/* 고정된 화면에서 배경이 서서히 나타남 */}
-      <div className="content">
+      <div className={`content ${rightPalaceZoomed ? 'zoom-view' : ''}`}>
         <img src="images/second/base.png" alt='Base'/>
         <div className={`background ${backgroundVisible ? 'visible' : ''}`}>
           <img src="images/second/background.png" alt='Background'/>
@@ -148,7 +144,6 @@ export default function NextPage() {
           alt="explain1"
           className={`scroll-img explain1 ${imgVisible ? 'visible' : ''}`}
         />
-
          {/* explain2, explain3, explain4 순차적 등장 */}
          <img
           src="images/second/explain2.png"
@@ -168,6 +163,11 @@ export default function NextPage() {
           className={`scroll-img2 explain4 ${explainVisible[2] ? 'visible' : ''}`}
           style={{ transform: explainTransform(explainVisible[2]) }}
         />
+        
+        {/* 확대된 right-palace 이미지 위에 새로운 이미지 */}
+        {rightPalaceZoomed && (
+          <img src="images/second/new-image.png" alt="New Image" className="new-img" />
+        )}
       </div>
     </div>
   );

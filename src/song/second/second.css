@@ -12,6 +12,7 @@
     width: 100%;
     height: 100%;
     perspective: 1000px;
+    overflow: hidden;
   }
 
   /* base 이미지 (맨 아래 표시) */
@@ -41,16 +42,3 @@
   .background.visible {
     opacity: 1; /* 서서히 보이게 됨 */
   }
-
-  .scroll-container {
-  width: 100vw;
-  height: 100vh;
-  overflow-y: scroll; /* 수직 스크롤 활성화 */
-  overflow-x: hidden; /* 수평 스크롤 방지 */
-  position: relative;
-}
-
-.scroll-content {
-  width: 100%;
-  height: 100%; /* 화면보다 2배 더 긴 스크롤 영역을 만듦 */
-}

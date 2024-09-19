@@ -25,8 +25,8 @@
 }
 
 .zoom-view {
-  transform: scale(2); /* 2배 확대 */
-  transform-origin: center center; /* 중앙을 기준으로 확대 */
+  transform: scale(30); /* 2배 확대 */
+  transform-origin: 69% 70%; /* 중앙을 기준으로 확대 */
   transition: transform 2.5s ease-in-out; /* 부드러운 확대 효과 */
 }
 

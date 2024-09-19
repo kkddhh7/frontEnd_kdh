@@ -1,0 +1,83 @@
+
+.explain3_1, .explain3_2, .explain3_3, .explain3_4 {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+}
+
+.explain3_2 {
+    top: 200px;
+    left: 250px;
+}
+
+.explain3_3 {
+    top: 200px;
+    left: 400px;
+}
+
+.explain3_4 {
+    top: 200px;
+    left: 550px;
+    z-index: 3;
+}
+
+.king3 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 3;
+}
+
+.palace3 {
+    position: absolute;
+    bottom: 0;
+    right: -600px;
+    z-index: 2;
+}
+
+.fog3_1, .fog3_2 {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    left: 0;
+    z-index: 4;
+}
+
+.fog3_1 {
+    animation: waterMove1 15s ease-in-out infinite; /* 10초 동안 양쪽으로 움직이고 반복 */
+}
+
+.fog3_2 {
+    animation: waterMove2 15s ease-in-out infinite; /* 10초 동안 양쪽으로 움직이고 반복 */
+}
+
+@keyframes waterMove1 {
+  0% {
+    transform: translateX(15%); /* 왼쪽으로 완전히 벗어남 */
+  }
+  50% {
+    transform: translateX(5%); /* 원래 위치로 이동 */
+  }
+  100% {
+    transform: translateX(15%); /* 오른쪽으로 완전히 벗어남 */
+  }
+}
+
+@keyframes waterMove2 {
+    0% {
+      transform: translateX(-15%); /* 왼쪽으로 완전히 벗어남 */
+    }
+    50% {
+      transform: translateX(-5%); /* 원래 위치로 이동 */
+    }
+    100% {
+      transform: translateX(-15%); /* 오른쪽으로 완전히 벗어남 */
+    }
+  }
+
+.visible {
+    opacity: 0; /* 처음에는 투명 */
+    transition: opacity 1.5s ease-out; /* 2초 동안 서서히 선명해짐 */
+}

@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useNavigate } from "react-router-dom";
 import '../song/second/second.css'
 import '../song/second/second_imgs.css'
 import '../song/second/explain.css'
 
 export default function NextPage() {
 
-  const [backgroundVisible, setBackgroundVisible] = useState(false)
+  const [backgroundVisible, setBackgroundVisible] = useState(false);
   const [imgVisible, setImgVisible] = useState(false); // 이미지 가시성 상태
   const [scrollPosition, setScrollPosition] = useState(0);
   const [explainVisible, setExplainVisible] = useState([false, false, false]); // explain 이미지 가시성 상태
@@ -20,11 +21,11 @@ export default function NextPage() {
     "/images/second/birds/birds2.png",
     "/images/second/birds/birds3.png"
   ];
-  const fogMaxOffset = 2000; // fog가 사라지는 기준 (화면에서 벗어나는 시점)
+  const fogMaxOffset = 1500; // fog가 사라지는 기준 (화면에서 벗어나는 시점)
 
   const [currentBirdImage, setCurrentBirdImage] = useState(birdImages[0]);
   const birdImageIndexRef = useRef(0);
-
+  const navigate = useNavigate(); // For page navigation
 
 
   useEffect(() => {
@@ -69,6 +70,9 @@ export default function NextPage() {
        // explain 이미지가 모두 펼쳐진 이후에 zoom 적용
        if (scrollPosition >= 5500 && !rightPalaceZoomed && explainVisible) {
         setRightPalaceZoomed(true); // right-palace 확대
+        setTimeout(() => {
+          navigate("/third"); // Redirect to another page after zoom
+        }, 2000); // Wait for the zoom to complete (adjust time as needed)
       }
 
     };
@@ -103,7 +107,9 @@ export default function NextPage() {
       <div className={`content ${rightPalaceZoomed ? 'zoom-view' : ''}`}>
         <img src="images/second/base.png" alt='Base'/>
         <div className={`background ${backgroundVisible ? 'visible' : ''}`}>
-          <img src="images/second/background.png" alt='Background'/>
+          <img 
+          src="images/second/background.png" 
+          alt='Background'/>
         </div>    
 
         <img
@@ -163,11 +169,6 @@ export default function NextPage() {
           className={`scroll-img2 explain4 ${explainVisible[2] ? 'visible' : ''}`}
           style={{ transform: explainTransform(explainVisible[2]) }}
         />
-        
-        {/* 확대된 right-palace 이미지 위에 새로운 이미지 */}
-        {rightPalaceZoomed && (
-          <img src="images/second/new-image.png" alt="New Image" className="new-img" />
-        )}
       </div>
     </div>
   );

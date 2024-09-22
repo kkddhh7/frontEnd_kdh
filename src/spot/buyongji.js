@@ -12,6 +12,7 @@ import BackToMap from './image/buyongji/backToMap.png';
 import BookDetail from './image/buyongji/buyongji_book_detail.png';
 import GoToMap from './image/buyongji/goToMap.png';
 import GoToCat from './image/buyongji/goToCat.png';
+import closeBook from './image/buyongji/buyongji_close_book.png';
 import { useNavigate } from 'react-router-dom';
 
 export default function Buyongji() {
@@ -56,10 +57,12 @@ export default function Buyongji() {
 
     return () => clearTimeout(timer);
   }, []);
+  
 
   const handleIconClick = () => {
     setIsKingVisible(true);
     setIsCatVisible(false);
+    setShowBook(false);
     setShowCatBook(true); // CatBook 표시
   };
 
@@ -71,6 +74,13 @@ export default function Buyongji() {
   const handleBackToMapClick = () => {
     navigate('/map'); // /map으로 이동
   };
+  const handleCloseBookClick = () => {
+    setShowBookDetail(false); // 책 세부 정보 숨기기
+    setShowCatBook(false);
+    setIsKingVisible(false);
+    setIsCatVisible(true);
+    setShowBook(true); // 책 아이콘 다시 보이기
+};
 
   const catStyles = {
     cat1: { width: '133px', position: 'absolute', top: '359px', left: '958px', zIndex: 3, cursor: 'pointer'},
@@ -122,14 +132,14 @@ export default function Buyongji() {
             alt="왕" 
             style={{ 
               position: 'absolute', 
-              top: '550px', 
-              left: '450px', 
+              top: '750px', 
+              left: '1450px', 
               transform: 'translate(-50%, -50%)', 
               width: '700px', 
               opacity: 1, 
               transition: 'opacity 10s',
               animation: 'fadeIn 1s forwards',
-              zIndex: 3 
+              zIndex: 4 
             }} 
           />
 
@@ -141,10 +151,10 @@ export default function Buyongji() {
                 alt="고양이 책" 
                 style={{ 
                   position: 'absolute', 
-                  top: '600px', 
-                  left: '1150px', 
+                  top: '550px', 
+                  left: '850px', 
                   transform: 'translate(-50%, -50%)', 
-                  width: '900px', 
+                  width: '1400px', 
                   zIndex: 3 
                 }} 
               />
@@ -154,13 +164,14 @@ export default function Buyongji() {
                 alt="지도 돌아가기" 
                 style={{ 
                   position: 'absolute', 
-                  top: '790px', 
-                  left: '1430px', 
+                  top: '850px', 
+                  left: '350px', 
                   cursor: 'pointer', 
                   zIndex: 4 
                 }} 
                 onClick={handleBackToMapClick} // 클릭 핸들러 추가
               />
+              <img src={closeBook} alt="책 닫기" style={{ position: 'absolute', top: '270px', left: '1280px', cursor: 'pointer', zIndex: 4 }} onClick={handleCloseBookClick} />
             </>
           )}
         </>
@@ -169,15 +180,25 @@ export default function Buyongji() {
       {/* BookDetail과 GoToMap, GoToCat 추가 */}
       {showBookDetail && (
         <>
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)', // 반투명 검정색
+            zIndex: 2,
+            transition: 'opacity 0.5s',
+          }} />
           <img 
             src={BookDetail} 
             alt="책 세부 정보" 
             style={{ 
               position: 'absolute', 
-              top: '550px', 
+              top: '500px', 
               left: '850px', 
               transform: 'translate(-50%, -50%)', 
-              width: '1200px', 
+              width: '1500px', 
               zIndex: 3 
             }} 
           />
@@ -186,8 +207,8 @@ export default function Buyongji() {
             alt="지도 가기" 
             style={{ 
               position: 'absolute', 
-              top: '800px', 
-              left: '300px', 
+              top: '820px', 
+              left: '320px', 
               cursor: 'pointer', 
               zIndex: 4 
             }} 
@@ -198,16 +219,18 @@ export default function Buyongji() {
             alt="고양이로 가기" 
             style={{ 
               position: 'absolute', 
-              top: '800px', 
-              left: '1200px', 
+              top: '820px', 
+              left: '1180px',
+              width: '150px', 
               cursor: 'pointer', 
               zIndex: 4 
             }} 
             onClick={() => {
               handleIconClick(); // 고양이로 가기 클릭 시
               setShowBookDetail(false); // BookDetail 숨기기
-            }}  // 고양이 아이콘을 클릭한 효과를 볼 수 있도록 설정
+            }}
           />
+           <img src={closeBook} alt="책 닫기" style={{ position: 'absolute', top: '200px', left: '1300px', cursor: 'pointer', zIndex: 4 }} onClick={handleCloseBookClick} />
         </>
       )}
     </div>

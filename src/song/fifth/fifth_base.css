@@ -1,0 +1,29 @@
+.fifth-page {
+    position: absolute;
+    width: 1710px;
+    height: 1069px;
+    display: flex;
+    overflow: hidden;
+}
+
+.content5 {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+.background5_1 {
+  width: 100%;
+  height: auto;
+  z-index: 1;
+}
+
+.background5_2 {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  opacity: 1;
+  z-index: 2;
+}  

@@ -1,9 +1,46 @@
 
 .explain3_1, .explain3_2, .explain3_3, .explain3_4 {
-    position: absolute;
-    z-index: 3;
-    top: 0;
-    left: 0;
+  position: absolute;
+  z-index: 3;
+  opacity: 0; /* 기본적으로 투명하게 */
+  animation-fill-mode: forwards; /* 애니메이션 후 상태를 유지 */
+}
+
+.visible {
+  animation: slidein1 3s ease-in-out forwards; /* slidein 애니메이션 적용 */
+}
+
+.hidden {
+  animation: slideout 3s ease-in-out forwards; /* slidein 애니메이션 적용 */
+}
+
+@keyframes slidein1 {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+  }
+
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* 두루마리가 말려올라가는 효과 */
+@keyframes slideout {
+  from {
+    opacity: 1;
+    clip-path: inset(0 0 0 0); /* 펼쳐진 상태 */
+  }
+  to {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0); /* 상단에서 다시 접힘 */
+  }
+}
+
+.explain3_1 {
+  top: 175px;
+  left: 50px;
 }
 
 .explain3_2 {
@@ -29,11 +66,50 @@
     z-index: 3;
 }
 
+.king4 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  z-index: 3;
+}
+
+.fadein {
+  animation: fadein 3s ease-in-out;
+  animation-fill-mode: forwards; /* 애니메이션 후 상태를 유지 */
+}
+
+.fadeout {
+  animation: fadeout 3s ease-in-out;
+  animation-fill-mode: forwards; /* 애니메이션 후 상태를 유지 */
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
 .palace3 {
     position: absolute;
     bottom: 0;
     right: -600px;
     z-index: 2;
+    transition: transfrom 2s ease-in-out;
 }
 
 .fog3_1, .fog3_2 {
@@ -67,17 +143,12 @@
 
 @keyframes waterMove2 {
     0% {
-      transform: translateX(-15%); /* 왼쪽으로 완전히 벗어남 */
+      transform: translateX(5%); /* 왼쪽으로 완전히 벗어남 */
     }
     50% {
-      transform: translateX(-5%); /* 원래 위치로 이동 */
+      transform: translateX(15%); /* 원래 위치로 이동 */
     }
     100% {
-      transform: translateX(-15%); /* 오른쪽으로 완전히 벗어남 */
+      transform: translateX(5%); /* 오른쪽으로 완전히 벗어남 */
     }
   }
-
-.visible {
-    opacity: 0; /* 처음에는 투명 */
-    transition: opacity 1.5s ease-out; /* 2초 동안 서서히 선명해짐 */
-}

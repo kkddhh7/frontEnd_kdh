@@ -13,6 +13,7 @@ import BookDetail from './image/buyongji/buyongji_book_detail.png';
 import GoToMap from './image/buyongji/goToMap.png';
 import GoToCat from './image/buyongji/goToCat.png';
 import closeBook from './image/buyongji/buyongji_close_book.png';
+import CaptureComponent from './capture';
 import { useNavigate } from 'react-router-dom';
 
 export default function Buyongji() {
@@ -97,6 +98,7 @@ export default function Buyongji() {
   return (
     <div style={{ position: 'relative', overflow: 'hidden', height: '1069px', width: '1710px' }}>
       <BackgroundAnimation />
+      <CaptureComponent/>
       <img src={buyongji} alt="부용지" style={{ position: 'absolute', top: 0, left: 0, width: '1710px', height: '1069px', zIndex: 1, objectFit: 'cover', transition: 'filter 0.5s' }} />
 
       {showImages && (

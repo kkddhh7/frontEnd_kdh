@@ -8,16 +8,20 @@ import bookDetail2 from './image/injungjun/injungjun_book_detail2.png';
 import goToMap from './image/injungjun/goToMap.png';
 import nextPage from './image/injungjun/next_page.png';
 import { useNavigate } from 'react-router-dom';
+import closeBook from './image/injungjun/injungjun_close_book.png';
+import CaptureComponent from './capture';
 
 export default function Injungjun() {
   const navigate = useNavigate();
   const [showImages, setShowImages] = useState(false);
   const [commentOpacity, setCommentOpacity] = useState(0);
   const [showBookDetail, setShowBookDetail] = useState(false);
+  const [showBook, setShowBook] = useState(true);
   const [showSecondBookDetail, setShowSecondBookDetail] = useState(false); // 두 번째 책 세부 정보 상태 추가
 
   const handleBookClick = () => {
     setShowBookDetail(true); // 첫 번째 책 세부 정보 표시
+    setShowBook(false);
   };
 
   const handleBackToMapClick = () => {
@@ -28,6 +32,12 @@ export default function Injungjun() {
     setShowSecondBookDetail(true); // 두 번째 책 세부 정보 표시
     setShowBookDetail(false); // 첫 번째 책 세부 정보 숨기기
   };
+
+  const handleCloseBookClick = () => {
+    setShowBookDetail(false); // 책 세부 정보 숨기기
+    setShowSecondBookDetail(false);
+    setShowBook(true); // 책 아이콘 다시 보이기
+};
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -52,10 +62,13 @@ export default function Injungjun() {
   return (
     <div style={{ position: 'relative', overflow: 'hidden', height: '1069px', width: '1710px' }}>
       <BackgroundAnimation />
+      <CaptureComponent/>
       <img src={injungjun} alt="인정전" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1 }} />
-      <div style={{ position: 'absolute', top: '75%', left: '5%', zIndex: 3 }} onClick={handleBookClick}>
-        <img src={book} alt="서책" style={{ width: '150px', cursor: 'pointer' }} />
-      </div>
+      {showBook && (
+                <div style={{ position: 'absolute', top: '80%', left: '5%', zIndex: 3 }} onClick={handleBookClick}>
+                    <img src={book} alt="서책" style={{ width: '150px', cursor: 'pointer' }} />
+                </div>
+            )}
       {showImages && (
         <img src={detail} alt="인정전 태그" style={{ position: 'absolute', top: '50px', left: '1500px', width: '100px', zIndex: 3, opacity: commentOpacity, transition: 'opacity 0.5s ease-in-out, left 1.5s ease-in-out' }} />
       )}
@@ -97,6 +110,7 @@ export default function Injungjun() {
             }} 
             onClick={handleNextPageClick} 
           />
+          <img src={closeBook} alt="책 닫기" style={{ position: 'absolute', top: '230px', left: '1270px', cursor: 'pointer', zIndex: 4 }} onClick={handleCloseBookClick} />
         </>
       )}
       {showSecondBookDetail && (
@@ -125,6 +139,7 @@ export default function Injungjun() {
             }} 
             onClick={handleBackToMapClick} 
           />
+          <img src={closeBook} alt="책 닫기" style={{ position: 'absolute', top: '230px', left: '1270px', cursor: 'pointer', zIndex: 4 }} onClick={handleCloseBookClick} />
           </>
       )}
     </div>

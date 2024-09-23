@@ -8,6 +8,8 @@ import bookDetail2 from './image/yunghwadang/yunghwadang_book_detail2.png';
 import goToMap from './image/yunghwadang/goToMap.png';
 import nextPage from './image/yunghwadang/next_page.png';
 import closeBook from './image/yunghwadang/yunghwadang_close_book.png';
+import detail from './image/yunghwadang/yunghwadang_detail.png';
+import CaptureComponent from './capture';
 import { useNavigate } from 'react-router-dom';
 
 export default function Yunghwadang() {
@@ -20,7 +22,7 @@ export default function Yunghwadang() {
     const [showSecondBookDetail, setShowSecondBookDetail] = useState(false); 
 
     const handleIconClick = () => {
-        setEnnuchPosition({ left: '70%' });
+        setEnnuchPosition({ left: '68%' });
         setShowBook(false); // 책 아이콘 숨기기
         setShowBookDetail(true); // 책 세부 정보 표시
     };
@@ -38,6 +40,7 @@ export default function Yunghwadang() {
         setShowBookDetail(false); // 책 세부 정보 숨기기
         setShowSecondBookDetail(false);
         setShowBook(true); // 책 아이콘 다시 보이기
+        setEnnuchPosition({ left: '32%' });
     };
 
     useEffect(() => {
@@ -46,7 +49,7 @@ export default function Yunghwadang() {
             const opacityTimer = setInterval(() => {
                 setEnnuchOpacity(prev => {
                     if (prev < 1) {
-                        return prev + 0.05; 
+                        return prev + 0.08; 
                     } else {
                         clearInterval(opacityTimer); 
                         return prev; 
@@ -55,7 +58,7 @@ export default function Yunghwadang() {
             }, 100); 
 
             return () => clearInterval(opacityTimer); 
-        }, 1000); 
+        }, 800); 
 
         return () => clearTimeout(timer);
     }, []);
@@ -63,6 +66,7 @@ export default function Yunghwadang() {
     return (
         <div style={{ position: 'relative', overflow: 'hidden', height: '1069px', width: '1710px' }}>
             <BackgroundAnimation />
+            <CaptureComponent/>
             <img src={yunghwadang} alt="영화당" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1 }} />
             
             {showBook && (
@@ -72,19 +76,10 @@ export default function Yunghwadang() {
             )}
             
             {showImages && (
-                <img 
-                    src={ennuch} 
-                    alt="내시" 
-                    style={{ 
-                        position: 'absolute', 
-                        top: '40%', 
-                        left: ennuchPosition.left, 
-                        width: '700px', 
-                        opacity: ennuchOpacity,
-                        transition: 'opacity 0.5s ease-in-out, left 1.5s ease-in-out',
-                        zIndex: 4
-                    }} 
-                />
+                <>
+                <img src={ennuch} alt="내시" style={{ position: 'absolute', top: '40%', left: ennuchPosition.left, width: '600px', opacity: ennuchOpacity,transition: 'opacity 0.5s ease-in-out, left 1.5s ease-in-out',zIndex: 4}} />
+                <img src={detail} alt="영화당 태그" style={{ position: 'absolute', top: '50px', left: '1500px', width: '100px', zIndex: 3, opacity: ennuchOpacity, transition: 'opacity 0.5s ease-in-out, left 1.5s ease-in-out' }} />
+                </>
             )}
             
             {showBookDetail && (

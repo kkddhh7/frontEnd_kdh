@@ -14,8 +14,130 @@
     overflow: hidden;
   }
   
-.background101{
+.background101 {
     width: 100%;
     height: auto;
-    z-index: -1;
+    z-index: 0;
 }
+
+.dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .dark-overlay.active {
+    opacity: 1;
+    z-index: 11;
+  }
+
+  /* Cloud animation */
+.cloud-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 11;
+    transition: transform 1s ease-in-out;
+  }
+  
+  .cloud-animate {
+    position: absolute;
+    opacity: 0;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+  
+  .left-cloud1 {
+    width: 150%;
+    left: -150%;
+    top: -70%;
+    animation-delay: 0.5s;
+    animation: cloudMoveClick1 1.5s forwards;
+  }
+
+  .left-cloud2 {
+    left: -50%;
+    top: 20%;
+    animation-delay: 0.5s;
+    animation: cloudMoveClick1 1.5s forwards ;
+  }
+
+  .left-cloud3 {
+    width: 120%;
+    left: -150%;
+    top: -20%;
+    animation-delay: 0.5s;
+    animation: cloudMoveClick1 1.0s forwards;
+  }
+  
+  .right-cloud1 {
+    right: -50%;
+    top: 40%;
+    animation-delay: 0.7s;
+    animation: cloudMoveClick2 1.5s forwards;
+  }
+
+  .right-cloud2 {
+    right: -50%;
+    top: -30%;
+    animation-delay: 0.7s;
+    animation: cloudMoveClick2 1.5s forwards;
+  }
+
+  .right-cloud3 {
+    right: -40%;
+    top: -20%;
+    animation-delay: 0.7s;
+    animation: cloudMoveClick2 1.5s forwards;
+  }
+  
+  @keyframes cloudMoveClick1 {
+    0% {
+      opacity: 0;
+      transform: translateX(0%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes cloudMoveClick2 {
+    0% {
+      opacity: 0;
+      transform: translateX(0%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(-100%);
+    }
+  }
+
+  /* Reverse animation when state is false */
+@keyframes cloudMoveClickReverse1 {
+    0% {
+      opacity: 1;
+      transform: translateX(100%);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(0%);
+    }
+  }
+  
+  @keyframes cloudMoveClickReverse2 {
+    0% {
+      opacity: 1;
+      transform: translateX(-100%);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(0%);
+    }
+  }

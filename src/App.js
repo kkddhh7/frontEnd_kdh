@@ -8,6 +8,7 @@ import Third from "./song/Third";
 import Fourth from "./song/Fourth";
 import Fifth from "./song/Fifth";
 import SelectAppeal from "./song/101";
+import ThirdAlpha from "./song/ThirdAlpha";
 
 import Test2 from "./test/Test2";
 import Test3 from "./test/Test3";
@@ -28,6 +29,8 @@ function App() {
             <Route path='/fourth' element={<Fourth />} />
             <Route path='/fifth' element={<Fifth />} />
             <Route path='/101' element={<SelectAppeal />} />
+            <Route path='/thirdAlpha' element={<ThirdAlpha />} />
+
           </Routes>
         </Layout>
       </Router>

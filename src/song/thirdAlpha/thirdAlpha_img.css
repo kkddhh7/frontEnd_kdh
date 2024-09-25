@@ -1,4 +1,4 @@
-.fifth-page {
+.thirdAlpha-page {
     position: absolute;
     width: 1710px;
     height: 1069px;
@@ -6,7 +6,7 @@
     overflow: hidden;
 }
 
-.content5 {
+.content33 {
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -14,17 +14,21 @@
     overflow: hidden;
   }
   
-.background5_1 {
+.background3 {
   width: 100%;
   height: auto;
   z-index: 1;
 }
 
-.background5_2 {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  opacity: 0;
-  height: auto;
-  z-index: 2;
-}  
+.palace33 {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+}
+
+.land33 {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+}

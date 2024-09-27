@@ -1,0 +1,370 @@
+.App {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-behavior: auto;
+    scroll-snap-type: y mandatory; /* 스크롤할 때 섹션이 뷰포트에 맞춰지도록 설정 */
+}
+
+.section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    scroll-snap-align: start; /* 섹션의 시작 부분에서 스크롤이 멈추도록 설정 */
+}
+
+.info {
+    background-color: #DDCEAB;
+}
+
+#event-info {
+    background-color: #E8D4F6;
+}
+
+.event-nav {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #E8D4F6;
+    z-index: 10;
+    color: gray;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    position: absolute;
+    left: 100px;
+    width: 100px;
+}
+
+.name {
+    position: absolute;
+    left: 210px;
+    height: 30px;
+}
+
+.nbutton-container {
+    position: relative;
+    left: 10%;
+    width: 65%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.event-nav a {
+    text-decoration: none;
+    color: gray;
+    font-weight: normal;
+    transition: color 0.3s;
+    height: 100%;
+    font-size: 25px;
+}
+
+.event-nav a:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.event-nav a:active {
+    color: black;
+    font-weight: bold;
+}
+
+.now-link {
+    color: black !important;
+    font-weight: bold !important;
+}
+
+.event-title {
+    position: relative;
+    top: 20%;
+}
+
+.event-content {
+    position: relative;
+    top: 0%;
+    height: 100%;
+    background-color: #F2F2F299;
+    ;
+    border-radius: 50px;
+}
+
+.event-items-container {
+    display: flex;
+    overflow-x: scroll; /* 가로 스크롤 가능하게 설정 */
+    width: 100vw; /* 컨테이너 너비를 화면 너비에 맞춤 */
+    position: relative;
+    top: 20%;
+    scroll-snap-type: x mandatory; /* 스크롤할 때 아이템이 화면에 맞춰지도록 설정 */
+    -ms-overflow-style: none;  /* IE와 Edge에서 스크롤바 숨기기 */
+    scrollbar-width: none;  /* Firefox에서 스크롤바 숨기기 */
+}
+
+.event-items-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera에서 스크롤바 숨기기 */
+}
+
+.event-item {
+    position: relative; /* 자식 요소인 오버레이가 절대 위치를 가지도록 설정 */
+    flex: 0 0 auto; /* flex 아이템의 크기를 고정 */
+    width: 400px; /* 각 아이템의 너비 설정 */
+    height: 400px;
+    margin: 50px;
+    background-color: lightgray;
+    border-radius: 15px;
+    text-align: center;
+    white-space: normal; /* 텍스트 줄바꿈 허용 */
+    scroll-snap-align: start; /* 스크롤할 때 각 아이템이 시작 위치에 맞춰지도록 설정 */
+    overflow: hidden; /* 오버레이가 박스 밖으로 나가지 않도록 설정 */
+}
+
+.event-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 박스를 채우도록 설정 */
+    border-radius: 15px; /* 이미지를 둥글게 */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* 검은색 반투명 오버레이 */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* 기본적으로 보이지 않도록 설정 */
+    transition: opacity 0.3s ease; /* 부드러운 트랜지션 효과 */
+    border-radius: 15px;
+}
+
+.event-item:hover .overlay {
+    opacity: 1; /* 호버 시 오버레이가 나타나도록 설정 */
+}
+
+.text {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+
+#palace-tour {
+    background-color: #E5CEF6;
+}
+
+.tour-nav {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #E8D4F6;
+    z-index: 10;
+    color: gray;
+    box-sizing: border-box;
+}
+
+.tour-nav a {
+    text-decoration: none;
+    color: gray;
+    font-weight: normal;
+    transition: color 0.3s;
+    height: 100%;
+    font-size: 25px;
+}
+
+.tour-nav a:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.tour-nav a:active {
+    color: black;
+    font-weight: bold;
+}
+
+.tour-title {
+    position: relative;
+    top: 20%;
+}
+
+.tour-content {
+    position: relative;
+    top: 0%;
+    height: 100%;
+    background-color: #F2F2F299;
+    ;
+    border-radius: 50px;
+}
+
+.tour-items-container {
+    display: flex;
+    overflow-x: scroll; /* 가로 스크롤 가능하게 설정 */
+    width: 100vw; /* 컨테이너 너비를 화면 너비에 맞춤 */
+    position: relative;
+    top: 20%;
+    scroll-snap-type: x mandatory; /* 스크롤할 때 아이템이 화면에 맞춰지도록 설정 */
+    -ms-overflow-style: none;  /* IE와 Edge에서 스크롤바 숨기기 */
+    scrollbar-width: none;  /* Firefox에서 스크롤바 숨기기 */
+}
+
+.tour-items-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera에서 스크롤바 숨기기 */
+}
+
+.tour-item {
+    position: relative; /* 자식 요소인 오버레이가 절대 위치를 가지도록 설정 */
+    flex: 0 0 auto; /* flex 아이템의 크기를 고정 */
+    width: 400px; /* 각 아이템의 너비 설정 */
+    height: 400px;
+    margin: 50px;
+    background-color: lightgray;
+    border-radius: 15px;
+    text-align: center;
+    white-space: normal; /* 텍스트 줄바꿈 허용 */
+    scroll-snap-align: start; /* 스크롤할 때 각 아이템이 시작 위치에 맞춰지도록 설정 */
+}
+
+.tour-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 박스를 채우도록 설정 */
+    border-radius: 15px; /* 이미지를 둥글게 */
+}
+
+.quiz-nav {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #E8D4F6;
+    z-index: 10;
+    color: gray;
+    box-sizing: border-box;
+}
+
+.quiz-nav a {
+    text-decoration: none;
+    color: gray;
+    font-weight: normal;
+    transition: color 0.3s;
+    height: 100%;
+    font-size: 25px;
+}
+
+.quiz-nav a:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.quiz-nav a:active {
+    color: black;
+    font-weight: bold;
+}
+
+.photo-nav {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #E8D4F6;
+    z-index: 10;
+    color: gray;
+    box-sizing: border-box;
+}
+
+.photo-nav a {
+    text-decoration: none;
+    color: gray;
+    font-weight: normal;
+    transition: color 0.3s;
+    height: 100%;
+    font-size: 25px;
+}
+
+.photo-nav a:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.photo-nav a:active {
+    color: black;
+    font-weight: bold;
+}
+
+.info-event {
+    background-image: url('/public/scrollbackground1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.info-event2 {
+    background-image: url('/public/scrollbackground2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.event-tour {
+    background-image: url('/public/scrollbackground3.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tour-quiz {
+    background-image: url('/public/scrollbackground4.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tour-quiz2 {
+    background-image: url('/public/scrollbackground5.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.quiz-photo {
+    background-image: url('/public/scrollbackground6.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.photo-end {
+    background-image: url('/public/scrollbackground7.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

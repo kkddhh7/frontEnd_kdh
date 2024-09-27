@@ -5,10 +5,11 @@ import Role from "./test/Role";
 import Test1 from "./test/Test1";
 import Test2 from "./test/Test2";
 import Test3 from "./test/Test3";
-import EventInfo from './Pages_kdh/EventInfo';
-import Quiz from './Pages_kdh/Quiz';
-import TravelInfo from './Pages_kdh/TravelInfo';
-import PhotoAlbum from './Pages_kdh/PhotoAlbum';
+import ScrollDownPage from "./Pages_kdh/ScrollDownPage";
+import Quiz1 from "./Pages_kdh/Quiz1";
+import Quiz2 from "./Pages_kdh/Quiz2";
+import Quiz3 from "./Pages_kdh/Quiz3";
+
 
 
 function App() {
@@ -20,10 +21,13 @@ function App() {
           <Route path='/test1' element={<Test1 />} />
           <Route path='/test2' element={<Test2 />} />
           <Route path='/test3' element={<Test3 />} />
-          <Route path='/eventinfo' element={<EventInfo />} />
-          <Route path='/travelinfo' element={<TravelInfo />} />
-          <Route path='/quiz' element={<Quiz />} />
-          <Route path='/photoalbum' element={<PhotoAlbum />} />
+
+          <Route path='/scrolldownpage' element={<ScrollDownPage />} />
+          <Route path='/quiz1' element={<Quiz1 />} />
+          <Route path='/quiz2' element={<Quiz2 />} />
+          <Route path='/quiz3' element={<Quiz3 />} />
+
+
         </Routes>   
       </Router>
       </div>

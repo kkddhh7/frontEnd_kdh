@@ -1,0 +1,83 @@
+.land2 {
+    position: absolute;
+    z-index: 3;
+    left: 0px;
+    bottom: 0px;
+    opacity: 0;
+    transition: opacity 1.5s ease-out; /* 2초 동안 서서히 선명해짐 */
+}
+
+.palace2 {
+    position: absolute;
+    z-index: 2;
+    right: 0px;
+    bottom: 0px;
+    opacity: 0;
+    transition: opacity 1.5s ease-out; /* 2초 동안 서서히 선명해짐 */
+}
+
+.fog2_1, .fog2_2 {
+    position: absolute;
+    z-index: 5;
+    left: 0px;
+    bottom: 0px;
+    opacity: 0;
+    transition: opacity 1.5s ease-out; /* 2초 동안 서서히 선명해짐 */
+}
+
+.birds2_1, .birds2_2, .birds2_3 {
+    position: absolute;
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 1.0s ease-out; /* 2초 동안 서서히 선명해짐 */
+}
+
+.birds2_1 {
+    top: 200px;
+    left: 100px;
+}
+
+.birds2_2 {
+    top: 200px;
+    left: 300px;
+}
+
+
+.birds2_3 {
+    top: 200px;
+    left: 500px;
+}
+
+
+.water2 {
+    position: absolute;
+    bottom: 0px;
+    left: -700px;
+    z-index: 4;
+    opacity: 0;
+    height: auto; /* 비율을 유지하면서 자동 높이 */
+    animation: waterMove2 20s ease-in-out infinite; /* 10초 동안 양쪽으로 움직이고 반복 */
+    transition: opacity 1.5s ease-out; /* 2초 동안 서서히 선명해짐 */
+  }
+  
+  @keyframes waterMove2 {
+    0% {
+      transform: translateX(-10%); /* 왼쪽으로 완전히 벗어남 */
+    }
+    50% {
+      transform: translateX(10%); /* 원래 위치로 이동 */
+    }
+    100% {
+      transform: translateX(-10%); /* 오른쪽으로 완전히 벗어남 */
+    }
+  }
+
+.visible2 {
+    opacity: 1;
+}
+
+.zoom-view {
+    transform: scale(28); /* 2배 확대 */
+    transform-origin: 69% 70%; /* 중앙을 기준으로 확대 */
+    transition: transform 2.5s ease-in-out; /* 부드러운 확대 효과 */
+  }

@@ -12,8 +12,7 @@
     position: absolute;
     top: 40%;
     left: 8%;
-    width: 85%;
-    height: auto;
+    width: 80%;
     opacity: 0; /* 초기값 */
     z-index: 11;
   }
@@ -23,7 +22,6 @@
     position: absolute;
     top: 40%;
     left: 8%;
-
     width: 80%;
     opacity: 0; /* 초기값 */
     z-index: 11;

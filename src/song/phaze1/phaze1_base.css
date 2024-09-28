@@ -1,0 +1,84 @@
+.world {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1710px;
+    height: 1069px;
+    perspective: 2000px;
+    perspective-origin: center center;
+    margin: auto;
+    overflow: hidden; /* 초과된 부분을 숨김 */
+}
+  
+.stage {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.5s linear;
+    position: absolute;
+    transform: translateZ(100vh); /* 시작 위치를 반대로 설정 */
+    top: 0;
+    left: 0;
+}
+  
+.house {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    
+}
+  
+.wall {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ccc;
+}
+
+  
+.wall-front {
+    transform: translateZ(50px);
+    background-color: rgba(255, 255, 255, 0.0);
+}
+  
+.wall-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+  
+.wall-title {
+    font-size: 48px;
+    color: #333;
+}
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* 문보다 뒤에 배치 */
+    object-fit: cover;
+    transition: filter 2s ease-in-out, opacity 2s ease-in-out; /* 배경이 뿌옇게 변하는 과정 애니메이션 */
+}
+
+.background-image img {
+    width: 1710px;  /* 고정된 크기로 설정 */
+    height: 1069px; /* 고정된 크기로 설정 */
+    object-fit: cover; /* 이미지 비율 유지 */
+}
+
+/* 배경 화면을 뿌옇게 처리 */
+.blurred-background .background-image img {
+    filter: blur(5px); /* 배경을 뿌옇게 */
+    opacity: 0.8; /* 투명도를 낮춰 배경이 너무 어두워지지 않도록 */
+    transition: filter 2s ease-in-out, opacity 2s ease-in-out; /* 부드러운 전환 */
+}
+
+/* 사용자의 모든 상호작용을 차단 */
+.disable-interaction {
+    pointer-events: none; /* 모든 상호작용을 차단 */
+}

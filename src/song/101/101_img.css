@@ -49,6 +49,7 @@
   .center-image {
     transform: scale(1.2); /* 중앙 이미지 크기를 1.3배로 키움 */  
     transition: transform 1.2s ease-in-out;
+    pointer-events: auto; /* 중앙 이미지만 클릭 가능 */
     z-index: 10;
   }
 
@@ -141,8 +142,8 @@
     z-index: 4;
     animation: cloudMove2 15s ease-in-out infinite; /* 10초 동안 양쪽으로 움직이고 반복 */
   }
-
-@keyframes cloudMove1 {
+  
+  @keyframes cloudMove1 {
     0% {
       transform: translateX(20%); /* 왼쪽으로 완전히 벗어남 */
     }

@@ -118,26 +118,3 @@
       transform: translateX(-100%);
     }
   }
-
-  /* Reverse animation when state is false */
-@keyframes cloudMoveClickReverse1 {
-    0% {
-      opacity: 1;
-      transform: translateX(100%);
-    }
-    100% {
-      opacity: 0;
-      transform: translateX(0%);
-    }
-  }
-  
-  @keyframes cloudMoveClickReverse2 {
-    0% {
-      opacity: 1;
-      transform: translateX(-100%);
-    }
-    100% {
-      opacity: 0;
-      transform: translateX(0%);
-    }
-  }

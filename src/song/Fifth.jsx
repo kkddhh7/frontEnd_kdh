@@ -15,7 +15,6 @@ export default function Fifth() {
         const handleScroll = (e) => {
 
           e.preventDefault();
-    
           const delta = e.deltaY;
 
           setScrollPosition((prevScrollPosition) => {

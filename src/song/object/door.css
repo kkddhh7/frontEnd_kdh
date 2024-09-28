@@ -11,8 +11,8 @@
   .doors2 {
     position: absolute;
     z-index: 2; /* 문이 배경 이미지 위에 나타나도록 설정 */
-    width: 165px;
-    height: 53%;
+    width: 180px;
+    height: 54%;
     bottom: -20%; /* 화면의 가운데 아래로 조정 */
   }
   

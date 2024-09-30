@@ -36,8 +36,8 @@ export default function CaptureComponent() {
     return (
         <>
             <img src={background} alt='아이콘 배경' style={{ position: 'absolute', top: '930px', left: '1500px', width: '160px', zIndex: 2, opacity: 0.8 }} />
-            <img src={mapIcon} alt="Map" onClick={handleMapClick} style={{ position: 'absolute', top: '938px', left: '1590px', cursor: 'pointer', zIndex: 4 }} />
-            <img src={captureIcon} alt="Capture" onClick={handleCaptureClick} style={{ position: 'absolute', top: '942px', left: '1530px', cursor: 'pointer', zIndex: 4 }} />
+            <img src={mapIcon} alt="Map" onClick={handleMapClick} style={{ position: 'absolute', top: '938px', left: '1590px', cursor: 'pointer', zIndex: 2 }} />
+            <img src={captureIcon} alt="Capture" onClick={handleCaptureClick} style={{ position: 'absolute', top: '942px', left: '1530px', cursor: 'pointer', zIndex: 2 }} />
             {captureIndex >= 0 && (
                 <img
                     src={captures[captureIndex]}

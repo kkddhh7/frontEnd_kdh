@@ -11,6 +11,7 @@ import Buyongji from './spot/buyongji';
 import Juniper from './spot/juniper';
 import Yunghwadang from './spot/yunghwadang';
 import Changhoji from './spot/changhoji';
+import Loading from './loading/loading1';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path='/test1' element={<Test1 />} />
           <Route path='/test2' element={<Test2 />} />
           <Route path='/test3' element={<Test3 />} />
+          <Route path='/loading' element={<Loading/>} /> 
           <Route path='/map' element={<Map/>} /> 
           <Route path='/injungjun' element={<Injungjun/>} />
           <Route path='/nakseonjae' element={<Nakseonjae/>} />

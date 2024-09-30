@@ -58,16 +58,7 @@ export default function Map() {
     return (
         <div className="custom-cursor">
             <div style={{ position: 'absolute', overflow: 'hidden', height: '1069px', width: '1710px' }}>
-                <img
-                    src={images('./map.png')}
-                    alt="배경"
-                    style={{
-                        width: '1710px',
-                        height: '1069px',
-                        objectFit: 'cover',
-                        filter: hoveredIcon ? 'blur(5px)' : 'none'
-                    }}
-                />
+                <img src={images('./map.png')} alt="배경" style={{ width: '1710px', height: '1069px', objectFit: 'cover', filter: hoveredIcon ? 'blur(5px)' : 'none'}}/>
 
                 {/* 아이콘 배치 */}
                 {[
@@ -108,11 +99,9 @@ export default function Map() {
                 <img src={images('./seonjeongjeon_icon.png')} alt="선정전" style={{ position: 'absolute', top: '520px', left: '888px', width: '150px', filter: hoveredIcon ? 'blur(5px)' : 'none' }} />
                 <img src={images('./kyujanggak_icon.png')} alt="규장각" style={{ position: 'absolute', top: '310px', left: '732px', width: '140px', filter: hoveredIcon ? 'blur(5px)' : 'none' }} />
 
+                {/* 마우스 오버 효과 */}
                 {showImages && (
-                    <img
-                        src={images('./map_comment.png')}
-                        alt="코맨트"
-                        style={{
+                    <img src={images('./map_comment.png')} alt="코맨트" style={{
                             position: 'absolute',
                             top: '50px',
                             left: '1470px',
@@ -124,6 +113,7 @@ export default function Map() {
                     />
                 )}
 
+                {/* 클릭 효과 */}
                 {activeIcon && (
                     <div className={`ink-overlay ${showInk ? 'show' : ''}`} style={{ top: activeIcon.top, left: activeIcon.left }}>
                         <img src={images('./ink.png')} alt="잉크" style={{ width: '1200px' }} />

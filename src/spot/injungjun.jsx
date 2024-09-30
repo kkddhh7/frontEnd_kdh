@@ -65,7 +65,6 @@ export default function Injungjun() {
 
   return (
     <div style={{ position: 'relative', overflow: 'hidden', height: '1069px', width: '1710px' }}>
-      
       <BackgroundAnimation background={background} />
       <CaptureComponent handleBackgroundChange={handleBackgroundChange} />
       {/* 배경 */}

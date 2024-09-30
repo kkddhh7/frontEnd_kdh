@@ -27,6 +27,18 @@
     opacity: 1;
 }
 
+.blink {
+    animation: blinkEffect 3s ease-in-out; /* 깜빡이는 애니메이션 */
+    background-color: black; /* 화면이 검은색으로 변경 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 1710px;
+    height: 1069px;
+    z-index: 9999; /* 다른 요소들 위로 올라오게 설정 */
+}
+
+
 @keyframes blinkEffect {
     0% {
         opacity: 1;
@@ -49,15 +61,4 @@
     100% {
         opacity: 1; /* 마지막에 완전히 검은 화면 유지 */
     }
-}
-
-.blink {
-    animation: blinkEffect 3s ease-in-out; /* 깜빡이는 애니메이션 */
-    background-color: black; /* 화면이 검은색으로 변경 */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 1710px;
-    height: 1069px;
-    z-index: 9999; /* 다른 요소들 위로 올라오게 설정 */
 }

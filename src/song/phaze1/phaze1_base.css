@@ -82,3 +82,19 @@
 .disable-interaction {
     pointer-events: none; /* 모든 상호작용을 차단 */
 }
+
+.mountain1_1 {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 3;
+    object-fit: cover;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.visible1_1 {
+    opacity: 1;
+}

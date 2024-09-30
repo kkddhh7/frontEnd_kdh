@@ -101,7 +101,7 @@ export default function Phaze2() {
           if(!animationOn && explainVisible.every(v => v === true) && fogOffset >= 9000) {
             setRightPalaceZoomed(true); // right-palace 확대
             setTimeout(() => {
-              navigate("/third"); // Redirect to another page after zoom
+              navigate("/phaze3"); // Redirect to another page after zoom
             }, 2000);
           }
 

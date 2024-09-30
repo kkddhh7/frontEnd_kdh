@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import "../song/object/Experience.css";
-import "../song/object/door.css";
-import "../song/object/scrollImage.css";
+import "../song/phaze1/phaze1_base.css";
+import "../song/phaze1/phaze1_img.css";
+import "../song/phaze1/phaze1_img2.css";
 
-export default function Test1() {
+export default function Phaze1() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [greenDoor1Open, setDoorsOpen1] = useState(false);
   const [greenDoor2Open, setDoorsOpen2] = useState(false);
@@ -18,19 +18,63 @@ export default function Test1() {
   const [startZoom, setStartZoom] = useState(false); // New state for zoom effect
   const [hugeAppeal, setHugeAppeal] = useState(false); // New state for zoom effect
 
-  const navigate = useNavigate(); // For page navigation
+  const [animationOn, setAnimationOn] = useState(true);
+  const [changeVisible1, setChangeVisible1] = useState(false);
+  const [moveSunMoon, setMoveSunMoon] = useState(0);
+  const [mountainOpcity, setMountainOpacity] = useState(0);
+  
+
+  const navigate = useNavigate(); // For page navigatio
+  
 
   useEffect(() => {
     // 처음 화면이 시작되면 1초 대기 후 first door가 열리도록 함
     setTimeout(() => {
       setFirstDoorsOpen(true);
     }, 1000);
+    setTimeout(() => {
+      setChangeVisible1(true);
+    }, 2500);
 
     const handleScroll = (e) => {
       e.preventDefault();
-      if (disableInteraction) return; // 상호작용 차단
-
       const delta = e.deltaY;
+
+      if(animationOn) {
+        setMoveSunMoon((prev) => {
+          // Sun과 Moon의 위치 변경
+          const newMove = prev + delta * 0.1; // 스크롤에 따라 이동
+          if(newMove <= 0) return 0;
+          const sunPosition = Math.min(newMove, 1261); // Sun의 최대 이동 거리
+          const moonPosition = Math.max(-newMove, -1261); // Moon의 최소 이동 거리
+
+          // Sun과 Moon의 이미지 위치 변경
+          document.querySelector('.sun1').style.transform = `translateX(${sunPosition}px)`;
+          document.querySelector('.moon1').style.transform = `translateX(${moonPosition}px)`;
+
+          return newMove;
+        });
+
+        setMountainOpacity((prev) => {
+          const newOpacity = Math.min(Math.max(prev + delta * 0.0005, 0), 1); // 0과 1 사이로 제한
+          const newMove = prev + delta * 0.1; // 스크롤에 따라 이동
+
+          if(newMove <= 0) return 0;
+          if(newMove >= 1261) return 1261;
+
+          return newOpacity;
+        });
+
+        if (moveSunMoon >= 1261 && mountainOpcity >= 1 && animationOn) {
+          setTimeout(() => {
+            setScrollPosition(3000); // 원하는 위치로 이동
+            setAnimationOn(false);
+          }, 2000);
+        }
+      }
+
+      if (disableInteraction || animationOn) return; // 상호작용 차단
+
       const newPosition = scrollPosition + delta;
 
       // 이전 위치로 돌아가는 것을 방지
@@ -39,8 +83,8 @@ export default function Test1() {
       }
 
        // 스크롤 위치 제한 (최대 6000px)
-       if (newPosition >= 6000) {
-        setScrollPosition(6000); // 최대 스크롤을 6000px로 제한
+       if (newPosition >= 5200) {
+        setScrollPosition(5200); // 최대 스크롤을 6000px로 제한
         return;
       }
 
@@ -67,7 +111,7 @@ export default function Test1() {
     return () => {
       window.removeEventListener("wheel", handleScroll);
     };
-  }, [scrollPosition, greenDoor1Open, greenDoor2Open, adjustView, appealMoving, disableInteraction]);
+  }, [scrollPosition, greenDoor1Open, greenDoor2Open, adjustView, appealMoving, disableInteraction, moveSunMoon, mountainOpcity]);
 
   // 클릭 시 애니메이션과 Appeal Open을 처리
   const handleAppealClick = () => {
@@ -83,7 +127,7 @@ export default function Test1() {
       setTimeout(() => {
         setStartZoom(true); // Trigger zoom effect
         setTimeout(() => {
-          navigate("/second"); // Redirect to another page after zoom
+          navigate("/phaze2"); // Redirect to another page after zoom
         }, 2000); // Wait for the zoom to complete (adjust time as needed)
       }, 2000);
     }, 2000);
@@ -104,32 +148,63 @@ export default function Test1() {
           <section className="wall wall-front" style={{ transform: "translateZ(-0px)" }}>
             <div className="first-doors">
               <img
-                src="images/first_door_left.png"
+                src="images/song/phaze1/first_door1_1.png"
                 alt="Left Door"
                 className={`first-door-left ${firstDoorsOpen ? "open-forward" : ""}`}
               />
               <img
-                src="images/first_door_right.png"
+                src="images/song/phaze1/first_door1_2.png"
                 alt="Right Door"
                 className={`first-door-right ${firstDoorsOpen ? "open-forward" : ""}`}
               />
             </div>
           </section>
 
+          <section className="wall wall-front" style={{ transform: "translateZ(-1px)" }}>
+            <div className="background-image"> 
+              <img src="images/song/phaze1/background1_1.jpg"/>
+            </div>
+            
+            <img src="images/song/phaze1/mountain/mountain1_1.png" 
+                className={`mountain1_1 ${changeVisible1 ? "visible1_1" : ""}`}/>
+            <img src="images/song/phaze1/mountain/sun1.png" 
+                className={`sun1 ${changeVisible1 ? "visible1_1" : ""}`}/>
+            <img src="images/song/phaze1/mountain/moon1.png" 
+                className={`moon1 ${changeVisible1 ? "visible1_1" : ""}`}/>
+            <img src="images/song/phaze1/mountain/tree1_1.png" 
+                className={`tree1_1 ${changeVisible1 ? "visible1_1" : ""}`}/>
+            <img src="images/song/phaze1/mountain/water1_1.png" 
+                className={`water1_1 ${changeVisible1 ? "visible1_1" : ""}`}/>
+            <img src="images/song/phaze1/mountain/water1_2.png" 
+                className={`water1_2 ${changeVisible1 ? "visible1_1" : ""}`}/>
+            
+            <img src="images/song/phaze1/mountain/mountain1_2.png" 
+                style={{ opacity: mountainOpcity }} // mountain1_2의 opacity 조절
+                className={`mountain1_2`}/>
+            <img src="images/song/phaze1/mountain/water1_3.png" 
+                style={{ opacity: mountainOpcity }} // mountain1_2의 opacity 조절
+                className={`water1_3`}/>
+            <img src="images/song/phaze1/mountain/tree1_2.png" 
+                style={{ opacity: mountainOpcity }} // mountain1_2의 opacity 조절
+                className={`tree1_2`}/>
+            
+          </section>
+
+
           {/* 초록색 배경 문 */}
           <section className="wall wall-front" style={{ transform: "translateZ(-3000px)" }}>
             <div className="wall-content">
               <div className="background-image">
-                <img src="images/green/background1.png" alt="Background" />
+                <img src="images/song/phaze1/background1_2.png" alt="Background" />
               </div>
               <div className="doors1">
                 <img
-                  src="images/green/door_left.png"
+                  src="images/song/phaze1/second_door1_1.png"
                   alt="Left Door"
                   className={`door-left ${greenDoor1Open ? "open" : ""}`}
                 />
                 <img
-                  src="images/green/door_right.png"
+                  src="images/song/phaze1/second_door1_2.png"
                   alt="Right Door"
                   className={`door-right ${greenDoor1Open ? "open" : ""}`}
                 />
@@ -137,12 +212,12 @@ export default function Test1() {
 
               <div className="doors2">
                 <img
-                  src="images/green/door_left.png"
+                  src="images/song/phaze1/second_door1_1.png"
                   alt="Left Door"
                   className={`door-left ${greenDoor2Open ? "open" : ""}`}
                 />
                 <img
-                  src="images/green/door_right.png"
+                  src="images/song/phaze1/second_door1_2.png"
                   alt="Right Door"
                   className={`door-right ${greenDoor2Open ? "open" : ""}`}
                 />
@@ -151,20 +226,18 @@ export default function Test1() {
           </section>
 
           {/* Appeal 이미지 애니메이션 */}
-          <section className="wall wall-front" style={{ transform: "translateZ(-5000px)" }}>
+          <section className="wall wall-front" style={{ transform: "translateZ(-4000px)" }}>
             <div className="wall-content">
               <div className="background-image">
-                <img src="images/green/background2.png" alt="Background" />
+                <img src="images/song/phaze1/background1_3.png" alt="Background" />
               </div>
 
-              <div className={`appeal ${appealMoving ? "move-left" : ""}`} onClick={handleAppealClick}>
-                <img src="images/green/appeal.png" 
+                <img src="images/song/phaze1/appeal1.png" 
                 alt="Appeal"
-                className={`appeal-now ${hugeAppeal ? "rotate" : ""}`}/>
-              </div>
-              <div className={`new-appeal ${showAppealOpen ? "enter" : ""}`}>
-                <img src="images/green/appeal_open.png" alt="Appeal Open"/>
-              </div> 
+                className={`appeal-now ${hugeAppeal ? "move-left" : ""}`}
+                onClick={handleAppealClick}/>
+              <img src="images/song/phaze1/appeal1_paper.png" alt="Appeal Open"
+                className={`appeal_paper ${showAppealOpen ? "enter" : ""}`}/>
             </div>
           </section>
 

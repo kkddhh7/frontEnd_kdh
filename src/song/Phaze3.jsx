@@ -107,10 +107,8 @@ export default function Phaze3() {
             }, 5000);
             setTimeout(() => {
                 navigate("/phaze4"); // Redirect to another page after zoom
-            }, 1000);
+            }, 8000);
           }
-
-          
         };
     
         window.addEventListener("wheel", handleScroll, { passive: false });

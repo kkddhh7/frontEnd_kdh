@@ -22,7 +22,7 @@ export default function Phaze3() {
     const navigate = useNavigate(); // For page navigation
 
     useEffect(() => {
-        let scrollTimeout;
+
         setTimeout(() => {
             setBackgroundVisible(true);
         }, 1000);

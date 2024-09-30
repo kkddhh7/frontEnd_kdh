@@ -15,13 +15,23 @@
     overflow: hidden;
   }
   
-.background4 {
+.background4_1 {
   width: 100%;
   height: auto;
   z-index: 1;
   opacity: 0;
   transition: opacity 1.5s ease-out; /* 2초 동안 서서히 선명해짐 */
 }  
+
+.background4_2 {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 6;
+    opacity: 0;
+    transition: opacity 1.0s ease-out; /* 2초 동안 서서히 선명해짐 */
+  }  
 
 .visible4_1 {
     opacity: 1;

@@ -1,0 +1,210 @@
+  .image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1710px; /* 이미지 회전 영역의 넓이 */
+    height: 1069px; /* 이미지 회전 영역의 높이 */
+    margin: 100px auto;
+    perspective: 1200px; /* 3D 효과를 위한 원근감 */
+    opacity: 0;
+    transition: transform 1.2s ease-in-out, opacity 1.2s ease-in-out; /* 애니메이션 속도: 1.2초 */
+    z-index: 12;
+  }
+
+
+.visible7_2 {
+  opacity: 1;
+
+}
+  .image-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    top: 0;
+    align-items: center;
+    transform-style: preserve-3d;
+
+    transition: transform 1.2s ease-in-out; /* 애니메이션 속도: 1.2초 */
+    z-index: 4;
+  }
+  
+  .image {
+    position: absolute;
+    width: 400px; /* 각 이미지의 너비 */
+    height: 588px; /* 각 이미지의 높이 */
+    transform-style: preserve-3d;
+    opacity: 1;
+    transition: transform 1.2s ease-in-out, opacity 1.2s ease-in-out; /* 애니메이션 속도: 1.2초 */
+    transform-origin: center center;
+
+}
+  
+  .next {
+    opacity: 1;
+    pointer-events: none; /* 클릭할 수 없게 */
+  }
+  
+  .image img {
+    width: 100%; /* 이미지가 부모의 너비에 맞춰짐 */
+    height: 100%; /* 이미지가 부모의 높이에 맞춰짐 */
+    object-fit: contain; /* 원본 비율 유지하며 이미지 크기 조정 */
+  }
+
+  .rotate {
+    transition: transform 1.2s ease-in-out;
+  }
+  
+  .center-image {
+    transform: scale(1.2); /* 중앙 이미지 크기를 1.3배로 키움 */  
+
+    pointer-events: auto; /* 중앙 이미지만 클릭 가능 */
+    z-index: 15;
+  }
+
+  .center-image:hover {
+    transform: scale(3); /* 중앙 이미지 크기를 1.3배로 키움 */ 
+    cursor: pointer; 
+  }
+  
+  /* 이미지의 회전 각도 및 간격 조절 */
+  .image:nth-child(1) { 
+    transform: rotateY(0deg) translateZ(500px) rotateZ(0deg); /* rotateZ로 이미지 자체의 회전 추가 */ 
+  }
+  .image:nth-child(2) { 
+    transform: rotateY(72deg) translateZ(500px) rotateZ(15deg); /* Z축 회전을 추가해 이미지 자체를 회전시킴 */
+  }
+  .image:nth-child(3) { 
+    transform: rotateY(144deg) translateZ(500px) rotateZ(30deg); 
+  }
+  .image:nth-child(4) { 
+    transform: rotateY(216deg) translateZ(500px) rotateZ(-15deg); 
+  }
+  .image:nth-child(5) { 
+    transform: rotateY(288deg) translateZ(500px) rotateZ(-30deg); 
+  }
+  
+  
+  /* 버튼 커스터마이징 */
+  .custom-button7_1, .custom-button7_2{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    background-color: transparent; /* 배경색을 투명으로 설정 */
+    border: none;
+    cursor: pointer;
+    z-index: 5;
+  }
+
+  .custom-button7_1 {
+    left: 0;
+  }
+
+  .custom-button7_2 {
+    right: 0;
+  }
+
+  .cloud1_1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+    width: 30%;
+    height: auto;
+    z-index: 4;
+    animation: cloudMove1 13s ease-in-out infinite; /* 10초 동안 양쪽으로 움직이고 반복 */
+    }
+
+  .cloud1_2 {
+    position: absolute;
+    top: 100px;
+    right: 300px;
+    opacity: 0.4;
+    width: 30%;
+    height: auto;
+    z-index: 2;
+    animation: cloudMove2 8s ease-in-out infinite; /* 10초 동안 양쪽으로 움직이고 반복 */
+  }
+
+  .cloud1_3 {
+    position: absolute;
+    bottom: 100px;
+    left: -250px;
+    opacity: 0.4;
+    width: 50%;
+    height: auto;
+    z-index: 4;
+    animation: cloudMove3 10s ease-in-out infinite; /* 10초 동안 양쪽으로 움직이고 반복 */
+  }
+
+  .cloud1_4 {
+    position: absolute;
+    bottom: -100px;
+    right: -200px;
+    opacity: 0.8;
+    width: 60%;
+    height: auto;
+    z-index: 4;
+    animation: cloudMove4 15s ease-in-out infinite; /* 10초 동안 양쪽으로 움직이고 반복 */
+  }
+
+  .cloud1_5 {
+    position: absolute;
+    bottom: -400px;
+    left: -200px;
+    opacity: 0.95;
+    width: 70%;
+    height: auto;
+    z-index: 4;
+    animation: cloudMove2 15s ease-in-out infinite; /* 10초 동안 양쪽으로 움직이고 반복 */
+  }
+  
+  @keyframes cloudMove1 {
+    0% {
+      transform: translateX(20%); /* 왼쪽으로 완전히 벗어남 */
+    }
+    50% {
+      transform: translateX(0%); /* 원래 위치로 이동 */
+    }
+    100% {
+      transform: translateX(20%); /* 오른쪽으로 완전히 벗어남 */
+    }
+  }
+  
+  @keyframes cloudMove2 {
+    0% {
+      transform: translateX(0%); /* 왼쪽으로 완전히 벗어남 */
+    }
+    50% {
+      transform: translateX(10%); /* 원래 위치로 이동 */
+    }
+    100% {
+      transform: translateX(0%); /* 오른쪽으로 완전히 벗어남 */
+    }
+  }
+  
+  @keyframes cloudMove3 {
+    0% {
+      transform: translateX(0%); /* 왼쪽으로 완전히 벗어남 */
+    }
+    50% {
+      transform: translateX(20%); /* 원래 위치로 이동 */
+    }
+    100% {
+      transform: translateX(0%); /* 오른쪽으로 완전히 벗어남 */
+    }
+  }
+
+  @keyframes cloudMove4 {
+    0% {
+      transform: translateX(0%); /* 왼쪽으로 완전히 벗어남 */
+    }
+    50% {
+      transform: translateX(20%); /* 원래 위치로 이동 */
+    }
+    100% {
+      transform: translateX(0%); /* 오른쪽으로 완전히 벗어남 */
+    }
+  }

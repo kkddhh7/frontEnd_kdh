@@ -1,0 +1,122 @@
+
+.explain6_1, .explain6_2, .explain6_3, .explain6_4 {
+    position: absolute;
+    opacity: 0;
+    z-index: 3;
+    animation-fill-mode: forwards; /* 애니메이션 후 상태를 유지 */
+    transition: opacity 1s ease-in-out;
+}
+
+.explain6_1 {
+    bottom: 0px;
+    left: 0px;
+    transition: opacity 1s ease-in-out;
+}
+  
+.explain6_2 {
+    bottom: 280px;
+    left: 250px;
+    transition: opacity 1s ease-in-out;
+
+}
+  
+.explain6_3 {
+    bottom: 175px;
+    left: 250px;
+}
+
+.explain6_4 {
+    bottom: 70px;
+    left: 250px;
+}
+
+.explain6_5 {
+    position: absolute;
+    opacity: 0;
+    z-index: 5;
+    bottom: 250px;
+    left: 250px;
+    transition: opacity 1s ease-in-out;
+}
+
+.explain6_6 {
+    position: absolute;
+    opacity: 0;
+    z-index: 5;
+    bottom: 100px;
+    left: 250px;
+    transition: opacity 1s ease-in-out;
+}
+
+
+.slideIn6_1 {
+    animation: slidein6_1 3s ease-in-out forwards; /* slidein 애니메이션 적용 */
+}
+
+@keyframes slidein6_1 {
+    from {
+      opacity: 0;
+      clip-path: inset(0 100% 0 0);
+    }
+  
+    to {
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+.slideIn6_2 {
+    animation: slidein6_2 3s ease-in-out forwards; /* slidein 애니메이션 적용 */
+}
+
+@keyframes slidein6_2 {
+    from {
+      opacity: 0;
+      clip-path: inset(0 0 100% 0);
+    }
+  
+    to {
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+.hidden {
+    animation: slideout 3s ease-in-out forwards; /* slidein 애니메이션 적용 */
+}
+   
+  /* 두루마리가 말려올라가는 효과 */
+  @keyframes slideout {
+    from {
+      opacity: 1;
+      clip-path: inset(0 0 0 0); /* 펼쳐진 상태 */
+    }
+    to {
+      opacity: 0;
+      clip-path: inset(0 100% 0 0); /* 상단에서 다시 접힘 */
+    }
+  }
+
+.hidden2 {
+    animation: slideout2 3s ease-in-out forwards; /* slidein 애니메이션 적용 */
+}
+
+/* 두루마리가 말려올라가는 효과 */
+@keyframes slideout2 {
+    from {
+      opacity: 1;
+      clip-path: inset(0 0 0 0); /* 펼쳐진 상태 */
+    }
+    to {
+      opacity: 0;
+      clip-path: inset(0 0 100% 0); /* 상단에서 다시 접힘 */
+    }
+  }
+  .visible6 {
+    opacity: 1;
+  }
+  
+  .hidden6 {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }

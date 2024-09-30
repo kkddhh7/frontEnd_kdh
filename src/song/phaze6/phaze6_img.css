@@ -1,0 +1,143 @@
+.palace6_1 {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+}
+
+.palace6_2 {
+    position: absolute;
+    z-index: 3;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    transition: opacity 2s ease-in-out;
+  }
+.palace6_2.hidden6 {
+  opacity: 0;
+}
+
+.palace6_3 {
+  position: absolute;
+  z-index: 4;
+  opacity: 0;
+  top: 0;
+  left: 0;
+}
+
+.fog6_1, .fog6_2 {
+  position: absolute;
+  z-index: 6;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.fog6_1 {
+  left: -2800px;
+  bottom: -10px;
+}
+
+.fog6_2 {
+  right: -2800px;
+  bottom: 0px;
+}
+
+.cursor6_1, .cursor6_2, .cursor6_3, .cursor6_4, .cursor6_5 {
+    position: absolute;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.cursor6_1 {
+    width: 10%;
+    height: auto;
+    top: 300px;
+    right: 200px;
+    transition: transform 1s ease-in-out;
+}
+
+.cursor6_1:hover {
+    transform: scale(1.7);
+    transition: transform 1s ease-in-out;
+}
+
+
+.cursor6_2 {
+    width: 15%;
+    height: auto;
+    top: 310px;
+    right: 380px;
+    transition: transform 1s ease-in-out;
+}
+
+.cursor6_2:hover {
+    transform: scale(1.7);
+    transition: transform 1s ease-in-out;
+}
+
+.cursor6_3 {
+    width: 10%;
+    height: auto;
+    top: 290px;
+    right: 610px;
+    transition: transform 1s ease-in-out;
+}
+
+.cursor6_3:hover {
+    transform: scale(1.7);
+    transition: transform 1s ease-in-out;
+}
+
+.cursor6_4 {
+    width: 11%;
+    height: auto;
+    top: 330px;
+    right: 810px;
+    transition: transform 1s ease-in-out;
+}
+
+.cursor6_4:hover {
+    transform: scale(1.7);
+    transition: transform 1s ease-in-out;
+}
+
+.cursor6_5 {
+    width: 13%;
+    height: auto;
+    top: 150px;
+    right: 990px;
+    transition: transform 1s ease-in-out;
+}
+
+.cursor6_5:hover {
+    transform: scale(1.7);
+    transition: transform 1s ease-in-out;
+}
+
+.visible6 {
+  opacity: 1;
+}
+
+.hidden6 {
+  opacity: 0;
+}
+
+.move_bottom6 {
+  opacity: 0.4;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  animation: move_down 2s ease-in-out;
+  animation-fill-mode: forwards; /* 애니메이션 후 상태를 유지 */
+
+}
+
+@keyframes move_down {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.3;
+    bottom: -500px;
+    z-index: 4;
+  }
+}

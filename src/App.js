@@ -12,6 +12,11 @@ import Juniper from './spot/juniper';
 import Yunghwadang from './spot/yunghwadang';
 import Changhoji from './spot/changhoji';
 import Loading from './loading/loading1';
+import ScrollDownPage from "./Pages_kdh/ScrollDownPage";
+import Quiz1 from "./Pages_kdh/Quiz1";
+import Quiz2 from "./Pages_kdh/Quiz2";
+import Quiz3 from "./Pages_kdh/Quiz3";
+
 
 
 function App() {
@@ -31,6 +36,10 @@ function App() {
           <Route path='/yunghwadang' element={<Yunghwadang/>} />
           <Route path='/juniper' element={<Juniper/>} />
           <Route path='/nakseonjae/changhoji' element={<Changhoji/>} />
+          <Route path='/scrolldownpage' element={<ScrollDownPage />} />
+          <Route path='/quiz1' element={<Quiz1 />} />
+          <Route path='/quiz2' element={<Quiz2 />} />
+          <Route path='/quiz3' element={<Quiz3 />} />
 
         </Routes>   
       </Router>

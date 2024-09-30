@@ -1,0 +1,1703 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.App {
+    width: 1710px;
+    height: 1069px;
+    overflow-y: scroll;
+    scroll-behavior: auto;
+    scroll-snap-type: y mandatory;
+    /* 스크롤할 때 섹션이 뷰포트에 맞춰지도록 설정 */
+}
+
+.section {
+    position: relative;
+    width: 1710px;
+    height: 1069px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    scroll-snap-align: start;
+    /* 섹션의 시작 부분에서 스크롤이 멈추도록 설정 */
+    scroll-snap-stop: always;
+    overflow-x: hidden;
+}
+
+.visible {
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+}
+
+.fade-in {
+    opacity: 0;
+}
+
+
+
+/* ---------info--------------------------------------- */
+/* ---------info--------------------------------------- */
+/* ---------info--------------------------------------- */
+
+.info {
+    background-image: url('/public/info-background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.info-event1 {
+    background-image: url('/public/info-event1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.event1-1 {
+    position: absolute;
+    left: 883px;
+    top: 168px;
+    width: 730px;
+}
+
+.event1-2 {
+    position: absolute;
+    left: 83px;
+    top: 451px;
+    width: 1284px;
+}
+
+.event1-3 {
+    position: absolute;
+    left: 665px;
+    top: 751px;
+    width: 946px;
+}
+
+.event1-1, .event1-2, .event1-3 {
+    opacity: 0;
+    transform: translateY(20px); /* 이미지를 약간 아래쪽으로 이동시킵니다. */
+    transition: opacity 2s ease, transform 2s ease;
+}
+
+.event1-1.visible, .event1-2.visible, .event1-3.visible {
+    opacity: 1;
+    transform: translateY(0); /* 이미지를 원래 위치로 이동시킵니다. */
+}
+
+.info-event2 {
+    background-image: url('/public/info-event2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.event2-1 {
+    position: absolute;
+    left: 443px;
+    top: 502px;
+    width: 823px;
+}
+
+.event2-1 {
+    opacity: 0;
+    transform: translateY(20px); /* 이미지를 약간 아래쪽으로 이동시킵니다. */
+    transition: opacity 3s ease, transform 3s ease;
+}
+
+.event2-1.visible {
+    opacity: 1;
+    transform: translateY(0); /* 이미지를 원래 위치로 이동시킵니다. */
+}
+
+.info-event3 {
+    background-image: url('/public/info-event3.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/* 반짝이는 애니메이션 효과 */
+@keyframes shimmer {
+    0% {
+        background-position: -100%;
+    }
+    100% {
+        background-position: 100%;
+    }
+}
+
+.logo-v {
+    position: absolute;
+    top: 285px;
+    left: 0px;
+    width: 392px;
+    height: 499px;
+}
+
+.logo-v {
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.logo-v.visible {
+    opacity: 1;
+    position: relative;
+    background: linear-gradient(110deg, rgba(255,255,255,0.1) 8%, rgba(255,255,255,0.5) 18%, rgba(255,255,255,0.1) 33%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 2s infinite ease-in-out;
+}
+
+
+
+/* ---------event-info--------------------------------------- */
+/* ---------event-info--------------------------------------- */
+/* ---------event-info--------------------------------------- */
+
+
+
+#event-info {
+    background-image: url('/public/event-background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.event-nav {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 114px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: transparent;
+    z-index: 10;
+    color: white;
+}
+
+.logo-h {
+    position: absolute;
+    left: 58px;
+    width: 177px;
+    height: 114px;
+}
+
+.nbutton-container {
+    position: absolute;
+    left: 1172px;
+    top: 55px;
+    width: 455px;
+    height: 23px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link-with-check {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.event-check {
+    position: absolute;
+    left: 20px;
+    /* 행사정보 링크 뒤로 약간 이동 */
+}
+
+.event-nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: normal;
+    transition: color 0.3s;
+    height: 100%;
+    font-size: 18px;
+    margin-left: 30px;
+    /* 행사정보 링크와 체크 이미지 간의 거리 조정 */
+}
+
+
+.event-title {
+    position: absolute;
+    top: 226px;
+    left: 685px;
+    width: 373px;
+    height: 106px;
+}
+
+.event-content {
+    position: relative;
+    top: 0%;
+    height: 100%;
+    background-color: transparent;
+    border-radius: 50px;
+}
+
+.event-items-container {
+    position: relative;
+    top: 400px;
+    display: flex;
+    width: 100vw; /* Adjusts to screen width */
+    height: 580px;
+    animation: infiniteScroll 120s linear infinite; /* Automatically scroll items infinitely */
+}
+
+.event-items-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera에서 스크롤바 숨기기 */
+}
+
+.event-item {
+    position: relative;
+    width: 354px; /* Item width */
+    height: 424px;
+    margin-right: 100px;
+    background-color: white;
+    border-radius: 15px;
+    flex-shrink: 0; /* Prevents items from shrinking */
+    transition: transform 0.5s linear;
+}
+
+.event-item:nth-child(even) {
+    margin-top: 139px;
+    /* 홀수 번째 아이템에 위쪽 여백을 추가 */
+}
+
+.event-item:nth-child(odd) {
+    margin-top: 0;
+    /* 짝수 번째 아이템은 원래 위치에 유지 */
+}
+
+@keyframes infiniteScroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-300%);
+    }
+}
+
+/* Pseudo-element to create a seamless loop */
+.event-items-container:before {
+    content: '';
+    position: absolute;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+}
+
+.event-item img {
+    position: relative;
+    left: -5px;
+    width: 364px;
+    height: 380px;
+    object-fit: cover;
+    /* 이미지가 박스를 채우도록 설정 */
+    border-radius: 15px;
+    /* 이미지를 둥글게 */
+}
+
+.event-name {
+    display: inline-flex;
+    /* 요소들을 가로로 배치 */
+    position: absolute;
+    left: 15px;
+    top: 390px;
+    gap: 10px;
+    /* 요소 간의 간격 조절 */
+    align-items: center;
+    /* 요소를 수직 가운데 정렬 */
+    font-size: 15px;
+    /* 폰트 크기 조절 */
+    font: bold;
+}
+
+.event-date {
+    display: inline-flex;
+    /* 요소들을 가로로 배치 */
+    position: absolute;
+    left: 150px;
+    top: 393px;
+    gap: 10px;
+    /* 요소 간의 간격 조절 */
+    align-items: center;
+    /* 요소를 수직 가운데 정렬 */
+    font-size: 10px;
+    /* 폰트 크기 조절 */
+    color: gray;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* 검은색 반투명 오버레이 */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    /* 기본적으로 보이지 않도록 설정 */
+    transition: opacity 0.3s ease;
+    /* 부드러운 트랜지션 효과 */
+    border-radius: 15px;
+}
+
+.event-item:hover .overlay {
+    opacity: 1;
+    /* 호버 시 오버레이가 나타나도록 설정 */
+}
+
+.text {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+
+
+/* ---------palace-tour---------------------------------------------- */
+/* ---------palace-tour---------------------------------------------- */
+/* ---------palace-tour---------------------------------------------- */
+
+
+
+#palace-tour {
+    background-image: url('/public/tour-background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tour-nav {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 114px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: transparent;
+    z-index: 10;
+    color: white;
+}
+
+.logo-h {
+    position: absolute;
+    left: 58px;
+    width: 106px;
+    height: 68px;
+}
+
+.nbutton-container {
+    position: absolute;
+    left: 1172px;
+    top: 55px;
+    width: 455px;
+    height: 23px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link-with-check {
+    position: relative;
+    /* z-index 사용을 위해 relative로 설정 */
+    display: flex;
+    align-items: center;
+}
+
+.now-link {
+    position: relative;
+    /* z-index 사용을 위해 relative로 설정 */
+    z-index: 1;
+    /* 텍스트를 이미지보다 앞에 위치시킴 */
+}
+
+.tour-check {
+    position: absolute;
+    left: 30px;
+    /* 행사정보 링크 뒤로 약간 이동 */
+    z-index: 0;
+}
+
+.tour-nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: normal;
+    transition: color 0.3s;
+    height: 100%;
+    font-size: 18px;
+    margin-left: 30px;
+    /* 행사정보 링크와 체크 이미지 간의 거리 조정 */
+}
+
+.tour-title {
+    position: absolute;
+    left: 713px;
+    top: 424px;
+    width: 322px;
+}
+
+.tour-title2 {
+    position: absolute;
+    left: 697px;
+    top: 509px;
+    width: 354px;
+    height: 37px;
+    color: white;
+}
+
+.tour-title3 {
+    position: absolute;
+    left: 700px;
+    top: 541px;
+    width: 354px;
+    height: 37px;
+    color: white;
+}
+
+
+
+/* ---------solo-tour--------------------------------------- */
+/* ---------solo-tour--------------------------------------- */
+/* ---------solo-tour--------------------------------------- */
+
+
+
+#solo-tour {
+    background-image: url('/public/solotour-background.png');
+    /* 배경 이미지 경로 */
+    background-size: cover;
+    /* 이미지가 요소를 덮도록 설정 */
+    background-position: center;
+    /* 이미지가 가운데 위치하도록 설정 */
+    background-repeat: no-repeat;
+    /* 이미지 반복을 방지 */
+}
+
+.solo-title {
+    position: absolute;
+    left: 475px;
+    top: 385px;
+    width: 765px;
+    height: 235px;
+}
+
+.solo-ridiculous {
+    position: absolute;
+    left: 797px;
+    top: 606px;
+    width: 158px;
+}
+
+
+
+/* ---------solo-dtail------------------------ */
+/* ---------solo-dtail------------------------ */
+/* ---------solo-dtail------------------------ */
+
+
+
+#solo-detail {
+    background-image: url('/public/solodetail-background.png');
+    /* 배경 이미지 경로 */
+    background-size: cover;
+    /* 이미지가 요소를 덮도록 설정 */
+    background-position: center;
+    /* 이미지가 가운데 위치하도록 설정 */
+    background-repeat: no-repeat;
+    /* 이미지 반복을 방지 */
+}
+
+.solo-appear {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 1710px;
+    height: 1069px;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dhm {
+    position: absolute;
+    left: 890px;
+    top: 595px;
+    width: 205.95px;
+}
+
+.ddhm {
+    position: absolute;
+    left: 971px;
+    top: 771px;
+    width: 18.05px;
+}
+
+.dhm.appear,
+.ddhm.appear {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0s;
+}
+
+.ijj {
+    position: absolute;
+    left: 679px;
+    top: 462px;
+    width: 174.72px;
+}
+
+.dijj {
+    position: absolute;
+    left: 680px;
+    top: 607px;
+    width: 17.82px;
+}
+
+.ijj.appear,
+.dijj.appear {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+}
+
+.pus {
+    position: absolute;
+    left: 534px;
+    top: 249px;
+    width: 160.27px;
+}
+
+.dpus {
+    position: absolute;
+    left: 595px;
+    top: 394px;
+    width: 19.47px;
+}
+
+.pus.appear,
+.dpus.appear {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1s;
+}
+
+.djj {
+    position: absolute;
+    left: 870px;
+    top: 284px;
+    width: 174.67px;
+}
+
+.ddjj {
+    position: absolute;
+    left: 920px;
+    top: 434px;
+    width: 18.62px;
+}
+
+.djj.appear,
+.ddjj.appear {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1.5s;
+}
+
+.nsj {
+    position: absolute;
+    left: 1028px;
+    top: 453px;
+    width: 249.7px;
+}
+
+.dnsj {
+    position: absolute;
+    left: 1093.7px;
+    top: 674.1px;
+    width: 18.05px;
+}
+
+.nsj.appear,
+.dnsj.appear {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 2s;
+}
+
+.s-course1 {
+    position: absolute;
+    left: 693px;
+    top: 622.5px;
+    width: 282px;
+}
+
+.s-course2 {
+    position: absolute;
+    left: 604px;
+    top: 410px;
+    width: 81px;
+}
+
+.s-course3 {
+    position: absolute;
+    left: 609.5px;
+    top: 400px;
+    width: 317.5px;
+}
+
+.s-course4 {
+    position: absolute;
+    left: 935.5px;
+    top: 445px;
+    width: 169px;
+}
+
+.bdhm {
+    position: absolute;
+    left: 100px;
+    top: 208px;
+    width: 191.22px;
+}
+
+.solo-line1 {
+    position: absolute;
+    left: 198px;
+    top: 285px;
+}
+
+.bijj {
+    position: absolute;
+    left: 100px;
+    top: 351px;
+    width: 191.22px;
+}
+
+.solo-line2 {
+    position: absolute;
+    left: 198px;
+    top: 428px;
+}
+
+.bpus {
+    position: absolute;
+    left: 100px;
+    top: 494px;
+    width: 191.22px;
+}
+
+.solo-line3 {
+    position: absolute;
+    left: 198px;
+    top: 574px;
+}
+
+.bdjj {
+    position: absolute;
+    left: 100px;
+    top: 637px;
+    width: 191.22px;
+}
+
+.solo-line4 {
+    position: absolute;
+    left: 198px;
+    top: 715px;
+}
+
+.bnsj {
+    position: absolute;
+    left: 100px;
+    top: 780px;
+    width: 191.22px;
+}
+
+.solo-buttons {
+    position: relative;
+    left: 650px;
+    top: 117px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 수평 정렬 */
+    gap: 26px;
+}
+
+.solo-buttons img {
+    opacity: 0;
+    transform: translateY(200px); /* 처음에 100px 아래에 위치 */
+    transition: opacity 3s ease-out, transform 3s ease-out;
+}
+
+.solo-buttons.visible img {
+    opacity: 1;
+    transform: translateY(0); /* 원래 위치로 슬라이드 */
+}
+
+/* .solo-button1 {
+    position: absolute;
+    left: 1392px;
+    top: 117px;
+    width: 255.47px;
+}
+
+.solo-button2 {
+    position: absolute;
+    left: 1392px;
+    top: 464px;
+    width: 255px;
+}
+
+.solo-button3 {
+    position: absolute;
+    left: 1392px;
+    top: 822px;
+    width: 255px;
+} */
+
+
+
+/* ---------couple-tour------------------------ */
+/* ---------couple-tour------------------------ */
+/* ---------couple-tour------------------------ */
+
+
+
+#couple-tour {
+    background-image: url('/public/coupletour-background.png');
+    /* 배경 이미지 경로 */
+    background-size: cover;
+    /* 이미지가 요소를 덮도록 설정 */
+    background-position: center;
+    /* 이미지가 가운데 위치하도록 설정 */
+    background-repeat: no-repeat;
+    /* 이미지 반복을 방지 */
+}
+
+.couple-title {
+    position: absolute;
+    left: 406px;
+    top: 426px;
+    width: 898px;
+}
+
+.couple-ridiculous1 {
+    position: absolute;
+    left: 697px;
+    top: 619px;
+    width: 158px;
+}
+
+.couple-ridiculous2 {
+    position: absolute;
+    left: 855px;
+    top: 619px;
+    width: 158px;
+}
+
+
+
+/* ---------couple-dtail------------------------ */
+/* ---------couple-dtail------------------------ */
+/* ---------couple-dtail------------------------ */
+
+
+
+#couple-detail {
+    background-image: url('/public/coupledetail-background.png');
+    /* 배경 이미지 경로 */
+    background-size: cover;
+    /* 이미지가 요소를 덮도록 설정 */
+    background-position: center;
+    /* 이미지가 가운데 위치하도록 설정 */
+    background-repeat: no-repeat;
+    /* 이미지 반복을 방지 */
+}
+
+.c-ijj {
+    position: absolute;
+    left: 791px;
+    top: 566px;
+    width: 174.72px;
+}
+
+.c-dijj {
+    position: absolute;
+    left: 840px;
+    top: 735px;
+    width: 18px;
+}
+
+.c-hnm {
+    position: absolute;
+    left: 606px;
+    top: 439px;
+    width: 166.95px;
+}
+
+.c-dhnm {
+    position: absolute;
+    left: 597px;
+    top: 566px;
+    width: 17.82px;
+}
+
+.c-byj {
+    position: absolute;
+    left: 674px;
+    top: 260px;
+    width: 185.5px;
+}
+
+.c-dbyj {
+    position: absolute;
+    left: 754px;
+    top: 404px;
+    width: 19.47px;
+}
+
+.c-yhd {
+    position: absolute;
+    left: 878px;
+    top: 239px;
+    width: 158px;
+}
+
+.c-dyhd {
+    position: absolute;
+    left: 932px;
+    top: 366px;
+    width: 18.62px;
+}
+
+.c-nsj {
+    position: absolute;
+    left: 1022px;
+    top: 477px;
+    width: 249.7px;
+}
+
+.c-dnsj {
+    position: absolute;
+    left: 1052.7px;
+    top: 684.1px;
+    width: 18.05px;
+}
+
+.c-course1 {
+    position: absolute;
+    left: 608px;
+    top: 577px;
+    width: 238px;
+}
+
+.c-course2 {
+    position: absolute;
+    left: 610px;
+    top: 414px;
+    width: 151px;
+}
+
+.c-course3 {
+    position: absolute;
+    left: 769px;
+    top: 381px;
+    width: 164px;
+}
+
+.c-course4 {
+    position: absolute;
+    left: 940px;
+    top: 378px;
+    width: 120px;
+}
+
+.c-bijj {
+    position: absolute;
+    left: 100px;
+    top: 208px;
+    width: 191.22px;
+}
+
+.c-line1 {
+    position: absolute;
+    left: 198px;
+    top: 285px;
+}
+
+.c-bhnm {
+    position: absolute;
+    left: 100px;
+    top: 351px;
+    width: 191.22px;
+}
+
+.c-line2 {
+    position: absolute;
+    left: 198px;
+    top: 428px;
+}
+
+.c-bbyj {
+    position: absolute;
+    left: 100px;
+    top: 494px;
+    width: 191.22px;
+}
+
+.c-line3 {
+    position: absolute;
+    left: 198px;
+    top: 574px;
+}
+
+.c-byhd {
+    position: absolute;
+    left: 100px;
+    top: 637px;
+    width: 191.22px;
+}
+
+.c-line4 {
+    position: absolute;
+    left: 198px;
+    top: 715px;
+}
+
+.c-bnsj {
+    position: absolute;
+    left: 100px;
+    top: 780px;
+    width: 191.22px;
+}
+
+.c-buttons {
+    position: relative;
+    left: 650px;
+    top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 수평 정렬 */
+    gap: 26px;
+}
+
+.c-buttons img {
+    opacity: 0;
+    transform: translateY(200px); /* 처음에 100px 아래에 위치 */
+    transition: opacity 3s ease-out, transform 3s ease-out;
+}
+
+.c-buttons.visible img {
+    opacity: 1;
+    transform: translateY(0); /* 원래 위치로 슬라이드 */
+}
+
+/* .c-button1 {
+    position: absolute;
+    left: 1374px;
+    top: 63px;
+    width: 255px;
+}
+
+.c-button2 {
+    position: absolute;
+    left: 1374.4px;
+    top: 409px;
+    width: 255px;
+}
+
+.c-button3 {
+    position: absolute;
+    left: 1375.4px;
+    top: 767px;
+    width: 255px;
+} */
+
+
+
+/* ---------together-tour------------------------ */
+/* ---------together-tour------------------------ */
+/* ---------together-tour------------------------ */
+
+
+
+#together-tour {
+    background-image: url('/public/togethertour-background.png');
+    /* 배경 이미지 경로 */
+    background-size: cover;
+    /* 이미지가 요소를 덮도록 설정 */
+    background-position: center;
+    /* 이미지가 가운데 위치하도록 설정 */
+    background-repeat: no-repeat;
+    /* 이미지 반복을 방지 */
+}
+
+.together-title {
+    position: absolute;
+    left: 380px;
+    top: 385px;
+    width: 992px;
+}
+
+.together-ridiculous1 {
+    position: absolute;
+    left: 639px;
+    top: 606px;
+    width: 158px;
+}
+
+.together-ridiculous2 {
+    position: absolute;
+    left: 797px;
+    top: 606px;
+    width: 158px;
+}
+
+.together-ridiculous3 {
+    position: absolute;
+    left: 943px;
+    top: 606px;
+    width: 158px;
+}
+
+
+/* ---------together-dtail------------------------ */
+/* ---------together-dtail------------------------ */
+/* ---------together-dtail------------------------ */
+
+
+
+#together-detail {
+    background-image: url('/public/togetherdetail-background.png');
+    /* 배경 이미지 경로 */
+    background-size: cover;
+    /* 이미지가 요소를 덮도록 설정 */
+    background-position: center;
+    /* 이미지가 가운데 위치하도록 설정 */
+    background-repeat: no-repeat;
+    /* 이미지 반복을 방지 */
+}
+
+.t-dhm {
+    position: absolute;
+    left: 901px;
+    top: 661px;
+    width: 186px;
+}
+
+.t-ddhm {
+    position: absolute;
+    left: 940px;
+    top: 823px;
+    width: 18.05px;
+}
+
+.t-ijj {
+    position: absolute;
+    left: 765px;
+    top: 518px;
+    width: 174.72px;
+}
+
+.t-dijj {
+    position: absolute;
+    left: 760px;
+    top: 661px;
+    width: 17.82px;
+}
+
+.t-gjk {
+    position: absolute;
+    left: 552px;
+    top: 235px;
+    width: 185px;
+}
+
+.t-dgjk {
+    position: absolute;
+    left: 626px;
+    top: 372px;
+    width: 19.47px;
+}
+
+.t-byj {
+    position: absolute;
+    left: 726px;
+    top: 277px;
+    width: 185.5px;
+}
+
+.t-dbyj {
+    position: absolute;
+    left: 800px;
+    top: 435px;
+    width: 18.62px;
+}
+
+.t-nsj {
+    position: absolute;
+    left: 1022px;
+    top: 435px;
+    width: 249.7px;
+}
+
+.t-dnsj {
+    position: absolute;
+    left: 1052.7px;
+    top: 642.1px;
+    width: 18.05px;
+}
+
+.t-course1 {
+    position: absolute;
+    left: 770px;
+    top: 670px;
+    width: 178px;
+}
+
+.t-course2 {
+    position: absolute;
+    left: 639px;
+    top: 386px;
+    width: 127px;
+}
+
+.t-course3 {
+    position: absolute;
+    left: 642px;
+    top: 383px;
+    width: 164px;
+}
+
+.t-course4 {
+    position: absolute;
+    left: 814px;
+    top: 446px;
+    width: 246px;
+}
+
+.t-bdhm {
+    position: absolute;
+    left: 100px;
+    top: 208px;
+    width: 191.22px;
+}
+
+.t-line1 {
+    position: absolute;
+    left: 198px;
+    top: 285px;
+}
+
+.t-bijj {
+    position: absolute;
+    left: 100px;
+    top: 351px;
+    width: 191.22px;
+}
+
+.t-line2 {
+    position: absolute;
+    left: 198px;
+    top: 428px;
+}
+
+.t-bgjk {
+    position: absolute;
+    left: 100px;
+    top: 494px;
+    width: 191.22px;
+}
+
+.t-line3 {
+    position: absolute;
+    left: 198px;
+    top: 574px;
+}
+
+.t-bbyj {
+    position: absolute;
+    left: 100px;
+    top: 637px;
+    width: 191.22px;
+}
+
+.t-line4 {
+    position: absolute;
+    left: 198px;
+    top: 715px;
+}
+
+.t-bnsj {
+    position: absolute;
+    left: 100px;
+    top: 780px;
+    width: 191.22px;
+}
+
+.t-buttons {
+    position: relative;
+    left: 650px;
+    top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 수평 정렬 */
+    gap: 26px;
+}
+
+.t-buttons img {
+    opacity: 0;
+    transform: translateY(200px); /* 처음에 100px 아래에 위치 */
+    transition: opacity 3s ease-out, transform 3s ease-out;
+}
+
+.t-buttons.visible img {
+    opacity: 1;
+    transform: translateY(0); /* 원래 위치로 슬라이드 */
+}
+
+/* .t-button1 {
+    position: absolute;
+    left: 1374px;
+    top: 63px;
+    width: 255px;
+}
+
+.t-button2 {
+    position: absolute;
+    left: 1374.4px;
+    top: 409px;
+    width: 255px;
+}
+
+.t-button3 {
+    position: absolute;
+    left: 1375.4px;
+    top: 767px;
+    width: 255px;
+} */
+
+
+
+/* ---------quiz--------------------------------- */
+/* ---------quiz--------------------------------- */
+/* ---------quiz--------------------------------- */
+
+
+
+#quiz {
+    background-image: url('/public/quiz-background.png');
+    /* 배경 이미지 경로 */
+    background-size: cover;
+    /* 이미지가 요소를 덮도록 설정 */
+    background-position: center;
+    /* 이미지가 가운데 위치하도록 설정 */
+    background-repeat: no-repeat;
+    /* 이미지 반복을 방지 */}
+
+.quiz-nav {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 114px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: transparent;
+    z-index: 10;
+    color: white;
+}
+
+.logo-h {
+    position: absolute;
+    left: 58px;
+    width: 177px;
+    height: 114px;
+}
+
+.nbutton-container {
+    position: absolute;
+    left: 1172px;
+    top: 55px;
+    width: 455px;
+    height: 23px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link-with-check {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.quiz-check {
+    position: absolute;
+    left: 20px;
+    /* 행사정보 링크 뒤로 약간 이동 */
+}
+
+.quiz-nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: normal;
+    transition: color 0.3s;
+    height: 100%;
+    font-size: 18px;
+    margin-left: 30px;
+    /* 행사정보 링크와 체크 이미지 간의 거리 조정 */
+}
+
+.mountain {
+    position: absolute;
+    left: -69px;
+    width: 1903px;
+}
+
+.cloud1 {
+    position: absolute;
+    left: 551px;
+    top: 166px;
+    width: 426px;
+}
+
+.cloud2 {
+    position: absolute;
+    left: 1382px;
+    top: 426px;
+    width: 426px;
+}
+
+.cloud3 {
+    position: absolute;
+    left: -69px;
+    top: 466px;
+    width: 602px;
+}
+
+.cloud4 {
+    position: absolute;
+    left: 108px;
+    top: 513px;
+    width: 602px;
+}
+
+.crane {
+    position: absolute;
+    left: 814px;
+    top: 404px;
+    width: 357px;
+}
+
+/* Animation for clouds */
+@keyframes floatCloud {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(20px); /* Moves 20px to the right */
+    }
+    100% {
+        transform: translateX(0); /* Back to original position */
+    }
+}
+
+/* Animation for the crane (can be a bit faster or different) */
+@keyframes floatCrane {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px); /* Moves 15px upwards */
+    }
+    100% {
+        transform: translateY(0); /* Back to original position */
+    }
+}
+
+/* Apply the animations to each cloud */
+.cloud1, .cloud2, .cloud3, .cloud4 {
+    animation: floatCloud 10s ease-in-out infinite; /* 10s for a smooth floating effect */
+}
+
+/* Adjust the speed and movement of each cloud for variety */
+.cloud1 {
+    animation-duration: 12s; /* Slightly different speed for each cloud */
+}
+.cloud2 {
+    animation-duration: 10s;
+}
+.cloud3 {
+    animation-duration: 15s;
+}
+.cloud4 {
+    animation-duration: 13s;
+}
+
+/* Apply animation to the crane */
+.crane {
+    animation: floatCrane 6s ease-in-out infinite; /* A bit faster flying movement for the crane */
+}
+
+.quiz1-group {
+    position: absolute;
+    left: 70px;
+    top: 12px;
+    width: 603.04px;
+}
+
+.quiz2-group {
+    position: absolute;
+    left: 550px;
+    top: 1px;
+    width: 595.39px;
+}
+
+.quiz3-group {
+    position: absolute;
+    left: 1079px;
+    top: 11px;
+    width: 595.39px;
+}
+
+/* Add a hidden state to elements before they appear */
+.quiz1-group, .quiz2-group, .quiz3-group {
+    opacity: 0;
+    transform: translateY(-100px); /* Start 100px above their original position */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* The class that will trigger the animation */
+.slide-down {
+    opacity: 1;
+    transform: translateY(0); /* Moves the element to its original position */
+}
+
+
+
+/* ---------photo------------------------------------- */
+/* ---------photo------------------------------------- */
+/* ---------photo------------------------------------- */
+
+
+
+#photo-album {
+    background-image: url('/public/photo-background.png');
+    /* 배경 이미지 경로 */
+    background-size: cover;
+    /* 이미지가 요소를 덮도록 설정 */
+    background-position: center;
+    /* 이미지가 가운데 위치하도록 설정 */
+    background-repeat: no-repeat;
+    /* 이미지 반복을 방지 */
+}
+
+.photo-nav {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 114px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: transparent;
+    z-index: 10;
+    color: white;
+}
+
+.logo-h {
+    position: absolute;
+    left: 58px;
+    width: 177px;
+    height: 114px;
+}
+
+.nbutton-container {
+    position: absolute;
+    left: 1172px;
+    top: 55px;
+    width: 455px;
+    height: 23px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link-with-check {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.photo-check {
+    position: absolute;
+    left: 20px;
+    /* 행사정보 링크 뒤로 약간 이동 */
+}
+
+.photo-nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: normal;
+    transition: color 0.3s;
+    height: 100%;
+    font-size: 18px;
+    margin-left: 30px;
+    /* 행사정보 링크와 체크 이미지 간의 거리 조정 */
+}
+
+.photo-title {
+    position: absolute;
+    left: 636px;
+    top: 269px;
+    width: 462px;
+}
+
+.photo-gallery {
+    position: absolute;
+    top: 450px;
+    width: 1000px;
+    height: 500px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.photo-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1500px; /* 전체 슬라이더 너비 */
+    height: 400px; /* 슬라이더 높이 */
+    overflow: hidden;
+    position: relative;
+}
+
+.image-container {
+    display: inline-block;
+    width: 386px;
+    height: 386px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.center-img {
+    position: absolute;
+    left: 283px;
+    width: 386px;
+    height: auto;
+    object-fit: cover;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* 가운데 이미지 강조 */
+    z-index: 3;
+}
+
+.llside-img {
+    position: absolute;
+    left: 0px;
+    top: 80px;
+    width: 259px;
+    height: auto;
+    transition: opacity 0.5s ease;
+    filter: blur(2px); /* 흐릿하게 */
+    object-fit: cover;
+    z-index: 1;
+}
+
+.lside-img {
+    position: absolute;
+    left: 130px;
+    top: 58px;
+    width: 302px;
+    height: auto;
+    transition: opacity 0.5s ease;
+    filter: blur(2px); /* 흐릿하게 */
+    object-fit: cover;
+    z-index: 2;
+}
+
+.rside-img {
+    position: absolute;
+    left: 542px;
+    top: 58px;
+    width: 302px;
+    height: auto;
+    transition: opacity 0.5s ease;
+    filter: blur(2px); /* 흐릿하게 */
+    object-fit: cover;
+    z-index: 2;
+}
+
+.rrside-img {
+    position: absolute;
+    left: 693px;
+    top: 80px;
+    width: 259px;
+    height: auto;
+    transition: opacity 0.5s ease;
+    filter: blur(2px); /* 흐릿하게 */
+    object-fit: cover;
+    z-index: 1;
+}
+
+.prev, .next {
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 1;
+}
+
+.prev {
+    position: absolute;
+    top: 485px;
+    left: 300px;
+}
+
+.next {
+    position: absolute;
+    top: 485px;
+    left: 620px;
+}
+
+.download-btn {
+    position: absolute;
+    left: 800px;
+    top: 890px;
+
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.download-btn img {
+    width: 57px;
+    height: 57px;
+}

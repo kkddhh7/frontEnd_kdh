@@ -1,0 +1,52 @@
+
+.appeal_open7 {
+    position: absolute;
+    left: -2010px;
+    top: 150px;
+    width: 130%;  /* 오른쪽 5%만 보이도록 */
+    height: auto;
+    z-index: 10;
+  }
+  
+  .explain101_1 {
+    position: absolute;
+    top: 40%;
+    left: 8%;
+    width: 80%;
+    opacity: 0; /* 초기값 */
+    z-index: 11;
+  }
+  
+  /* 이미지2 스타일 */
+  .explain101_2 {
+    position: absolute;
+    top: 40%;
+    left: 8%;
+    width: 80%;
+    opacity: 0; /* 초기값 */
+    z-index: 11;
+  }
+
+  .explain7_3 {
+    position: absolute;
+    top: 280px;
+    left: 280px;
+    width: 45%;
+    z-index: 9;
+  }
+
+  .explain7_4 {
+    position: absolute;
+    top: 500px;
+    right: 200px;
+    width: 45%;
+    z-index: 9;
+  }
+
+  .explain7_5 {
+    position: absolute;
+    top: 720px;
+    left: 280px;
+    width: 53%;
+    z-index: 9;
+  }

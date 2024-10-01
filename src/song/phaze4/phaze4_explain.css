@@ -1,0 +1,47 @@
+.explain4_1, .explain4_2, .explain4_3, .explain4_4, .explain4_5 {
+    position: absolute;
+    opacity: 0;
+    z-index: 4;
+    animation-fill-mode: forwards; /* 애니메이션 후 상태를 유지 */
+}
+
+.explain4_1 {
+    top: 300px;
+    right: 580px;
+}
+  
+.explain4_2 {
+    top: 300px;
+    right: 460px;
+}
+  
+.explain4_3 {
+    top: 300px;
+    right: 340px;
+}
+
+.explain4_4 {
+    top: 300px;
+    right: 220px;
+}
+
+.explain4_5 {
+    top: 310px;
+    right: 100px;
+}
+
+.slideIn4 {
+    animation: slidein4 2.5s ease-in-out forwards;
+  }
+
+  @keyframes slidein4 {
+    from {
+      opacity: 0;
+      clip-path: inset(0 0 100% 0);
+    }
+  
+    to {
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+    }
+  }

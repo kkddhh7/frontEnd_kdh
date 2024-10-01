@@ -678,7 +678,7 @@ export default function Injungjun() {
         <img src={process.env.PUBLIC_URL + '/cloud.png'} alt="cloud3" className="cloud3" />
         <img src={process.env.PUBLIC_URL + '/cloud.png'} alt="cloud4" className="cloud4" />
         <img src={process.env.PUBLIC_URL + '/crane.png'} alt="crane" className="crane" />
-        
+
         <Link to={{ pathname: "/quiz1", state: { from: window.location.pathname } }}>
           <img src={process.env.PUBLIC_URL + '/quiz1-group.png'} alt="quiz1-group" className="quiz1-group" />
         </Link>
@@ -749,5 +749,6 @@ export default function Injungjun() {
           <img src={process.env.PUBLIC_URL + '/download-icon.png'} alt="download" />
         </a>
       </div>
+    </div>
   );
 }

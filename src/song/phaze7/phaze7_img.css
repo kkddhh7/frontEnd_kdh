@@ -1,0 +1,366 @@
+  .image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1710px; /* 이미지 회전 영역의 넓이 */
+    height: 1069px; /* 이미지 회전 영역의 높이 */
+    margin: 100px auto;
+    perspective: 1200px; /* 3D 효과를 위한 원근감 */
+    opacity: 0;
+    transform-style: preserve-3d;
+    transition: transform 1.2s ease-in-out, opacity 1.2s ease-in-out; /* 애니메이션 속도: 1.2초 */
+    z-index: 5;
+  }
+
+
+.visible7_2 {
+  opacity: 1;
+
+}
+  .image-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transition: transform 1.2s ease-in-out;
+    z-index: 4;
+    /* justify-content: center;
+    top: 0;
+    align-items: center;
+    transform-style: preserve-3d;
+    transition: transform 1.2s ease-in-out;
+    z-index: 4; */
+  }
+  
+  .image {
+    position: absolute;
+    width: 100px; /* 각 이미지의 너비 */
+    height: 588px; /* 각 이미지의 높이 */
+    transform-style: preserve-3d;
+    opacity: 1;
+    transition: transform 1.2s ease-in-out, opacity 1.2s ease-in-out; /* 애니메이션 속도: 1.2초 */
+    transform-origin: center center;
+}
+  
+  .next {
+    opacity: 1;
+    pointer-events: none; /* 클릭할 수 없게 */
+  }
+  
+  .image img {
+    width: 100%; /* 이미지가 부모의 너비에 맞춰짐 */
+    height: 100%; /* 이미지가 부모의 높이에 맞춰짐 */
+    object-fit: contain; /* 원본 비율 유지하며 이미지 크기 조정 */
+  }
+
+  .rotate {
+    transition: transform 1.2s ease-in-out;
+  }
+  
+  .center-image {
+    transform: scale(1.2); /* 중앙 이미지 크기를 1.3배로 키움 */  
+    pointer-events: auto; /* 중앙 이미지만 클릭 가능 */
+    z-index: 15;
+  }
+
+  .center-image:hover {
+    transform: scale(3); /* 중앙 이미지 크기를 1.3배로 키움 */ 
+    cursor: pointer; 
+  }
+  
+  /* 이미지의 회전 각도 및 간격 조절 */
+  .image:nth-child(1) { 
+    transform: rotateY(0deg) translateZ(500px); /* rotateZ로 이미지 자체의 회전 추가 */ 
+  }
+  .image:nth-child(2) { 
+    transform: rotateY(72deg) translateZ(500px); /* Z축 회전을 추가해 이미지 자체를 회전시킴 */
+  }
+  .image:nth-child(3) { 
+    transform: rotateY(144deg) translateZ(500px); 
+  }
+  .image:nth-child(4) { 
+    transform: rotateY(216deg) translateZ(500px); 
+  }
+  .image:nth-child(5) { 
+    transform: rotateY(288deg) translateZ(500px); 
+  }
+  
+
+
+  .cloud1_1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+    width: 30%;
+    height: auto;
+    z-index: 4;
+    animation: cloudMove1 13s ease-in-out infinite; /* 10초 동안 양쪽으로 움직이고 반복 */
+    }
+
+  .cloud1_2 {
+    position: absolute;
+    top: 100px;
+    right: 300px;
+    opacity: 0.4;
+    width: 30%;
+    height: auto;
+    z-index: 2;
+    animation: cloudMove2 8s ease-in-out infinite; /* 10초 동안 양쪽으로 움직이고 반복 */
+  }
+
+  .cloud1_3 {
+    position: absolute;
+    bottom: 100px;
+    left: -250px;
+    opacity: 0.4;
+    width: 50%;
+    height: auto;
+    z-index: 4;
+    animation: cloudMove3 10s ease-in-out infinite; /* 10초 동안 양쪽으로 움직이고 반복 */
+  }
+
+  .cloud1_4 {
+    position: absolute;
+    bottom: -100px;
+    right: -200px;
+    opacity: 0.8;
+    width: 60%;
+    height: auto;
+    z-index: 4;
+    animation: cloudMove4 15s ease-in-out infinite; /* 10초 동안 양쪽으로 움직이고 반복 */
+  }
+
+  .cloud1_5 {
+    position: absolute;
+    bottom: -400px;
+    left: -200px;
+    opacity: 0.95;
+    width: 70%;
+    height: auto;
+    z-index: 4;
+    animation: cloudMove2 15s ease-in-out infinite; /* 10초 동안 양쪽으로 움직이고 반복 */
+  }
+
+  .hak7_1 {
+    position: absolute;
+    top: 0px;
+    left: -400px;
+    opacity: 0.7;
+    width: 30%;
+    height: auto;
+    z-index: 4;
+    animation: hakMove7_1 15s ease-in-out infinite; /* 10초 동안 양쪽으로 움직이고 반복 */
+  }
+  .hak7_2 {
+    position: absolute;
+    bottom: 50px;
+    right: -400px;
+    opacity: 0.9;
+    width: 30%;
+    height: auto;
+    z-index: 3;
+    animation: hakMove7_2 18s ease-in-out infinite; /* 10초 동안 양쪽으로 움직이고 반복 */
+  }
+
+  @keyframes hakMove7_1 {
+    0% {
+      transform: translateX(-400px); /* 왼쪽으로 완전히 벗어남 */
+    }
+    100% {
+      transform: translateX(2500px); /* 오른쪽으로 완전히 벗어남 */
+    }
+  }
+
+  @keyframes hakMove7_2 {
+    0% {
+      transform: translateX(400px); /* 왼쪽으로 완전히 벗어남 */
+    }
+    100% {
+      transform: translateX(-2500px); /* 오른쪽으로 완전히 벗어남 */
+    }
+  }
+  
+  @keyframes cloudMove1 {
+    0% {
+      transform: translateX(20%); /* 왼쪽으로 완전히 벗어남 */
+    }
+    50% {
+      transform: translateX(0%); /* 원래 위치로 이동 */
+    }
+    100% {
+      transform: translateX(20%); /* 오른쪽으로 완전히 벗어남 */
+    }
+  }
+  
+  @keyframes cloudMove2 {
+    0% {
+      transform: translateX(0%); /* 왼쪽으로 완전히 벗어남 */
+    }
+    50% {
+      transform: translateX(10%); /* 원래 위치로 이동 */
+    }
+    100% {
+      transform: translateX(0%); /* 오른쪽으로 완전히 벗어남 */
+    }
+  }
+  
+  @keyframes cloudMove3 {
+    0% {
+      transform: translateX(0%); /* 왼쪽으로 완전히 벗어남 */
+    }
+    50% {
+      transform: translateX(20%); /* 원래 위치로 이동 */
+    }
+    100% {
+      transform: translateX(0%); /* 오른쪽으로 완전히 벗어남 */
+    }
+  }
+
+  @keyframes cloudMove4 {
+    0% {
+      transform: translateX(0%); /* 왼쪽으로 완전히 벗어남 */
+    }
+    50% {
+      transform: translateX(20%); /* 원래 위치로 이동 */
+    }
+    100% {
+      transform: translateX(0%); /* 오른쪽으로 완전히 벗어남 */
+    }
+  }
+
+.tree7 {
+  position: absolute;
+  top: 0px;
+  left: -500px;
+  width: auto;
+  height: 1069px;
+  z-index: 12;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.finalImgs {
+  opacity: 1;
+  transform: translateX(500px); /* 오른쪽으로 등장 */
+}
+
+/* 꽃 흩날림 효과 */
+.flower {
+  position: absolute;
+  opacity: 0;
+  z-index: 13;
+  animation: flower-fall 3s forwards;
+}
+
+.flower7_1-1 { 
+  position: absolute;
+  top: 100px; 
+  left: 200px; 
+  width: 200px;
+}
+
+.flower7_1-2 { 
+  position: absolute;
+  top: 100px; 
+  right: 200px; 
+  width: 200px;
+}
+.flower7_1-3 { 
+  position: absolute;
+  top: 200px; 
+  left: 420px; 
+  width: 130px;
+}
+
+.flower7_2-1 { 
+  position: absolute;
+  top: 100px; 
+  z-index: 13;
+  left: 500px; 
+  width: 189px;
+}
+
+.flower7_2-2 { 
+  position: absolute;
+  top: 124px; 
+  right: 420px; 
+  width: 130px;
+}
+
+.flower7_3-1 { 
+  position: absolute;
+  top: 342px; 
+  left: 850px; 
+  width: 130px;
+}
+
+.flower7_3-2 { 
+  position: absolute;
+  top: 564px; 
+  left: 621px; 
+  width: 173px;
+}
+
+.flower7_3-3 { 
+  position: absolute;
+  top: -173px; 
+  left: 520px; 
+  width: 200px;
+}
+
+.flower7_4-1 { 
+  position: absolute;
+  top: -146px; 
+  right: 600px; 
+  width: 200px;
+}
+
+.flower7_4-2 { 
+  position: absolute;
+  top: 400px; 
+  right: 420px; 
+  width: 200px;
+}
+
+.flower7_4-3 { 
+  position: absolute;
+  top: 400px; 
+  right: 420px; 
+  width: 200px;
+}
+
+@keyframes flower-fall {
+  0% {
+    opacity: 0;
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(300px) rotate(360deg); /* 떨어지면서 회전 */
+  }
+}
+
+/* 화면이 점점 하얗게 변하는 효과 */
+.whiteout-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0;
+  animation: whiteout 3s forwards;
+}
+
+@keyframes whiteout {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

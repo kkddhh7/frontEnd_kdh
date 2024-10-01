@@ -1,0 +1,75 @@
+
+.palace4 {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1.5s ease-out;
+}
+
+.wall4 {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 1.5s ease-out;
+}
+
+.land4 {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 1.5s ease-out;
+}
+
+.fog4_1, .fog4_2{
+    position: absolute;
+    z-index: 3;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 1.5s ease-out;
+}
+
+.fog4_1 {
+    animation: fogMove4_1 17s ease-in-out infinite; /* 10초 동안 양쪽으로 움직이고 반복 */
+
+}
+
+.fog4_2 {
+    animation: fogMove4_2 13s ease-in-out infinite; /* 10초 동안 양쪽으로 움직이고 반복 */
+
+}
+
+@keyframes fogMove4_1 {
+    0% {
+      transform: translateX(-15%); /* 왼쪽으로 완전히 벗어남 */
+    }
+    50% {
+      transform: translateX(-5%); /* 원래 위치로 이동 */
+    }
+    100% {
+      transform: translateX(-15%); /* 오른쪽으로 완전히 벗어남 */
+    }
+  }
+  
+  @keyframes fogMove4_2 {
+      0% {
+        transform: translateX(5%); /* 왼쪽으로 완전히 벗어남 */
+      }
+      50% {
+        transform: translateX(15%); /* 원래 위치로 이동 */
+      }
+      100% {
+        transform: translateX(5%); /* 오른쪽으로 완전히 벗어남 */
+      }
+    }
+  
+
+.visible4_2 {
+    opacity: 1;
+}

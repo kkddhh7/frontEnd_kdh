@@ -1,0 +1,171 @@
+.quiz3 {
+    width: 1710px;
+    height: 1069px;
+    overflow: auto; /* Adjust as needed */
+    scroll-behavior: auto;
+    scroll-snap-type: y mandatory;
+    position: relative;
+
+    background-image: url('/public/quizdetail-background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 구름 애니메이션 */
+@keyframes floatCloud1 {
+    0% {
+        transform: translateX(0); /* 초기 위치 */
+    }
+    100% {
+        transform: translateX(1500px); /* 구름이 오른쪽으로 이동하는 거리 */
+    }
+}
+
+@keyframes floatCloud2 {
+    0% {
+        transform: translateX(0); /* 초기 위치 */
+    }
+    100% {
+        transform: translateX(-1500px); /* 구름이 왼쪽으로 이동하는 거리 */
+    }
+}
+
+@keyframes floatCloud3 {
+    0% {
+        transform: translateX(0); /* 초기 위치 */
+    }
+    100% {
+        transform: translateX(1000px); /* 구름이 오른쪽으로 이동하는 거리 */
+    }
+}
+
+.qcloud1 {
+    position: absolute;
+    left: -64px;
+    top: 483px;
+    width: 743px;
+    animation: floatCloud1 20s linear infinite; /* 20초 동안 오른쪽으로 이동, 무한 반복 */
+}
+
+.qcloud2 {
+    position: absolute;
+    left: 1034px;
+    top: 177px;
+    width: 528px;
+    animation: floatCloud2 25s linear infinite; /* 25초 동안 왼쪽으로 이동, 무한 반복 */
+}
+
+.qcloud3 {
+    position: absolute;
+    left: 1163px;
+    top: 225px;
+    width: 602px;
+    animation: floatCloud3 30s linear infinite; /* 30초 동안 오른쪽으로 이동, 무한 반복 */
+}
+
+.duru3 {
+    position: absolute;
+    left: 513px;
+    top: -250px;
+    width: 723.64px;
+    z-index: 1;
+}
+
+.paper3 {
+    position: absolute;
+    left: 549px;
+    top: 350px;
+    width: 637.92px;
+    height: 718.19px;
+    background-image: url('/public/question3.png');
+    background-size: cover;
+    background-position: top;
+    z-index: 0;
+}
+
+.close-paper-btn {
+    position: absolute;
+    top: 150px;
+    right: 90px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+}
+
+.quiz3-container {
+    position: absolute;
+    left: 50px;
+    top: 470px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 요소들을 중앙 정렬 */
+}
+
+.answer-input {
+    width: 330.32px;
+    height: 82.76px;
+    border: 2px solid white; /* 테두리 색상 및 두께 */
+    border-radius: 15px; /* 테두리를 둥글게 */
+    padding: 10px; /* 내부 여백 추가 */
+    display: flex; /* Flexbox 사용 */
+    justify-content: center; /* 가로로 중앙 정렬 */
+    align-items: center; /* 세로로 중앙 정렬 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    font-size: 24px; /* 글자 크기 */
+    outline: none; /* 클릭 시 기본 테두리 제거 */
+}
+
+.check-answer-btn {
+    width: 526.09px; /* 버튼 크기 설정 */
+    height: 38.2px; /* 버튼 크기 설정 */
+    margin-top: 30px;
+    background-image: url('/public/submit.png'); /* 이미지 경로 */
+    background-size: cover; /* 이미지 크기 맞춤 */
+    background-position: center; /* 이미지 중앙 정렬 */
+    background-color: transparent;
+    border: none; /* 테두리 제거 */
+    cursor: pointer; /* 마우스 커서 설정 */
+}
+
+.check-answer-btn:focus {
+    outline: none; /* 클릭 시 기본 테두리 제거 */
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 배경을 반투명하게 */
+    z-index: 999; /* z-index를 높여 모달이 최상단에 오도록 */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* 화면 중앙에 모달을 배치하기 위해 수직, 수평 정렬 */
+}
+
+.modal {
+    padding: 20px;
+    border-radius: 10px;
+    position: relative; /* close-btn 위치를 위한 relative 설정 */
+    z-index: 1000; /* 모달 자체의 z-index 설정 */
+}
+
+.close-btn {
+    position: absolute;
+    top: 90px;
+    right: 70px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+}
+
+.close-btn:hover {
+    color: #ff0000;
+}

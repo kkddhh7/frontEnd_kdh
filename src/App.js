@@ -12,9 +12,6 @@ import Phaze4 from "./song/Phaze4";
 import Phaze5 from "./song/Phaze5";
 import Phaze6 from "./song/Phaze6";
 import Phaze7 from "./song/Phaze7";
-
-import SelectAppeal from "./song/101";
-
 import Layout from './song/cursor/Layout';
 
 function App() {
@@ -35,7 +32,6 @@ function App() {
             <Route path='/phaze6' element={<Phaze6 />} />
             <Route path='/phaze7' element={<Phaze7 />} />
 
-            <Route path='/101' element={<SelectAppeal />} />
           </Routes>
         </Layout>
       </Router>

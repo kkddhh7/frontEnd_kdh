@@ -57,6 +57,34 @@ html {
     background-repeat: no-repeat;
 }
 
+.byg-event1 {
+    background-image: url('/public/buyongji-background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.juniper-event1 {
+    background-image: url('/public/juniper-background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.nakseonjae-event1 {
+    background-image: url('/public/nakseonjae-background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.yunghwadang-event1 {
+    background-image: url('/public/yunghwadang-background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .event1-1 {
     position: absolute;
     left: 883px;
@@ -336,15 +364,16 @@ html {
     color: gray;
 }
 
-.overlay {
+.overlay1 {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    /* 검은색 반투명 오버레이 */
-    color: white;
+    top: -3px;
+    left: -2px;
+    width: 101%;
+    height: 101%;
+    background-image: url('/public/event1-detail.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -355,7 +384,82 @@ html {
     border-radius: 15px;
 }
 
-.event-item:hover .overlay {
+.overlay2 {
+    position: absolute;
+    top: -3px;
+    left: -2px;
+    width: 101%;
+    height: 101%;
+    background-image: url('/public/event2-detail.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    /* 기본적으로 보이지 않도록 설정 */
+    transition: opacity 0.3s ease;
+    /* 부드러운 트랜지션 효과 */
+    border-radius: 15px;
+}
+
+.overlay3 {
+    position: absolute;
+    top: -3px;
+    left: -2px;
+    width: 101%;
+    height: 101%;
+    background-image: url('/public/event3-detail.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    /* 기본적으로 보이지 않도록 설정 */
+    transition: opacity 0.3s ease;
+    /* 부드러운 트랜지션 효과 */
+    border-radius: 15px;
+}
+
+.overlay4 {
+    position: absolute;
+    top: -3px;
+    left: -2px;
+    width: 101%;
+    height: 101%;
+    background-image: url('/public/event4-detail.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    /* 기본적으로 보이지 않도록 설정 */
+    transition: opacity 0.3s ease;
+    /* 부드러운 트랜지션 효과 */
+    border-radius: 15px;
+}
+
+.event-item:hover .overlay1 {
+    opacity: 1;
+    /* 호버 시 오버레이가 나타나도록 설정 */
+}
+
+.event-item:hover .overlay2 {
+    opacity: 1;
+    /* 호버 시 오버레이가 나타나도록 설정 */
+}
+
+.event-item:hover .overlay3 {
+    opacity: 1;
+    /* 호버 시 오버레이가 나타나도록 설정 */
+}
+
+.event-item:hover .overlay4 {
     opacity: 1;
     /* 호버 시 오버레이가 나타나도록 설정 */
 }
@@ -364,6 +468,7 @@ html {
     font-size: 1.5em;
     text-align: center;
 }
+
 
 
 

@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './Quiz2.css';
 
 function Quiz2() {
     const [selectedAnswer, setSelectedAnswer] = useState(''); // 선택한 답안 상태
     const [isCorrect, setIsCorrect] = useState(null); // 정답 여부 관리
     const [showModal, setShowModal] = useState(false); // 모달 표시 여부
+    const [previousPage, setPreviousPage] = useState('/scrolldownpage#quiz'); // 기본 경로 설정
+
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const correctAnswer = '이몽룡'; // 정답
+
+    // 컴포넌트가 마운트될 때 이전 페이지의 경로를 상태로 설정
+    useEffect(() => {
+        if (location.state && location.state.from) {
+            setPreviousPage(location.state.from); // 전달받은 이전 페이지 경로
+        }
+    }, [location]);
 
     // 정답 확인 함수
     const checkAnswer = () => {
@@ -20,7 +32,13 @@ function Quiz2() {
 
     // x 버튼 클릭 시 페이지 이동
     const handleCloseClick = () => {
-        window.location.href = 'http://localhost:3000/scrolldownpage#quiz'; // 직접 해시 링크로 이동
+        // 이전 페이지 URL이 #quiz를 포함하지 않으면 추가
+        const newPage = location.state && location.state.from 
+                        ? location.state.from.includes('#quiz') 
+                            ? location.state.from 
+                            : `${location.state.from}#quiz`
+                        : '/scrolldownpage#quiz'; // 기본값 설정
+        navigate(newPage); // 이전 페이지로 이동
     };
 
     return (
@@ -30,9 +48,9 @@ function Quiz2() {
 
                 <div className='nbutton-container'>
                     <a href="#event-info">행사정보</a>
-                    <a href="#palace-tour" className="now-link">궁궐 여행 정보</a>
+                    <a href="#palace-tour" className="now-link">여행 정보</a>
                     <div className="link-with-check">
-                        <img src={process.env.PUBLIC_URL + '/nav-check.png'} alt="quiz-check" className="quiz-check" />
+                        <img src={process.env.PUBLIC_URL + '/nav-check.png'} alt="quiz-check" className={'quiz-check fade-in'} />
                         <a href="#quiz" className="now-link">퀴즈 풀기</a>
                     </div>
                     <a href="#photo-album">스팟 사진첩</a>

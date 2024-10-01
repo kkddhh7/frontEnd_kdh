@@ -1,0 +1,57 @@
+.overlay {
+    position: absolute;
+    transform: translate(-70%, 0%);
+    animation: moveToTarget 1s forwards; /* 애니메이션 적용 */
+    z-index: 2;
+}
+
+@keyframes moveToTarget {
+    0% {
+        opacity: 0.5;
+        transform: translate(-100%, -3%) translate(0, 0); /* 시작 위치 */
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-70%, -3%) translate(0, 0); /* 최종 위치 */
+    }
+}
+.custom-cursor {
+  cursor: url('./assets/cursor.png'), auto !important;
+}
+
+.ink-overlay {
+    position: absolute;
+    opacity: 0; 
+    transition: opacity 0.5s ease; 
+    z-index: 1;
+}
+
+.ink-overlay.show {
+    opacity: 0.8; 
+}
+
+/* 아이콘 반짝이는 효과 */
+.icon-effect {
+    -webkit-animation: glow .30s alternate infinite;
+    animation: glow .70s alternate infinite;
+  }
+  @-webkit-keyframes glow {
+    0% {
+      -webkit-filter: brightness(1);
+      filter: brightness(1);
+    }
+    100% {
+      -webkit-filter: brightness(1.2);
+      filter: brightness(1.2);
+    }
+  }
+  @keyframes glow {
+    0% {
+      -webkit-filter: brightness(1);
+      filter: brightness(1);
+    }
+    100% {
+      -webkit-filter: brightness(1.2);
+      filter: brightness(1.2);
+    }
+}

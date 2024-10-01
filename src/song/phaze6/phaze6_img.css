@@ -28,7 +28,7 @@
 .fog6_1, .fog6_2 {
   position: absolute;
   z-index: 6;
-  opacity: 1;
+  opacity: 0;
   transition: opacity 1s ease-in-out;
 }
 
@@ -54,12 +54,12 @@
     height: auto;
     top: 300px;
     right: 200px;
-    transition: transform 1s ease-in-out;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
 .cursor6_1:hover {
     transform: scale(1.7);
-    transition: transform 1s ease-in-out;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
 
@@ -68,12 +68,12 @@
     height: auto;
     top: 310px;
     right: 380px;
-    transition: transform 1s ease-in-out;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
 .cursor6_2:hover {
     transform: scale(1.7);
-    transition: transform 1s ease-in-out;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
 .cursor6_3 {
@@ -81,12 +81,12 @@
     height: auto;
     top: 290px;
     right: 610px;
-    transition: transform 1s ease-in-out;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
 .cursor6_3:hover {
     transform: scale(1.7);
-    transition: transform 1s ease-in-out;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
 .cursor6_4 {
@@ -94,12 +94,12 @@
     height: auto;
     top: 330px;
     right: 810px;
-    transition: transform 1s ease-in-out;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
 .cursor6_4:hover {
     transform: scale(1.7);
-    transition: transform 1s ease-in-out;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
 .cursor6_5 {
@@ -107,12 +107,12 @@
     height: auto;
     top: 150px;
     right: 990px;
-    transition: transform 1s ease-in-out;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
 .cursor6_5:hover {
     transform: scale(1.7);
-    transition: transform 1s ease-in-out;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
 .visible6 {

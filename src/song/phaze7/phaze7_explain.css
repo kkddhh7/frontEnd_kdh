@@ -1,9 +1,10 @@
-/* appeal_open101 이미지 스타일 */
-.appeal-open101 {
+
+.appeal_open7 {
     position: absolute;
-    left: -1510px;
-    top: 25%;
-    width: 100%;  /* 오른쪽 5%만 보이도록 */
+    left: -2010px;
+    top: 150px;
+    width: 130%;  /* 오른쪽 5%만 보이도록 */
+    height: auto;
     z-index: 10;
   }
   
@@ -24,4 +25,28 @@
     width: 80%;
     opacity: 0; /* 초기값 */
     z-index: 11;
+  }
+
+  .explain7_3 {
+    position: absolute;
+    top: 280px;
+    left: 280px;
+    width: 45%;
+    z-index: 9;
+  }
+
+  .explain7_4 {
+    position: absolute;
+    top: 500px;
+    right: 200px;
+    width: 45%;
+    z-index: 9;
+  }
+
+  .explain7_5 {
+    position: absolute;
+    top: 720px;
+    left: 280px;
+    width: 53%;
+    z-index: 9;
   }

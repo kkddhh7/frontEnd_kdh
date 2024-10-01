@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+
 import '../song/phaze7/phaze7_base.css'
 import '../song/phaze7/phaze7_img.css'
 import '../song/phaze7/phaze7_explain.css'
@@ -25,9 +27,13 @@ export default function SelectAppeal() {
   const [showOpenImage, setShowOpenImage] = useState(false); // 추가: appeal_open101 이미지 표시 여부
 
   const [scrollPosition, setScrollPosition] = useState(0); // 스크롤 위치 추적
-  const [maxAppealScroll, setMaxAppealScroll] = useState(false); // appeal_open101의 최대 이동 상태
   const [opacity1, setOpacity1] = useState(0); // 이미지1의 opacity 값
   const [opacity2, setOpacity2] = useState(0); // 이미지2의 opacity 값
+
+  const [finalImgsChange, setFinalImgsChange] = useState(false); // appeal_open101의 최대 이동 상태
+  const [blurWhite, setBlurWhite] = useState(false); // appeal_open101의 최대 이동 상태
+
+  const navigate = useNavigate(); // For page navigation
 
   const handleClick = () => {
     setIsClicked(true); // 클릭 시 상태 변화
@@ -105,7 +111,7 @@ const throttle = (func, limit) => {
       });
 
       // appeal_open101 이미지 이동: 1510px까지는 자유롭게 이동, 그 이후에는 고정
-      const appealOpenElement = document.querySelector('.appeal-open101');
+      const appealOpenElement = document.querySelector('.appeal_open7');
     if (appealOpenElement) {  // 요소가 존재하는지 확인
       if (scrollPosition < 1510) {
         appealOpenElement.style.transform = `translateX(${Math.min(scrollPosition, 1510)}px)`;
@@ -130,7 +136,17 @@ const throttle = (func, limit) => {
       } else {
         setOpacity2(0); // 그 외 구간에서는 투명
       }
-  
+
+      if(scrollPosition >= 6010) {
+        setAnimationOn(true);
+        setFinalImgsChange(true);
+        setTimeout(() => {
+          setBlurWhite(true);
+        }, 2500); 
+        setTimeout(() => {
+          navigate("/loading")
+        }, 2500); 
+      }
     };
 
     window.addEventListener("wheel", handleScroll, { passive: false });
@@ -148,16 +164,21 @@ const throttle = (func, limit) => {
         <img src="/images/song/phaze6/background6_3.png" alt='background' className="background7_1"/>
         <div className={`content7 ${backgroundVisible ? 'visible7_1' : ''}`}>
             <div className={`dark-overlay ${isClicked ? 'active' : ''}`}></div>
+            <div className={`white-overlay ${blurWhite ? 'active7_2' : ''}`}></div>
 
             {isClicked && (
-                <div className="cloud-overlay">
-                    <img src="/images/101/cloud1.png" className="cloud-animate left-cloud1" alt="Cloud1" />
-                    <img src="/images/101/cloud1.png" className="cloud-animate left-cloud2" alt="Cloud2" />
-                    <img src="/images/101/cloud1.png" className="cloud-animate left-cloud3" alt="Cloud2" />
-                    <img src="/images/101/cloud1.png" className="cloud-animate right-cloud1" alt="Cloud2" />
-                    <img src="/images/101/cloud1.png" className="cloud-animate right-cloud2" alt="Cloud2" />
-                    <img src="/images/101/cloud1.png" className="cloud-animate right-cloud3" alt="Cloud2" />
-                </div>
+              <>
+                <img src="/images/song/phaze7/flower/flower7_1.png" className="flower1"/>
+                <img src="/images/song/phaze7/flower/flower7_2.png" className="flower2"/>
+                <img src="/images/song/phaze7/flower/flower7_3.png" className="flower3"/>
+                <img src="/images/song/phaze7/flower/flower7_4.png" className="flower4"/>
+                <img src="/images/song/phaze7/flower/flower7_1.png" className="flower5"/>
+                <img src="/images/song/phaze7/flower/flower7_2.png" className="flower6"/>
+                <img src="/images/song/phaze7/flower/flower7_3.png" className="flower7"/>
+                <img src="/images/song/phaze7/flower/flower7_4.png" className="flower8"/>
+                <img src="/images/song/phaze7/hak7_1.png" className="hak1"/>
+                <img src="/images/song/phaze7/hak7_2.png" className="hak2"/>
+              </>
                 )
             }
 
@@ -170,23 +191,76 @@ const throttle = (func, limit) => {
             <img src="/images/song/phaze7/background/land7_4.png" alt='background' className={`land7_4 ${landVisible[3] ? 'visible7_1' : ''}`}/>
 
             
-            <img src="/images/101/cloud1.png" alt='background' className="cloud1_1"/>
-            <img src="/images/101/cloud1.png" alt='background' className="cloud1_2"/>
-            <img src="/images/101/cloud1.png" alt='background' className="cloud1_3"/>
-            <img src="/images/101/cloud1.png" alt='background' className="cloud1_4"/>
-            <img src="/images/101/cloud1.png" alt='background' className="cloud1_5"/>
+            <img src="/images/song/phaze7/cloud7.png" alt='background' className="cloud1_1"/>
+            <img src="/images/song/phaze7/cloud7.png" alt='background' className="cloud1_2"/>
+            <img src="/images/song/phaze7/cloud7.png" alt='background' className="cloud1_3"/>
+            <img src="/images/song/phaze7/cloud7.png" alt='background' className="cloud1_4"/>
+            <img src="/images/song/phaze7/cloud7.png" alt='background' className="cloud1_5"/>
+
+            <img src="/images/song/phaze7/hak7_1.png" alt='background' className="hak7_1"/>
+            <img src="/images/song/phaze7/hak7_2.png" alt='background' className="hak7_2"/>
+
             {showOpenImage ? (
                 <>
                 <img 
-                src="/images/101/appeal_open101.png" 
+                src="/images/song/phaze7/appeal_open7.png" 
                 alt="Appeal Open" 
-                className="appeal-open101"
+                className="appeal_open7"
                 style={{
                     transition: 'transform 0.2s ease-out',
                 }} 
             />
             <img
-              src="/images/101/explain101_1.png"
+              src="/images/song/phaze7/explain7_3.png"
+              alt="Image 1"
+              className="explain7_3"
+            />
+            <img
+              src="/images/song/phaze7/explain7_4.png"
+              alt="Image 1"
+              className="explain7_4"
+            />
+            <img
+              src="/images/song/phaze7/explain7_5.png"
+              alt="Image 1"
+              className="explain7_5"
+            />
+            <img
+              src="/images/song/phaze7/tree7.png"
+              alt="Image 1"
+              className={`tree7 ${finalImgsChange ? 'finalImgs' : ''}`}
+            />
+
+            {finalImgsChange 
+              && Array.from({ length: 3 }, (_, i) => (
+                <>
+                  <img 
+                    key={i} 
+                    src="/images/song/phaze7/flower/flower7_1.png" 
+                    alt="Flower" 
+                    className={`flower flower7_1-${i + 1}`} 
+                  />
+                  <img 
+                  src="/images/song/phaze7/flower/flower7_2.png" 
+                  alt="Flower" 
+                  className={`flower flower7_2-${i + 1}`} 
+                />        
+                <img 
+                  src="/images/song/phaze7/flower/flower7_3.png" 
+                  alt="Flower" 
+                  className={`flower flower7_3-${i + 1}`} 
+                />           
+                <img 
+                  src="/images/song/phaze7/flower/flower7_4.png" 
+                  alt="Flower" 
+                  className={`flower flower7_4-${i + 1}`} 
+                />            
+                </>
+                ))
+              }
+
+            <img
+              src="/images/song/phaze7/explain7_1.png"
               alt="Image 1"
               className="explain101_1"
               style={{
@@ -194,9 +268,8 @@ const throttle = (func, limit) => {
                 transition: 'opacity 0.2s ease-out, transform 0.2s ease-out', // 자연스러운 애니메이션 적용
               }}
             />
-
             <img
-              src="/images/101/explain101_2.png"
+              src="/images/song/phaze7/explain7_2.png"
               alt="Image 2"
               className="explain101_2"
               style={{
@@ -204,6 +277,7 @@ const throttle = (func, limit) => {
                 transition: 'opacity 0.2s ease-out, transform 0.2s ease-out', // 자연스러운 애니메이션 적용
               }}
             />
+            {finalImgsChange && <div className="whiteout-overlay"></div>}
         </>
         ) : (
             <>

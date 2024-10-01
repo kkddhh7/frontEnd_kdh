@@ -167,6 +167,9 @@ export default function Phaze1() {
             
             <img src="images/song/phaze1/mountain/mountain1_1.png" 
                 className={`mountain1_1 ${changeVisible1 ? "visible1_1" : ""}`}/>
+            <img src="images/song/phaze1/mountain/mountain1_3.png" 
+                style={{ opacity: 1- mountainOpcity }} // mountain1_2의 opacity 조절
+                className={`mountain1_3 ${changeVisible1 ? "visible1_1" : ""}`}/>
             <img src="images/song/phaze1/mountain/sun1.png" 
                 className={`sun1 ${changeVisible1 ? "visible1_1" : ""}`}/>
             <img src="images/song/phaze1/mountain/moon1.png" 
@@ -181,6 +184,9 @@ export default function Phaze1() {
             <img src="images/song/phaze1/mountain/mountain1_2.png" 
                 style={{ opacity: mountainOpcity }} // mountain1_2의 opacity 조절
                 className={`mountain1_2`}/>
+            <img src="images/song/phaze1/mountain/mountain1_4.png" 
+                style={{ opacity: mountainOpcity }} // mountain1_2의 opacity 조절
+                className={`mountain1_4`}/>
             <img src="images/song/phaze1/mountain/water1_3.png" 
                 style={{ opacity: mountainOpcity }} // mountain1_2의 opacity 조절
                 className={`water1_3`}/>

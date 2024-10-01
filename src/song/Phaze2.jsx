@@ -11,7 +11,7 @@ export default function Phaze2() {
     const [scrollPosition, setScrollPosition] = useState(0);
     const [explainVisible, setExplainVisible] = useState([false, false, false, false]);
     const [animationOn, setAnimationOn] = useState(false);
-    const [birdsVisible, setBirdsVisible] = useState([true, false, false]);
+    const [birdsVisible, setBirdsVisible] = useState([true, false, false, false, false]);
     const [scrollTimeout, setScrollTimeout] = useState(null);  // 스크롤 완료 감지 타이머
     const [fogOffset, setFogOffset] = useState(0); // fog 이미지의 이동값
     const [rightPalaceZoomed, setRightPalaceZoomed] = useState(false); // right-palace 확대 상태
@@ -57,7 +57,7 @@ export default function Phaze2() {
             const updatedBirds = [...birdsVisible];
 
             // 아래로 스크롤 (새가 순차적으로 나타남)
-            if (delta > 0 && !birdsVisible[2]) {
+            if (delta > 0 && !birdsVisible[4]) {
               for (let i = 0; i < updatedBirds.length - 1; i++) {
                 if (updatedBirds[i]) {
                   updatedBirds[i] = false;   // 현재 보이는 새는 숨기고
@@ -138,9 +138,12 @@ export default function Phaze2() {
             <img src="images/song/phaze2/explain2_3.png" className={`explain2_3 ${explainVisible[2] ? 'slideIn2_2' : ''}`}/>
             <img src="images/song/phaze2/explain2_4.png" className={`explain2_4 ${explainVisible[3] ? 'slideIn2_2' : ''}`}/>
 
-            <img src="images/song/phaze2/birds/birds2_1.png" className={`birds2_1 ${birdsVisible[2] ? 'visible2' : ''}`}/>
-            <img src="images/song/phaze2/birds/birds2_1.png" className={`birds2_2 ${birdsVisible[1] ? 'visible2' : ''}`}/>
-            <img src="images/song/phaze2/birds/birds2_1.png" className={`birds2_3 ${imgsVisible && birdsVisible[0] ? 'visible2' : ''}`}/>
+            <img src="images/song/phaze2/birds/birds2_1.png" className={`birds2_1 ${birdsVisible[4] ? 'visible2' : ''}`}/>
+            <img src="images/song/phaze2/birds/birds2_2.png" className={`birds2_2 ${birdsVisible[3] ? 'visible2' : ''}`}/>
+            <img src="images/song/phaze2/birds/birds2_3.png" className={`birds2_3 ${birdsVisible[2] ? 'visible2' : ''}`}/>
+            <img src="images/song/phaze2/birds/birds2_1.png" className={`birds2_4 ${birdsVisible[1] ? 'visible2' : ''}`}/>
+            <img src="images/song/phaze2/birds/birds2_2.png" className={`birds2_5 ${imgsVisible && birdsVisible[0] ? 'visible2' : ''}`}/>
+
 
 
         </div>

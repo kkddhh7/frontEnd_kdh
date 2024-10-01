@@ -10,6 +10,8 @@
 .palace2 {
     position: absolute;
     z-index: 2;
+    width: 55%;
+    height: auto;
     right: 0px;
     bottom: 0px;
     opacity: 0;
@@ -25,7 +27,7 @@
     transition: opacity 1.5s ease-out; /* 2초 동안 서서히 선명해짐 */
 }
 
-.birds2_1, .birds2_2, .birds2_3 {
+.birds2_1, .birds2_2, .birds2_3, .birds2_4, .birds2_5 {
     position: absolute;
     z-index: 3;
     opacity: 0;
@@ -39,13 +41,22 @@
 
 .birds2_2 {
     top: 200px;
-    left: 300px;
+    left: 200px;
 }
-
 
 .birds2_3 {
     top: 200px;
-    left: 500px;
+    left: 300px;
+}
+
+.birds2_4 {
+  top: 200px;
+  left: 400px;
+}
+
+.birds2_5 {
+  top: 200px;
+  left: 500px;
 }
 
 
@@ -77,7 +88,7 @@
 }
 
 .zoom-view {
-    transform: scale(28); /* 2배 확대 */
-    transform-origin: 69% 70%; /* 중앙을 기준으로 확대 */
-    transition: transform 2.5s ease-in-out; /* 부드러운 확대 효과 */
+    transform: scale(50); /* 2배 확대 */
+    transform-origin: 67% 70%; /* 중앙을 기준으로 확대 */
+    transition: transform 2s ease-in-out; /* 부드러운 확대 효과 */
   }

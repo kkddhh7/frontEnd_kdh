@@ -14,6 +14,8 @@ export default function Phaze6() {
 
     const [fogOffset, setFogOffset] = useState(0); // fog 이미지의 이동값
     const [fogOff, setFogOff] = useState(false); // fog 이미지의 이동값
+    const [fogOpacity, setFogOpacity] = useState(false); // fog 이미지의 이동값
+    
     const [finalBackground, setFinalBackground] = useState(false); // fog 이미지의 이동값
 
     const navigate = useNavigate(); // For page navigation
@@ -23,6 +25,8 @@ export default function Phaze6() {
 
           e.preventDefault();
           const delta = e.deltaY;
+
+          if(animationOn) return;
 
           setScrollPosition((prevScrollPosition) => {
             // 스크롤 위치를 업데이트하면서 반대 방향 이동을 허용
@@ -38,10 +42,20 @@ export default function Phaze6() {
               else if ((newOffset * 0.2) >= 1950) return 9752; // fog가 0보다 작아지지 않도록 제한
               return newOffset;
             });
+
+            setFogOpacity((prev) => {
+              const newOpacity = Math.min(Math.max(prev + delta * 0.00005, 0), 1); // 0과 1 사이로 제한
+              const newMove = prev + delta * 0.1; // 스크롤에 따라 이동
+    
+              if(newMove <= 0) return 0;
+              if(newMove >= 1950) return 1950;
+    
+              return newOpacity;
+            });
           }
 
           // 스크롤이 500에 도달하면 zeolite와 explain 이미지들 애니메이션 실행
-          if (!animationOn && scrollPosition > 0 && !fogOff) {
+          if (!changeBackground && scrollPosition > 0 && !fogOff) {
             setAnimationOn(true);
             for (let i = 0; i < 4; i++) {
               setTimeout(() => {
@@ -52,10 +66,10 @@ export default function Phaze6() {
                 });
               }, i * 500);
             }
-            setTimeout(() => setAnimationOn(false), 3000); // 2초 후 애니메이션 상태 해제
+            setTimeout(() => setAnimationOn(false), 2000); // 2초 후 애니메이션 상태 해제
           }
 
-          if(scrollPosition > 0 && explainVisible.every(v => v === true) && !fogOff) {
+          if(!changeBackground && scrollPosition > 0 && explainVisible.every(v => v === true) && !fogOff) {
             setAnimationOn(true);
             setChangeBackground(true);
             setTimeout(() => setAnimationOn(false), 3000); // 2초 후 애니메이션 상태 해제
@@ -67,7 +81,7 @@ export default function Phaze6() {
             setChangeBackground(false);
             setExplainVisible([false, false, false, false]);
             setTimeout(() => setFogOff(true), 2000); // 2초 후 애니메이션 상태 해제
-            setTimeout(() => setAnimationOn(false), 2000); // 2초 후 애니메이션 상태 해제
+            setTimeout(() => setAnimationOn(false), 3000); // 2초 후 애니메이션 상태 해제
           }
         };
     
@@ -108,9 +122,9 @@ export default function Phaze6() {
                 <img src="/images/song/phaze6/explain6_4.png" className={`explain6_4 ${explainVisible[3] && !changeImgs ? 'slideIn6_1' : changeImgs ? 'hidden6' : ''}`}/>
 
                 <img src="/images/song/phaze6/fog6_1.png" className={`fog6_1 ${changeBackground ? 'visible6' : (changeImgs && fogOff) ? 'move_bottom6' : ''}`}
-                  style={{ transform: `translateX(${fogOffset * 0.2}px)` }}/>
+                  style={{ transform: `translateX(${fogOffset * 0.2}px)`, opacity: fogOpacity }}/>
                 <img src="/images/song/phaze6/fog6_2.png" className={`fog6_2 ${changeBackground ? 'visible6' : (changeImgs && fogOff) ? 'move_bottom6' : ''}`}
-                  style={{ transform: `translateX(${-fogOffset * 0.2}px)` }}/>
+                  style={{ transform: `translateX(${-fogOffset * 0.2}px)`, opacity: fogOpacity }}/>
 
                 <img src="/images/song/phaze6/cursor/cursor6_1.png" className={`cursor6_1 ${changeImgs ? 'visible6' : ''}`} onClick={handleCursorClick} />
                 <img src="/images/song/phaze6/cursor/cursor6_2.png" className={`cursor6_2 ${changeImgs ? 'visible6' : ''}`} onClick={handleCursorClick} />

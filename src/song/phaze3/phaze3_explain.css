@@ -1,12 +1,13 @@
   .explain3_1, .explain3_2, .explain3_3, .explain3_4, 
   .explain3_5, .explain3_6, .explain3_7, .explain3_8, .explain3_9 {
     position: absolute;
-    z-index: 5;
+    z-index: 7;
     opacity: 0; /* 기본적으로 투명하게 */
     animation-fill-mode: forwards; /* 애니메이션 후 상태를 유지 */
   }
   
   .slideIn3 {
+    z-index: 7;
     animation: slidein3 2.5s ease-in-out forwards;
   }
 
@@ -56,7 +57,6 @@
   .explain3_4 {
       top: 200px;
       left: 550px;
-      z-index: 3;
   }
 
   .explain3_5 {

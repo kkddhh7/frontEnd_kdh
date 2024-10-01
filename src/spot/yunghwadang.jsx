@@ -13,6 +13,7 @@ import CaptureComponent from './capture1';
 import { Link, useLocation } from 'react-router-dom';
 import '../Pages_kdh/ScrollDownPage.css';
 
+
 export default function Yunghwadang() {
     const [showImages, setShowImages] = useState(false);
     const [ennuchPosition, setEnnuchPosition] = useState({ left: '32%' });
@@ -755,6 +756,5 @@ export default function Yunghwadang() {
                 </a>
             </div>
         </div>
-
     );
 }

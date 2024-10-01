@@ -14,6 +14,7 @@ import CaptureComponent from './capture1';
 import { Link, useLocation } from 'react-router-dom';
 import '../Pages_kdh/ScrollDownPage.css';
 
+
 export default function Buyongji() {
   const [currentCat, setCurrentCat] = useState(cat1);
   const [isKingVisible, setIsKingVisible] = useState(false);
@@ -55,7 +56,6 @@ export default function Buyongji() {
     }, 1000);
 
     return () => clearTimeout(timer);
-
 
   }, []);
 
@@ -843,7 +843,7 @@ export default function Buyongji() {
           <img src={process.env.PUBLIC_URL + '/download-icon.png'} alt="download" />
         </a>
       </div>
-    </div>
+    </div> 
 
   );
 }

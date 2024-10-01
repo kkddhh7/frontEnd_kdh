@@ -72,7 +72,6 @@ export default function Nakseonjae() {
         return () => clearTimeout(timer);
     }, []);
 
-
     const eventRef = useRef(null);
     const tourRef = useRef(null);
     const quizRef = useRef(null);

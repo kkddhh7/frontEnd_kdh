@@ -13,7 +13,6 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import '../Pages_kdh/ScrollDownPage.css';
 
 
-
 export default function Injungjun() {
   const [showImages, setShowImages] = useState(false);
   const [commentOpacity, setCommentOpacity] = useState(0);
@@ -65,7 +64,6 @@ export default function Injungjun() {
     }, 1000);
 
     return () => clearTimeout(timer);
-
 
   }, []);
 
@@ -780,6 +778,5 @@ export default function Injungjun() {
           <img src={process.env.PUBLIC_URL + '/download-icon.png'} alt="download" />
         </a>
       </div>
-    </div>
   );
 }

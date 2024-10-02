@@ -5,7 +5,7 @@ html {
 .App {
     width: 1710px;
     height: 1069px;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     scroll-behavior: auto;
     scroll-snap-type: y mandatory;
     /* 스크롤할 때 섹션이 뷰포트에 맞춰지도록 설정 */

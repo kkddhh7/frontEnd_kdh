@@ -331,7 +331,7 @@ export default function Nakseonjae() {
     }, []);
 
     return (
-        <div className='App'>
+        <div className='sscroll'>
             <div className='section nakseonjae' style={{ position: 'relative' }}>
                 <BackgroundAnimation background={background} />
                 <CaptureComponent handleBackgroundChange={handleBackgroundChange} />
@@ -339,8 +339,8 @@ export default function Nakseonjae() {
                 {showImages && (
                     <>
                         <img src={detail} alt="낙선재 태그" style={{ position: 'absolute', top: '50px', left: '1500px', width: '100px', zIndex: 2, opacity: commentOpacity, transition: 'opacity 0.5s ease-in-out, left 1.5s ease-in-out' }} />
-                        <img src={king} alt="왕" style={{ position: 'absolute', cursor: 'pointer', top: '680px', left: '1350px', width: '170px', opacity: commentOpacity, transition: 'opacity 0.5s ease-in-out, left 1.5s ease-in-out', zIndex: 2 }} onClick={() => handleChanghojiClick('/nakseonjae/changhoji')} />
-                        <img src={maid} alt="궁녀" style={{ position: 'absolute', cursor: 'pointer', top: '680px', left: '1250px', width: '127px', opacity: commentOpacity, transition: 'opacity 0.5s ease-in-out, left 1.5s ease-in-out', zIndex: 2 }} onClick={() => handleChanghojiClick('/nakseonjae/changhoji')} />
+                        <img src={king} alt="왕" style={{ position: 'absolute', cursor: 'pointer', top: '680px', left: '1300px', width: '170px', opacity: commentOpacity, transition: 'opacity 0.5s ease-in-out, left 1.5s ease-in-out', zIndex: 2 }} onClick={() => handleChanghojiClick('/nakseonjae/changhoji')} />
+                        <img src={maid} alt="궁녀" style={{ position: 'absolute', cursor: 'pointer', top: '680px', left: '1200px', width: '127px', opacity: commentOpacity, transition: 'opacity 0.5s ease-in-out, left 1.5s ease-in-out', zIndex: 2 }} onClick={() => handleChanghojiClick('/nakseonjae/changhoji')} />
                     </>
                 )}
                 {showBook && (
@@ -362,7 +362,6 @@ export default function Nakseonjae() {
                     </>
                 )}
             </div>
-
             <div className="section nakseonjae-event1" ref={infoEvent1Ref}>
                 <img src={process.env.PUBLIC_URL + '/event1-1.png'} alt="event1-1" className="event1-1" />
                 <img src={process.env.PUBLIC_URL + '/event1-2.png'} alt="event1-2" className="event1-2" />

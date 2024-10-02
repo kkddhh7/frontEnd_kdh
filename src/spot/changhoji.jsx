@@ -104,7 +104,7 @@ export default function Changhoji() {
         setShowBook2(false);
     };
     return (
-        <div style={{ height: '5270px', position: 'relative', overflow: 'hidden', width: '1710px' }}>
+        <div className="changhoji" style={{ height: '5270px', position: 'relative', overflow: 'hidden', width: '1710px' }}>
             <img
                 src={changhojiImages[currentImageIndex]}
                 alt="창호지"

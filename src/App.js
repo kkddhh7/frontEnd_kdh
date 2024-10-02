@@ -12,7 +12,7 @@ import Buyongji from './spot/buyongji';
 import Juniper from './spot/juniper';
 import Yunghwadang from './spot/yunghwadang';
 import Changhoji from './spot/changhoji';
-import Loading from './loading/loading1';
+import Loading from './loading/loading';
 import ScrollDownPage from "./Pages_kdh/ScrollDownPage";
 import Quiz1 from "./Pages_kdh/Quiz1";
 import Quiz2 from "./Pages_kdh/Quiz2";

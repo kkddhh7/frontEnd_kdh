@@ -14,17 +14,14 @@ import timeBackground from './image/capture1/time_background.png';
 import dayText from './image/capture1/day_text.png';
 import eveningText from './image/capture1/evening_text.png';
 import nightText from './image/capture1/night_text.png';
-import { useCapture } from '../captureComtext';
 
 const captures = [Capture1, Capture2, Capture3, Capture4, Capture5];
 
 export default function CaptureComponent({ handleBackgroundChange }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { addPage } = useCapture();
     const [captureIndex, setCaptureIndex] = useState(-1);
     const [showTimeChange, setShowTimeChange] = useState(false);
-    const currentPath = window.location.pathname;
     const capturedPages = useSelector((state) => state.capturedPages);
 
     const handleMapClick = () => {       

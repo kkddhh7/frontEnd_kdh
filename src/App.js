@@ -1,7 +1,6 @@
 import './App.css';
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { CaptureProvider } from './captureComtext';
 import Role from "./test/Role";
 
 import Test2 from "./test/Test2";
@@ -14,7 +13,6 @@ import Juniper from './spot/juniper';
 import Yunghwadang from './spot/yunghwadang';
 import Changhoji from './spot/changhoji';
 import Loading from './loading/loading';
-import Another from './spot/CaptureListComponent';
 
 
 import ScrollDownPage from "./Pages_kdh/ScrollDownPage";
@@ -40,40 +38,37 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <CaptureProvider>
-        <Router>
-          <Routes>
-            <Route path='/map' element={<Map />} />
-            <Route path='/nakseonjae/changhoji' element={<Changhoji />} />
-            <Route path='*' element={
-              <Layout>
-                <Routes>
-                  <Route path='/' element={<Role />} />
-                  <Route path='/test2' element={<Test2 />} />
-                  <Route path='/test3' element={<Test3 />} />
-                  <Route path='/phaze1' element={<Phaze1 />} />
-                  <Route path='/phaze2' element={<Phaze2 />} />
-                  <Route path='/phaze3' element={<Phaze3 />} />
-                  <Route path='/phaze4' element={<Phaze4 />} />
-                  <Route path='/phaze5' element={<Phaze5 />} />
-                  <Route path='/phaze6' element={<Phaze6 />} />
-                  <Route path='/phaze7' element={<Phaze7 />} />
-                  <Route path='/loading' element={<Loading />} />
-                  <Route path='/injungjun' element={<Injungjun />} />
-                  <Route path='/nakseonjae' element={<Nakseonjae />} />
-                  <Route path='/buyongji' element={<Buyongji />} />
-                  <Route path='/yunghwadang' element={<Yunghwadang />} />
-                  <Route path='/juniper' element={<Juniper />} />
-                  <Route path='/scrolldownpage' element={<ScrollDownPage />} />
-                  <Route path='/quiz1' element={<Quiz1 />} />
-                  <Route path='/quiz2' element={<Quiz2 />} />
-                  <Route path='/quiz3' element={<Quiz3 />} />
-                  <Route path='/another' element={<Another />} />
+      <Router>
+        <Routes>
+          <Route path='/map' element={<Map />} />
+          <Route path='/nakseonjae/changhoji' element={<Changhoji />} />
+          <Route path='*' element={
+            <Layout>
+              <Routes>
+                <Route path='/' element={<Role />} />
+                <Route path='/test2' element={<Test2 />} />
+                <Route path='/test3' element={<Test3 />} />
+                <Route path='/phaze1' element={<Phaze1 />} />
+                <Route path='/phaze2' element={<Phaze2 />} />
+                <Route path='/phaze3' element={<Phaze3 />} />
+                <Route path='/phaze4' element={<Phaze4 />} />
+                <Route path='/phaze5' element={<Phaze5 />} />
+                <Route path='/phaze6' element={<Phaze6 />} />
+                <Route path='/phaze7' element={<Phaze7 />} />
+                <Route path='/loading' element={<Loading />} />
+                <Route path='/injungjun' element={<Injungjun />} />
+                <Route path='/nakseonjae' element={<Nakseonjae />} />
+                <Route path='/buyongji' element={<Buyongji />} />
+                <Route path='/yunghwadang' element={<Yunghwadang />} />
+                <Route path='/juniper' element={<Juniper />} />
+                <Route path='/scrolldownpage' element={<ScrollDownPage />} />
+                <Route path='/quiz1' element={<Quiz1 />} />
+                <Route path='/quiz2' element={<Quiz2 />} />
+                <Route path='/quiz3' element={<Quiz3 />} />
 
-                </Routes></Layout>} />
-          </Routes>
-        </Router>
-      </CaptureProvider>
+              </Routes></Layout>} />
+        </Routes>
+      </Router>
     </div>
   );
 }

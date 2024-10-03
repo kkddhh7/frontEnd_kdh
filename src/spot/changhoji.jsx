@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import changhoji1 from './image/changhoji/changhoji1.png';
 import changhoji2 from './image/changhoji/changhoji2.png';
@@ -56,6 +56,7 @@ export default function Changhoji() {
     const [candleIndex, setCandleIndex] = useState(0);
     const [showBook, setShowBook] = useState(false);
     const [showBook2, setShowBook2] = useState(false);
+    const pageChangeSound = useRef(new Audio(process.env.PUBLIC_URL + '/music/change_page.mp3'));
 
     const handleScroll = () => {
         const scrollPosition = window.scrollY;
@@ -94,13 +95,16 @@ export default function Changhoji() {
     };
 
     const handleNextPageClick = () => {
-        setShowBook(false);
+        pageChangeSound.current.play();
         setShowBook2(true);
+        setShowBook(false);
+        
     };
 
     const handlePrevPageClick = () => {
-        setShowBook2(false);
+        pageChangeSound.current.play();
         setShowBook(true);
+        setShowBook2(false);
     };
 
     const handleCloseBookClick = () => {

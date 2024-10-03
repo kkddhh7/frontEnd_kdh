@@ -21,6 +21,7 @@ export default function Injungjun() {
   const [showBook, setShowBook] = useState(true);
   const [showSecondBookDetail, setShowSecondBookDetail] = useState(false);
   const [background, setBackground] = useState('day');
+  const pageChangeSound = useRef(new Audio(process.env.PUBLIC_URL + '/music/change_page.mp3'));
 
   const handleBookClick = () => {
     setShowBookDetail(true);
@@ -28,11 +29,13 @@ export default function Injungjun() {
   };
 
   const handleNextPageClick = () => {
+    pageChangeSound.current.play(); 
     setShowSecondBookDetail(true);
     setShowBookDetail(false);
   };
 
   const handlePrevPageClick = () => {
+    pageChangeSound.current.play(); 
     setShowSecondBookDetail(false);
     setShowBookDetail(true);
   };

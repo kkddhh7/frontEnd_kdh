@@ -67,6 +67,7 @@ export default function Phaze6() {
               const newVisible = [...prevState];
               newVisible[i] = true;
               return newVisible;
+
             });
           }, i * 500);
         }
@@ -96,7 +97,6 @@ export default function Phaze6() {
 
     return () => {
       window.removeEventListener("wheel", handleScroll);
-
     };
   }, [scrollPosition, explainVisible, animationOn, changeBackground, changeImgs]);
 
@@ -170,6 +170,7 @@ export default function Phaze6() {
           <img src="/images/song/phaze6/explain6_6.png" className={`explain6_6 ${changeImgs ? 'slideIn6_1' : ''}`} />
 
           <img src="/images/song/phaze6/background6_3.png" alt='background' className={`background6_3 ${finalBackground ? 'next_page6' : ''}`} />
+
         </div>
       </div>
     </div>

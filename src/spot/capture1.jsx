@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import background from './image/capture1/icon_background.png';
@@ -14,6 +14,7 @@ import timeBackground from './image/capture1/time_background.png';
 import dayText from './image/capture1/day_text.png';
 import eveningText from './image/capture1/evening_text.png';
 import nightText from './image/capture1/night_text.png';
+import { audioRefs } from './detailAudio'; // 캡처 도중에 음악 정지하라고 해서 넣었는데, 음악 있는게 낫대 ㅎㅎ
 
 const captures = [Capture1, Capture2, Capture3, Capture4, Capture5];
 
@@ -22,7 +23,12 @@ export default function CaptureComponent({ handleBackgroundChange }) {
     const dispatch = useDispatch();
     const [captureIndex, setCaptureIndex] = useState(-1);
     const [showTimeChange, setShowTimeChange] = useState(false);
+    const [currentAudioTime, setCurrentAudioTime] = useState(0);
     const capturedPages = useSelector((state) => state.capturedPages);
+    const audioFile = process.env.PUBLIC_URL + '/music/TakePicture.mp3';
+    const audioRef = useRef(new Audio(audioFile)); 
+    // const otherAudioRef = useRef(new Audio(process.env.PUBLIC_URL + '/music/detail-music.mp3'));
+
 
     const handleMapClick = () => {       
         navigate('/map');
@@ -34,11 +40,18 @@ export default function CaptureComponent({ handleBackgroundChange }) {
 
 
     const handleCaptureClick = () => {
-        const currentPage = window.location.pathname; // 현재 페이지 경로를 가져옴
+        const currentPage = window.location.pathname; 
+        // setCurrentAudioTime(audioRefs.otherAudio.currentTime);
+        // audioRefs.otherAudio.pause();
+        // audioRefs.otherAudio.currentTime = 0;
+        // setTimeout(() => {
+        //     if (captureIndex === -1 && currentAudioTime > 0) {
+        //         audioRefs.otherAudio.currentTime = currentAudioTime; // 저장된 시간으로 이동
+        //         audioRefs.otherAudio.play().catch((error) => console.log('Error playing audio:', error));
+        //     }
+        // }, captures.length * 1000);
         
         
-        // console.log('Current Path:', currentPath);
-        // addPage(currentPath);
         
         captures.forEach((_, index) => {
             setTimeout(() => {
@@ -64,6 +77,23 @@ export default function CaptureComponent({ handleBackgroundChange }) {
     const handleBackgroundSelect = (time) => () => {
         handleBackgroundChange(time);
     };
+
+    useEffect(() => {
+        if (captureIndex === captures.length - 1) {
+            audioRef.current.play(); // 오디오 재생
+        }
+        // return () => {
+        //     audioRefs.otherAudio.pause();
+        //     audioRefs.otherAudio.currentTime = 0; // 음악 초기화
+        // };
+    },[captureIndex]);
+    // useEffect(() => {
+    //     // 캡처 애니메이션이 끝난 후 원래 음악을 저장된 시간부터 재생
+    //     if (captureIndex === -1 && currentAudioTime > 0) {
+    //         audioRefs.otherAudio.currentTime = currentAudioTime; // 저장된 시간으로 이동
+    //         audioRefs.otherAudio.play(); // 음악 재생
+    //     }
+    // },[captureIndex]);
 
     return (
         <>

@@ -115,6 +115,7 @@ export default function Phaze2() {
 
   const musicRef = useRef(null);
 
+
   useEffect(() => {
     const music = musicRef.current;
 

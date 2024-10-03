@@ -19,6 +19,7 @@ export default function Phaze5() {
 
   const navigate = useNavigate(); // For page navigation
 
+
   useEffect(() => {
 
     setTimeout(() => {

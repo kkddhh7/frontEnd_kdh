@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import buyongji from './image/buyongji/buyongji.png';
 import cat1 from './image/buyongji/buyongji_cat_icon1.png';
 import cat2 from './image/buyongji/buyongji_cat_icon2.png';
@@ -114,24 +115,32 @@ export default function Buyongji() {
 
   // 사진 데이터 배열 (추가하려는 사진의 경로로 수정)
   const images = [
-    process.env.PUBLIC_URL + '/photo1.png',
-    process.env.PUBLIC_URL + '/photo2.png',
-    process.env.PUBLIC_URL + '/photo3.png',
-    process.env.PUBLIC_URL + '/photo4.png',
-    process.env.PUBLIC_URL + '/photo5.png'
-  ];
+    'injungjun_photo.png',
+    'buyongji_photo.png',
+    'juniper_photo.png',
+    'yunghwadang_photo.png',
+    'nakseonjae_photo.png'
+];
 
-  const nextImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
-  };
+// 캡처된 이미지 필터링
+const capturedPages = useSelector((state) => state.capturedPages);
+const capturedImages = images.filter((img) => capturedPages.includes(`/${img.split('_')[0]}`));
+const isImageCaptured = (index) => capturedImages[index] !== undefined;
 
-  const prevImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
+// 캡처된 이미지 기반으로 인덱스 가져오기
+const getImageIndex = (offset) => (currentImageIndex + offset + capturedImages.length) % capturedImages.length;
+
+const nextImage = () => {
+    if (capturedImages.length > 0) {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % capturedImages.length);
+    }
+};
+
+const prevImage = () => {
+    if (capturedImages.length > 0) {
+        setCurrentImageIndex((prevIndex) => (prevIndex - 1 + capturedImages.length) % capturedImages.length);
+    }
+};
 
   const scrollToSection = (ref) => {
     ref.current.scrollIntoView({ behavior: 'auto' });
@@ -453,7 +462,7 @@ export default function Buyongji() {
           </>
         )}
       </div>
-      
+
       <div className="section byg-event1" ref={infoEvent1Ref}>
         <img src={process.env.PUBLIC_URL + '/event1-1.png'} alt="event1-1" className="event1-1" />
         <img src={process.env.PUBLIC_URL + '/event1-2.png'} alt="event1-2" className="event1-2" />
@@ -804,36 +813,56 @@ export default function Buyongji() {
         <div className="photo-gallery">
           <button className="prev" onClick={prevImage}>{"<"}</button>
           <div className="photo-slider">
-            <div className="image-container">
-              <img
-                src={images[(currentImageIndex - 2 + images.length) % images.length]}
-                alt="prev-img"
-                className="llside-img"
-              />
+            {/* 두 이미지 슬롯 */}
+            <div className="image-container-kdh">
+              {capturedImages.length > 4 && isImageCaptured(getImageIndex(-2)) && (
+                <img
+                  src={`${process.env.PUBLIC_URL}/${capturedImages[getImageIndex(-2)]}`}
+                  alt="prev-img"
+                  className="llside-img"
+                />
+              )}
             </div>
-            <div className="image-container">
-              <img
-                src={images[(currentImageIndex - 1 + images.length) % images.length]}
-                alt="prev-img"
-                className="lside-img"
-              />
+
+            <div className="image-container-kdh">
+              {capturedImages.length > 2 && isImageCaptured(getImageIndex(-1)) && (
+                <img
+                  src={`${process.env.PUBLIC_URL}/${capturedImages[getImageIndex(-1)]}`}
+                  alt="prev-img"
+                  className="lside-img"
+                />
+              )}
             </div>
-            <div className="image-container">
-              <img src={images[currentImageIndex]} alt="current-img" className="center-img" />
+
+            {/* 중앙 이미지 슬롯 */}
+            <div className="image-container-kdh">
+              {capturedImages.length > 0 && (
+                <img
+                  src={`${process.env.PUBLIC_URL}/${capturedImages[currentImageIndex]}`}
+                  alt="current-img"
+                  className="center-img"
+                />
+              )}
             </div>
-            <div className="image-container">
-              <img
-                src={images[(currentImageIndex + 1) % images.length]}
-                alt="next-img"
-                className="rside-img"
-              />
+
+            <div className="image-container-kdh">
+              {capturedImages.length > 1 && isImageCaptured(getImageIndex(1)) && (
+                <img
+                  src={`${process.env.PUBLIC_URL}/${capturedImages[getImageIndex(1)]}`}
+                  alt="next-img"
+                  className="rside-img"
+                />
+              )}
             </div>
-            <div className="image-container">
-              <img
-                src={images[(currentImageIndex + 2) % images.length]}
-                alt="next-img"
-                className="rrside-img"
-              />
+
+            <div className="image-container-kdh">
+              {capturedImages.length > 3 && isImageCaptured(getImageIndex(2)) && (
+                <img
+                  src={`${process.env.PUBLIC_URL}/${capturedImages[getImageIndex(2)]}`}
+                  alt="next-img"
+                  className="rrside-img"
+                />
+              )}
             </div>
           </div>
           <button className="next" onClick={nextImage}>{">"}</button>
@@ -843,7 +872,7 @@ export default function Buyongji() {
           <img src={process.env.PUBLIC_URL + '/download-icon.png'} alt="download" />
         </a>
       </div>
-    </div> 
+    </div>
 
   );
 }

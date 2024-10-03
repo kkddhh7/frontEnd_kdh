@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import changhoji1 from './image/changhoji/changhoji1.png';
 import changhoji2 from './image/changhoji/changhoji2.png';
 import changhoji3 from './image/changhoji/changhoji3.png';
@@ -49,6 +50,7 @@ const fireSequence = [
 ];
 
 export default function Changhoji() {
+    const navigate = useNavigate();
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [fireIndex, setFireIndex] = useState(0);
     const [candleIndex, setCandleIndex] = useState(0);
@@ -105,6 +107,11 @@ export default function Changhoji() {
         setShowBook(false);
         setShowBook2(false);
     };
+
+    const handleBackToNakseonjae = () => {
+        navigate('/nakseonjae');
+    };
+
     return (
         <div className='custom-cursor-changhoji'>
             <div className="changhoji" style={{ height: '5270px', position: 'relative', overflow: 'hidden', width: '1710px' }}>
@@ -120,17 +127,7 @@ export default function Changhoji() {
                         zIndex: -1,
                     }}
                 />
-                <img
-                    src={backToNakseonjae}
-                    alt="낙선재로 돌아가기"
-                    style={{
-                        position: 'fixed',
-                        width: '30px',
-                        top: '50px',
-                        left: '1620px',
-                        zIndex: 1,
-                    }}
-                />
+                <img src={backToNakseonjae} alt="낙선재로 돌아가기" style={{ position: 'fixed', width: '30px', top: '50px', left: '1620px', zIndex: 1, }} onClick={handleBackToNakseonjae}/>
                 {currentImageIndex === changhojiImages.length - 1 && (
                     <>
                         {candleIndex === 0 ? (

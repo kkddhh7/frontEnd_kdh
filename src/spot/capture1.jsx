@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import background from './image/capture1/icon_background.png';
 import captureIcon from './image/capture1/capture_icon.png';
 import mapIcon from './image/capture1/map_icon.png';
@@ -13,15 +14,20 @@ import timeBackground from './image/capture1/time_background.png';
 import dayText from './image/capture1/day_text.png';
 import eveningText from './image/capture1/evening_text.png';
 import nightText from './image/capture1/night_text.png';
+import { useCapture } from '../captureComtext';
 
 const captures = [Capture1, Capture2, Capture3, Capture4, Capture5];
 
 export default function CaptureComponent({ handleBackgroundChange }) {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { addPage } = useCapture();
     const [captureIndex, setCaptureIndex] = useState(-1);
     const [showTimeChange, setShowTimeChange] = useState(false);
+    const currentPath = window.location.pathname;
+    const capturedPages = useSelector((state) => state.capturedPages);
 
-    const handleMapClick = () => {
+    const handleMapClick = () => {       
         navigate('/map');
     };
 
@@ -31,16 +37,30 @@ export default function CaptureComponent({ handleBackgroundChange }) {
 
 
     const handleCaptureClick = () => {
+        const currentPage = window.location.pathname; // 현재 페이지 경로를 가져옴
+        
+        
+        // console.log('Current Path:', currentPath);
+        // addPage(currentPath);
+        
         captures.forEach((_, index) => {
             setTimeout(() => {
                 setCaptureIndex(index);
-                // 마지막 이미지가 보인 후 1초 후에 숨기기
                 if (index === captures.length - 1) {
                     setTimeout(() => {
-                        setCaptureIndex(-1); // 모든 캡처 이미지가 보인 후 숨기기
-                    }, 1000); // 1초 후 이미지 숨기기
+                        setCaptureIndex(-1);
+                    }, 1000);
                 }
-            }, index * 1000); // 각 이미지를 2초 간격으로 표시
+            }, index * 1000);
+        });
+        if (capturedPages.includes(currentPage)) {
+            console.log('Page already captured:', currentPage);
+            return; // 중복된 페이지는 추가하지 않음
+        }
+        console.log('Dispatching ADD_CAPTURED_PAGE with page:', currentPage); 
+        dispatch({ 
+            type: 'ADD_CAPTURED_PAGE', 
+            payload: { page: currentPage }, // 현재 페이지를 payload로 저장
         });
     };
 

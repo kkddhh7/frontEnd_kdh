@@ -145,7 +145,7 @@ const throttle = (func, limit) => {
         }, 2500); 
         setTimeout(() => {
           navigate("/loading")
-        }, 2500); 
+        }, 4000); 
       }
     };
 
@@ -286,21 +286,33 @@ const throttle = (func, limit) => {
               className={`image-wrapper ${isRotating ? 'rotate' : ''}`}
               style={{ transform: `rotateY(${rotationAngle}deg)` }} // 회전각을 적용
             >                    
-                {images.map((imgSrc, index) => (
-                <div
-                key={index}
-                className={`image ${index === currentIndex ? 'center-image' : ''}`}
-                style={index === currentIndex ? { pointerEvents: 'auto' } : { pointerEvents: 'none' }}
-                onClick={index === currentIndex ? handleClick : null} // center image만 클릭 이벤트 핸들러 연결
-                >
-                <img src={imgSrc} alt={`Appeal ${index + 1}`} />
-                    </div>
-                )
-            )}
+                {images.map((imgSrc, index) => {
+                  const imageRotationAngle = 72 * index; // 이미지의 기본 각도 (72도씩 배치)
+                  const currentRotation = rotationAngle % 360; // 현재 전체 회전각을 360도로 나눈 나머지
+                  const totalRotation = imageRotationAngle - currentRotation; // 각 이미지의 최종 회전 상태
+                
+                  return (
+                    <div
+                      key={index}
+                      className={`image ${index === currentIndex ? 'center-image' : ''}`}
+                      style={{
+                        transform: `
+                        rotateY(${imageRotationAngle}deg) 
+                        translateZ(500px) 
+                        rotateY(${-totalRotation}deg)`,
+                        pointerEvents: index === currentIndex ? 'auto' : 'none',
+                      }}
+                      onClick={index === currentIndex ? handleClick : null} // center image만 클릭 이벤트 핸들러 연결
+                      >
+                      <img src={imgSrc} alt={`Appeal ${index + 1}`} />
+                      </div>
+                      );
+                    })}
                 </div>
             </div>
             </>
-        )}
+          )}
+
         </div>
     </div>
   );

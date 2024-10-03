@@ -45,10 +45,10 @@ export default function Phaze6() {
 
             setFogOpacity((prev) => {
               const newOpacity = Math.min(Math.max(prev + delta * 0.00005, 0), 1); // 0과 1 사이로 제한
-              const newMove = prev + delta * 0.1; // 스크롤에 따라 이동
+              const newMove = prev + delta * 0.01; // 스크롤에 따라 이동
     
               if(newMove <= 0) return 0;
-              if(newMove >= 1950) return 1950;
+              if(newMove >= 1950) return 1;
     
               return newOpacity;
             });
@@ -72,7 +72,10 @@ export default function Phaze6() {
           if(!changeBackground && scrollPosition > 0 && explainVisible.every(v => v === true) && !fogOff) {
             setAnimationOn(true);
             setChangeBackground(true);
-            setTimeout(() => setAnimationOn(false), 3000); // 2초 후 애니메이션 상태 해제
+            setFogOpacity(0);
+            setTimeout(() => {
+              setAnimationOn(false);
+            }, 3000); // 2초 후 애니메이션 상태 해제
           }
 
           if(changeBackground && fogOffset >= 9750) {

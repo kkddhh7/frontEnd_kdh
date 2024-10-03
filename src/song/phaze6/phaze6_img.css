@@ -1,16 +1,22 @@
 .palace6_1 {
     position: absolute;
     z-index: 2;
-    top: 0;
+    width: 100%;
+    height: auto;
+    bottom: 0;
     left: 0;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
 }
 
 .palace6_2 {
     position: absolute;
     z-index: 3;
     opacity: 0;
-    top: 0;
-    left: 0;
+    width: 100%;
+    height: auto;
+    bottom: -5px;    
+    left: -8px;
     transition: opacity 2s ease-in-out;
   }
 .palace6_2.hidden6 {
@@ -21,7 +27,9 @@
   position: absolute;
   z-index: 4;
   opacity: 0;
-  top: 0;
+  width: 100%;
+  height: auto;
+  bottom: 0;
   left: 0;
 }
 

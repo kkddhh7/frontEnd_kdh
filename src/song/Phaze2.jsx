@@ -18,8 +18,6 @@ export default function Phaze2() {
     
     const navigate = useNavigate(); // For page navigation
 
-    
-    
     useEffect(() => {
       setTimeout(() => {
         setBackgroundVisible(true);

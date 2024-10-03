@@ -16,6 +16,8 @@ export default function SelectAppeal() {
   ]);
   const [animationOn, setAnimationOn] = useState(false);
   const [backgroundVisible, setBackgroundVisible] = useState(false);
+  const [imgsVisible, setImgsVisible] = useState(false);
+
   const [landVisible, setLandVisible] = useState([false, false, false, false]);
 
 
@@ -39,22 +41,22 @@ export default function SelectAppeal() {
     setIsClicked(true); // 클릭 시 상태 변화
     setTimeout(() => {
         setIsClicked(false);
-        setShowOpenImage(true);  // appeal_open101 이미지를 표시
+        setShowOpenImage(true);
         setScrollPosition(0);
     }, 2000);
   };
 
-  // Throttle 함수 정의 (한 번 호출 후 일정 시간이 지나기 전에는 다시 호출되지 않도록 함)
-const throttle = (func, limit) => {
-  let inThrottle;
-  return function(...args) {
-    if (!inThrottle) {
-      func(...args);
-      inThrottle = true;
-      setTimeout(() => inThrottle = false, limit);
-    }
+    // Throttle 함수 정의 (한 번 호출 후 일정 시간이 지나기 전에는 다시 호출되지 않도록 함)
+  const throttle = (func, limit) => {
+    let inThrottle;
+    return function(...args) {
+      if (!inThrottle) {
+        func(...args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    };
   };
-};
 
   setTimeout(() => {
     setBackgroundVisible(true);
@@ -71,6 +73,11 @@ const throttle = (func, limit) => {
       }, i * 500);
     }
   }, 1500);
+
+  setTimeout(() => {
+    setImgsVisible(true);
+  }, 4000);
+
 
   useEffect(() => {
     const handleScroll = (e) => {
@@ -209,28 +216,27 @@ const throttle = (func, limit) => {
                 style={{
                     transition: 'transform 0.2s ease-out',
                 }} 
-            />
-            <img
-              src="/images/song/phaze7/explain7_3.png"
-              alt="Image 1"
-              className="explain7_3"
-            />
-            <img
-              src="/images/song/phaze7/explain7_4.png"
-              alt="Image 1"
-              className="explain7_4"
-            />
-            <img
-              src="/images/song/phaze7/explain7_5.png"
-              alt="Image 1"
-              className="explain7_5"
-            />
-            <img
-              src="/images/song/phaze7/tree7.png"
-              alt="Image 1"
-              className={`tree7 ${finalImgsChange ? 'finalImgs' : ''}`}
-            />
-
+              />
+              <img
+                src="/images/song/phaze7/explain7_3.png"
+                alt="Image 1"
+                className="explain7_3"
+              />
+              <img
+                src="/images/song/phaze7/explain7_4.png"
+                alt="Image 1"
+                className="explain7_4"
+              />
+              <img
+                src="/images/song/phaze7/explain7_5.png"
+                alt="Image 1"
+                className="explain7_5"
+              />
+              <img
+                src="/images/song/phaze7/tree7.png"
+                alt="Image 1"
+                className={`tree7 ${finalImgsChange ? 'finalImgs' : ''}`}
+              />
             {finalImgsChange 
               && Array.from({ length: 3 }, (_, i) => (
                 <>
@@ -281,7 +287,7 @@ const throttle = (func, limit) => {
         </>
         ) : (
             <>
-            <div className={`image-container ${backgroundVisible ? 'visible7_2' : ''}`}>
+            <div className={`image-container ${imgsVisible ? 'visible7_2' : ''}`}>
             <div
               className={`image-wrapper ${isRotating ? 'rotate' : ''}`}
               style={{ transform: `rotateY(${rotationAngle}deg)` }} // 회전각을 적용
@@ -289,7 +295,7 @@ const throttle = (func, limit) => {
                 {images.map((imgSrc, index) => {
                   const imageRotationAngle = 72 * index; // 이미지의 기본 각도 (72도씩 배치)
                   const currentRotation = rotationAngle % 360; // 현재 전체 회전각을 360도로 나눈 나머지
-                  const totalRotation = imageRotationAngle - currentRotation; // 각 이미지의 최종 회전 상태
+                  const totalRotation = imageRotationAngle + currentRotation; // 각 이미지의 최종 회전 상태
                 
                   return (
                     <div
@@ -302,7 +308,7 @@ const throttle = (func, limit) => {
                         rotateY(${-totalRotation}deg)`,
                         pointerEvents: index === currentIndex ? 'auto' : 'none',
                       }}
-                      onClick={index === currentIndex ? handleClick : null} // center image만 클릭 이벤트 핸들러 연결
+                      onClick={(index === currentIndex && index === 4)? handleClick : null} // center image만 클릭 이벤트 핸들러 연결
                       >
                       <img src={imgSrc} alt={`Appeal ${index + 1}`} />
                       </div>

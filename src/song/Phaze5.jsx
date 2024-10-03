@@ -15,7 +15,9 @@ export default function Phaze5() {
     const [zeolitesVisible, setZeolitesVisible] = useState(false); // zeolites 이미지 가시성 상태
     const [sinhaScale, setSinhaScale] = useState(1); // sinha의 크기
     const [explainOffset, setExplainOffset] = useState(0);
+    const [nextBackground, setNextBackground] = useState(0);
 
+    const navigate = useNavigate(); // For page navigation
 
     useEffect(() => {
 
@@ -81,8 +83,12 @@ export default function Phaze5() {
           if (zeolitesVisible) {
             setSinhaScale((nowSinhaScale) => {
                 if(nowSinhaScale < 0.39999999999) return 0.4;
-
-                if(nowSinhaScale > 1.0) return 1.0;
+                if(nowSinhaScale > 1.3) {
+                  if(!nextBackground) {
+                    setTimeout(() => setNextBackground(true), 3000); // 2초 후 애니메이션 상태 해제                
+                  }
+                  return 1.3;
+                }
 
                 const newSinhaScale = nowSinhaScale + (delta * 0.0001);
                 return newSinhaScale;
@@ -92,13 +98,20 @@ export default function Phaze5() {
               const newOpacity = Math.min(Math.max(prev - delta * 0.0003, 0), 1); // 0~1 사이로 제한
 
               if(sinhaScale < 0.39999999999) return 1;
-
-              if(sinhaScale >= 0.8) return 0;
+              if(sinhaScale >= 1.3) {
+                return 0;
+              }
     
               return newOpacity;
             });
           }
         };
+
+        if(nextBackground) {
+          setTimeout(() => {
+            navigate("/phaze6"); // Redirect to another page after zoom
+          }, 1000);
+        }
     
         window.addEventListener("wheel", handleScroll, { passive: false });
     
@@ -130,15 +143,14 @@ export default function Phaze5() {
 
                 <img src="/images/song/phaze5/zeolites5.png" className={`zeolites5 ${zeolitesVisible ? 'fade-in-up' : ''}`}/>
 
-                <img src="/images/song/phaze5/sinha5_1.png" 
-                className={`sinha5_1 ${zeolitesVisible ? 'fade-in-up' : ''}`}
-                style={{ transform: `scale(${sinhaScale})` }}
-                />
-                <img src="/images/song/phaze5/sinha5_2.png" 
-                className={`sinha5_2 ${zeolitesVisible ? 'fade-in-up' : ''}`}
+                <img src="/images/song/phaze5/sinha5.png" 
+                className={`sinha5 ${zeolitesVisible ? 'fade-in-up' : ''}`}
                 style={{ transform: `scale(${sinhaScale})` }}
                 />
 
+                <img src="/images/song/phaze6/background6_1.png"
+                  className={`next_background ${nextBackground ? 'showNext' : ''}`}
+                />
             </div>
         </div>
     );

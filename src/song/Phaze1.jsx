@@ -163,6 +163,8 @@ export default function Phaze1() {
             <div className="background-image"> 
               <img src="images/song/phaze1/background1_1.jpg"/>
             </div>
+            <img src="images/song/phaze1/explain1.png"
+                className="explain1"/>
             <img src="images/song/phaze1/mountain/mountain1_1.png" 
                 className={`mountain1_1 ${changeVisible1 ? "visible1_1" : ""}`}/>
             <img src="images/song/phaze1/mountain/mountain1_3.png" 

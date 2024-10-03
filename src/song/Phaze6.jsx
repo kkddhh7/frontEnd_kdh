@@ -7,6 +7,7 @@ import '../song/phaze6/phaze6_explain.css'
 
 export default function Phaze6() {
     const [scrollPosition, setScrollPosition] = useState(0);
+    const [imgsVisible, setImgsVisible] = useState(false);
     const [explainVisible, setExplainVisible] = useState([false, false, false, false]); // 각 explain이 보일 상태
     const [animationOn, setAnimationOn] = useState(false);
     const [changeBackground, setChangeBackground] = useState(false);
@@ -21,6 +22,9 @@ export default function Phaze6() {
     const navigate = useNavigate(); // For page navigation
 
     useEffect(() => {
+        setTimeout(() => {
+          setImgsVisible(true);
+        }, 1000);
         const handleScroll = (e) => {
 
           e.preventDefault();
@@ -112,8 +116,8 @@ export default function Phaze6() {
                 <img src="/images/song/phaze6/background6_2.png" alt='background' 
                   className={`background6_2 ${changeBackground ? 'visible6' : ''}`}/>
             
-                <img src="/images/song/phaze6/palace6_1.png" className={`palace6_1 ${changeImgs ? 'hidden6' : ''}`}/>
-                <img src="/images/song/phaze6/palace6_2.png" 
+                <img src="/images/song/phaze6/palace6_1.png" className={`palace6_1 ${(imgsVisible && !changeImgs) ? 'visible6' : (imgsVisible && changeImgs) ? 'hidden6' : ''}`}/>
+                <img src="/images/song/phaze6/palace6_2.png"
                   className={`palace6_2 ${changeBackground ? 'visible6' : (changeImgs && fogOff) ? 'hidden6' : ''}`}/>
                 <img src="/images/song/phaze6/palace6_3.png" 
                   className={`palace6_3 ${changeImgs ? 'visible6' : ''}`}/>

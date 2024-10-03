@@ -23,6 +23,7 @@ export default function Yunghwadang() {
     const [showBookDetail, setShowBookDetail] = useState(false);
     const [showSecondBookDetail, setShowSecondBookDetail] = useState(false);
     const [background, setBackground] = useState('day');
+    const pageChangeSound = useRef(new Audio(process.env.PUBLIC_URL + '/music/change_page.mp3'));
 
     const handleIconClick = () => {
         setEnnuchPosition({ left: '73%' });
@@ -32,10 +33,12 @@ export default function Yunghwadang() {
 
 
     const handleNextPageClick = () => {
+        pageChangeSound.current.play(); 
         setShowSecondBookDetail(true);
         setShowBookDetail(false);
     };
     const handlePrevPageClick = () => {
+        pageChangeSound.current.play(); 
         setShowSecondBookDetail(false);
         setShowBookDetail(true);
     };

@@ -1,9 +1,6 @@
 import './App.css';
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
-import { useEffect } from 'react';
-
-import Role from "./test/Role";
 
 import Test2 from "./test/Test2";
 import Test3 from "./test/Test3";

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import nakseonjae from './image/nakseonjae/nakseonjae.png';
 import king from './image/nakseonjae/nakseonjae_king.png';

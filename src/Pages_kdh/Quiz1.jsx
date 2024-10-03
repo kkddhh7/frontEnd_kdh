@@ -35,12 +35,12 @@ function Quiz1() {
 
     // x 버튼 클릭 시 페이지 이동
     const handleCloseClick = () => {
-        // location.state가 있으면 전달받은 경로로, 없으면 기본값 설정
+        // location.state가 있으면 전달받은 경로로 이동, 없으면 기본값 설정
         const newPage = location.state && location.state.from
-            ? location.state.from // 전달받은 경로로 돌아가기
-            : '/scrolldownpage#quiz'; // 만약 from이 없으면 기본 경로로 이동 (예외 처리)
-
-        navigate(newPage); // 전달받은 경로로 이동
+            ? `${location.state.from}#quiz` // 전달받은 경로의 #quiz 섹션으로 이동
+            : '/scrolldownpage#quiz'; // 만약 from이 없으면 기본 경로로 이동
+    
+        navigate(newPage); // 해당 경로로 이동
     };
 
     return (

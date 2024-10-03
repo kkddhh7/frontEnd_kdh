@@ -367,8 +367,34 @@ export default function Buyongji() {
     navigate('/quiz3', { state: { from: location.pathname + location.hash } });
   };
 
+  const musicRef = useRef(null);
+
+  useEffect(() => {
+    const music = musicRef.current;
+
+    if (music) {
+      // 음소거 상태에서 음악을 자동 재생
+      music.muted = true;
+      music.play().then(() => {
+        // 재생이 시작된 후 짧은 지연 시간 후 음소거 해제
+        setTimeout(() => {
+          music.muted = false;
+        }, 1000);
+      }).catch((error) => {
+        console.log('Autoplay was prevented:', error);
+      });
+    }
+
+    return () => {
+      if (music) {
+        music.pause();
+      }
+    };
+  }, []);
+
   return (
     <div className='App'>
+      <audio ref={musicRef} src={process.env.PUBLIC_URL + '/music/detail-music.mp3'} loop />
       <div className='section byg' style={{ position: 'relative' }}>
         <BackgroundAnimation background={background} />
         <CaptureComponent handleBackgroundChange={handleBackgroundChange} />
@@ -833,31 +859,31 @@ export default function Buyongji() {
         <div className="photo-gallery">
           <button className="prev" onClick={prevImage}>{"<"}</button>
           <div className="photo-slider">
-            <div className="image-container">
+            <div className="image-container-kdh">
               <img
                 src={images[(currentImageIndex - 2 + images.length) % images.length]}
                 alt="prev-img"
                 className="llside-img"
               />
             </div>
-            <div className="image-container">
+            <div className="image-container-kdh">
               <img
                 src={images[(currentImageIndex - 1 + images.length) % images.length]}
                 alt="prev-img"
                 className="lside-img"
               />
             </div>
-            <div className="image-container">
+            <div className="image-container-kdh">
               <img src={images[currentImageIndex]} alt="current-img" className="center-img" />
             </div>
-            <div className="image-container">
+            <div className="image-container-kdh">
               <img
                 src={images[(currentImageIndex + 1) % images.length]}
                 alt="next-img"
                 className="rside-img"
               />
             </div>
-            <div className="image-container">
+            <div className="image-container-kdh">
               <img
                 src={images[(currentImageIndex + 2) % images.length]}
                 alt="next-img"

@@ -1,0 +1,228 @@
+.seventh-page {
+    position: absolute;
+    width: 1710px;
+    height: 1069px;
+    display: flex;
+    overflow: hidden; 
+}
+
+.content7 {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+  
+.background7_1 {
+    width: 100%;
+    height: auto;
+    z-index: 0;
+}
+
+.background7_2 {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.land7_1, .land7_3 {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  left: 0;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.land7_2, .land7_4 {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-out, transform 1s ease-out;
+} 
+
+.visible7_1 {
+  opacity: 1;
+  z-index: 2;
+}
+
+.visible7_2 {
+  opacity: 1;
+
+}
+
+.dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(199, 199, 199, 0.3);
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .dark-overlay.active {
+    opacity: 1;
+    z-index: 11;
+  }
+
+  .white-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .white-overlay.active7_2 {
+    opacity: 1;
+    z-index: 15;
+  }
+
+  
+
+  .flower1 {
+    position: absolute;
+    width: 600px;
+    height: auto;
+    top: 0;
+    left: 0;
+    z-index: 11;
+    animation-delay: 0.5s;
+    animation: cloudMoveClick1 1.5s forwards;
+  }
+
+  .flower2 {
+    position: absolute;
+    width:400px;
+    height: auto;
+    top: 300px;
+    left: -100px;
+    z-index: 11;
+    animation-delay: 0.5s;
+    animation: cloudMoveClick1 1.0s forwards ;
+  }
+
+  .flower3 {
+    position: absolute;
+    width:200px;
+    height: auto;
+    top: 600px;
+    right: 500px;
+    z-index: 11;
+    animation-delay: 0.5s;
+    animation: cloudMoveClick1 1.0s forwards;
+  }
+  
+  .flower4 {
+    position: absolute;
+    width:200px;
+    height: auto;
+    top: 500px;
+    right: 200px;
+    z-index: 11;
+    animation-delay: 0.7s;
+    animation: cloudMoveClick2 1.5s forwards;
+  }
+
+  .flower5 {
+    position: absolute;
+    width:200px;
+    height: auto;
+    top: 850px;
+    right: 500px;
+    z-index: 11;
+    animation-delay: 0.7s;
+    animation: cloudMoveClick2 1.5s forwards;
+  }
+
+  .flower6 {
+    position: absolute;
+    width:200px;
+    height: auto;
+    top: 900px;
+    right: -100px;
+    z-index: 11;
+    animation-delay: 0.7s;
+    animation: cloudMoveClick2 1.7s forwards;
+  }
+
+  .flower7 {
+    position: absolute;
+    width:200px;
+    height: auto;
+    top: 0px;
+    left: 250px;
+    z-index: 11;
+    animation-delay: 0.7s;
+    animation: cloudMoveClick2 1.5s forwards;
+  }
+
+  .flower8 {
+    position: absolute;
+    width:200px;
+    height: auto;
+    top: 40px;
+    right: 0px;
+    z-index: 11;
+    animation-delay: 0.7s;
+    animation: cloudMoveClick2 1.2s forwards;
+  }
+
+  .hak1 {
+    position: absolute;
+    width:600px;
+    height: auto;
+    top: 600px;
+    right: 500px;
+    z-index: 11;
+    animation-delay: 0.7s;
+    animation: cloudMoveClick2 1.5s forwards;
+  }
+
+  .hak2 {
+    position: absolute;
+    width:650px;
+    height: auto;
+    top: 0px;
+    right: -600px;
+    z-index: 11;
+    animation-delay: 0.7s;
+    animation: cloudMoveClick2 1.5s forwards;
+  }
+  
+  @keyframes cloudMoveClick1 {
+    0% {
+      opacity: 0;
+      transform: translateX(0%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes cloudMoveClick2 {
+    0% {
+      opacity: 0;
+      transform: translateX(0%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(-100%);
+    }
+  }

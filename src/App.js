@@ -1,7 +1,8 @@
+
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Role from "./test/Role";
-import Test1 from "./test/Test1";
+
 import Test2 from "./test/Test2";
 import Test3 from "./test/Test3";
 import Map from "./map/map";
@@ -17,35 +18,53 @@ import Quiz1 from "./Pages_kdh/Quiz1";
 import Quiz2 from "./Pages_kdh/Quiz2";
 import Quiz3 from "./Pages_kdh/Quiz3";
 
+import Phaze1 from "./song/Phaze1";
+import Phaze2 from "./song/Phaze2";
+import Phaze3 from "./song/Phaze3";
+import Phaze4 from "./song/Phaze4";
+import Phaze5 from "./song/Phaze5";
+import Phaze6 from "./song/Phaze6";
+import Phaze7 from "./song/Phaze7";
 
+
+import Layout from './song/cursor/Layout';
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Routes>       
-          <Route path='/' element={<Role />} />
-          <Route path='/test1' element={<Test1 />} />
-          <Route path='/test2' element={<Test2 />} />
-          <Route path='/test3' element={<Test3 />} />
-          <Route path='/loading' element={<Loading/>} /> 
-          <Route path='/map' element={<Map/>} /> 
-          <Route path='/injungjun' element={<Injungjun/>} />
-          <Route path='/nakseonjae' element={<Nakseonjae/>} />
-          <Route path='/buyongji' element={<Buyongji/>} />
-          <Route path='/yunghwadang' element={<Yunghwadang/>} />
-          <Route path='/juniper' element={<Juniper/>} />
-          <Route path='/nakseonjae/changhoji' element={<Changhoji/>} />
-          <Route path='/scrolldownpage' element={<ScrollDownPage />} />
-          <Route path='/quiz1' element={<Quiz1 />} />
-          <Route path='/quiz2' element={<Quiz2 />} />
-          <Route path='/quiz3' element={<Quiz3 />} />
+        <Layout>
+          <Routes> 
+            <Route path='/' element={<Role />} />
+            <Route path='/test2' element={<Test2 />} />
+            <Route path='/test3' element={<Test3 />} />
 
-        </Routes>   
+            <Route path='/phaze1' element={<Phaze1 />} />
+            <Route path='/phaze2' element={<Phaze2 />} />
+            <Route path='/phaze3' element={<Phaze3 />} />
+            <Route path='/phaze4' element={<Phaze4 />} />
+            <Route path='/phaze5' element={<Phaze5 />} />
+            <Route path='/phaze6' element={<Phaze6 />} />
+            <Route path='/phaze7' element={<Phaze7 />} />
+
+            <Route path='/loading' element={<Loading/>} /> 
+            <Route path='/map' element={<Map/>} /> 
+            <Route path='/injungjun' element={<Injungjun/>} />
+            <Route path='/nakseonjae' element={<Nakseonjae/>} />
+            <Route path='/buyongji' element={<Buyongji/>} />
+            <Route path='/yunghwadang' element={<Yunghwadang/>} />
+            <Route path='/juniper' element={<Juniper/>} />
+            <Route path='/nakseonjae/changhoji' element={<Changhoji/>} />
+            <Route path='/scrolldownpage' element={<ScrollDownPage />} />
+            <Route path='/quiz1' element={<Quiz1 />} />
+            <Route path='/quiz2' element={<Quiz2 />} />
+            <Route path='/quiz3' element={<Quiz3 />} />
+
+          </Routes>
+        </Layout>
       </Router>
-      </div>
+    </div >
   );
 }
 
 export default App;
-

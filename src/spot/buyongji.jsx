@@ -12,7 +12,7 @@ import CatBook from './image/buyongji/buyongji_cat_book.png';
 import BookDetail from './image/buyongji/buyongji_book_detail.png';
 import closeBook from './image/buyongji/buyongji_close_book.png';
 import CaptureComponent from './capture1';
-import { Link, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import '../Pages_kdh/ScrollDownPage.css';
 
 
@@ -362,8 +362,48 @@ const prevImage = () => {
     };
   }, []);
 
+  const navigate = useNavigate();
+
+  const handleQuiz1Click = () => {
+    navigate('/quiz1', { state: { from: location.pathname + location.hash } });
+  };
+
+  const handleQuiz2Click = () => {
+    navigate('/quiz2', { state: { from: location.pathname + location.hash } });
+  };
+
+  const handleQuiz3Click = () => {
+    navigate('/quiz3', { state: { from: location.pathname + location.hash } });
+  };
+
+  const musicRef = useRef(null);
+
+  useEffect(() => {
+    const music = musicRef.current;
+
+    if (music) {
+      // 음소거 상태에서 음악을 자동 재생
+      music.muted = true;
+      music.play().then(() => {
+        // 재생이 시작된 후 짧은 지연 시간 후 음소거 해제
+        setTimeout(() => {
+          music.muted = false;
+        }, 1000);
+      }).catch((error) => {
+        console.log('Autoplay was prevented:', error);
+      });
+    }
+
+    return () => {
+      if (music) {
+        music.pause();
+      }
+    };
+  }, []);
+
   return (
     <div className='App'>
+      <audio ref={musicRef} src={process.env.PUBLIC_URL + '/music/detail-music.mp3'} loop />
       <div className='section byg' style={{ position: 'relative' }}>
         <BackgroundAnimation background={background} />
         <CaptureComponent handleBackgroundChange={handleBackgroundChange} />
@@ -782,15 +822,30 @@ const prevImage = () => {
         <img src={process.env.PUBLIC_URL + '/cloud.png'} alt="cloud4" className="cloud4" />
         <img src={process.env.PUBLIC_URL + '/crane.png'} alt="crane" className="crane" />
 
-        <Link to="/quiz1">
-          <img src={process.env.PUBLIC_URL + '/quiz1-group.png'} alt="quiz1-group" className="quiz1-group" />
-        </Link>
-        <Link to="/quiz2">
-          <img src={process.env.PUBLIC_URL + '/quiz2-group.png'} alt="quiz2-group" className="quiz2-group" />
-        </Link>
-        <Link to="/quiz3">
-          <img src={process.env.PUBLIC_URL + '/quiz3-group.png'} alt="quiz3-group" className="quiz3-group" />
-        </Link>
+        <div>
+          <img
+            src={process.env.PUBLIC_URL + '/quiz1-group.png'}
+            alt="quiz1-group"
+            className="quiz1-group"
+            onClick={handleQuiz1Click}
+          />
+        </div>
+        <div>
+          <img
+            src={process.env.PUBLIC_URL + '/quiz2-group.png'}
+            alt="quiz2-group"
+            className="quiz2-group"
+            onClick={handleQuiz2Click}
+          />
+        </div>
+        <div>
+          <img
+            src={process.env.PUBLIC_URL + '/quiz3-group.png'}
+            alt="quiz3-group"
+            className="quiz3-group"
+            onClick={handleQuiz3Click}
+          />
+        </div>
       </div>
 
       <div id="photo-album" className="section" ref={photoRef}>

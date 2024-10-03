@@ -1,6 +1,8 @@
 import './App.css';
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import { useEffect } from 'react';
+
 import Role from "./test/Role";
 
 import Test2 from "./test/Test2";
@@ -31,6 +33,17 @@ import Phaze7 from "./song/Phaze7";
 
 import Layout from './song/cursor/Layout';
 
+function RedirectToPhaze1() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // '/' 경로에 접근할 때 '/phaze1'로 리디렉션
+    navigate('/phaze1');
+  }, [navigate]);
+
+  return null;
+}
+
 function App() {
   useEffect(() => {
     // 로컬 스토리지의 특정 키 삭제 또는 초기화
@@ -45,7 +58,7 @@ function App() {
           <Route path='*' element={
             <Layout>
               <Routes>
-                <Route path='/' element={<Role />} />
+              <Route path="/" element={<RedirectToPhaze1 />} />
                 <Route path='/test2' element={<Test2 />} />
                 <Route path='/test3' element={<Test3 />} />
                 <Route path='/phaze1' element={<Phaze1 />} />
